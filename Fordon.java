@@ -3,13 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package MenInBlack;
 import java.util.Date;
 
 /**
  *
- * @author josefinolsson
+ * @author Emil Lager
+ * @author Josefin Olsson
+ * @author Karin Mäki-Kala
+ * @author Veronika Ranta
+ * 
  */
+
 public class Fordon {
     private String Fordons_ID;
     private String Beskrivning;

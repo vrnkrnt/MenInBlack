@@ -3,14 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package MenInBlack;
 
 import java.util.Date;
 
 /**
- *
- * @author  
+ * @author Emil Lager
+ * @author Josefin Olsson
+ * @author Karin Mäki-Kala
+ * @author Veronika Ranta
  */ 
+
 class Alien {
     private int id, plats, ansvarigAgent;
     private String namn;
