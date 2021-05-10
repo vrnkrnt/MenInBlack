@@ -8,6 +8,7 @@ public class Test {
     
     private static InfDB idb;
     
+
     public static void main(String[] args) throws InfException
     {
         try 
