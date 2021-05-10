@@ -10,7 +10,7 @@ import java.util.Date;
 /**
  *
  * @author 
- */
+ */ 
 class Alien {
     private int id, plats, ansvarigAgent;
     private String namn;
