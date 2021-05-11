@@ -3,50 +3,45 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package MenInBlack;
 
 import java.util.Date;
 
-/**
- *
- * @author kmaki
- */
-class Alien {
-    private int id, plats, ansvarigAgent;
+class Agent{
+
+ private int agentID;
     private String namn;
-    private String telefonnummer;
+    private String telefon;
     private Date datum;
     private String losenord;
+    private String omrade;
  
-    public Alien(int id, int plats, int ansvarigAgent, String namn, 
+    public Agent(int agentID, String omrade, String telefon, String namn, 
             String telefonnummer, Date datum, String losenord){
-    this.id = id;
-    this.plats = plats;
-    this.ansvarigAgent = ansvarigAgent;
+    this.agentID = agentID;
+    this.omrade = omrade;
     this.namn = namn;
-    this.telefonnummer = telefonnummer;
+    this.telefon = telefon;
     this.datum = datum;
     this.losenord = losenord;
     }
     
     public int getId(){
-        return id;
+        return agentID;
     }
        
-    public int getPlats(){
-        return plats;
+    public String getZon(){
+        return omrade;
     }
     
-    public int getAnsvarigAgent(){
-        return ansvarigAgent;
-    }
     
     public String getNamn(){
         return namn;
     }
     
-    public String getTelefonnummer(){
-    return telefonnummer;
+    public String getTelefon(){
+    return telefon;
     }
     
     public Date getDatum(){
@@ -57,6 +52,5 @@ class Alien {
         return losenord;
     }
 }
-
 
 
