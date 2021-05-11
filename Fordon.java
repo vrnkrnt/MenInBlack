@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+<<<<<<< HEAD
 package MenInBlack;
 
 import java.io.Serializable;
@@ -113,5 +114,33 @@ public class Fordon implements Serializable {
     public String toString() {
         return "MenInBlack.Fordon[ fordonsID=" + fordonsID + " ]";
     }
+=======
+
+package MenInBlack;
+import java.util.Date;
+
+/**
+ *
+ * @author Emil Lager
+ * @author Josefin Olsson
+ * @author Karin Mäki-Kala
+ * @author Veronika Ranta
+ * 
+ */
+
+public class Fordon {
+    private String Fordons_ID;
+    private String Beskrivning;
+    private Date RegistreringsDatum;
+    private int ArsModell;
+    
+    public Fordon(String Fordons_ID, String Beskrivning, Date RegistreringsDatum, int ArsModell){
+    this.Fordons_ID=Fordons_ID;
+    this.Beskrivning=Beskrivning;
+    this.RegistreringsDatum=RegistreringsDatum;
+    this.ArsModell=ArsModell;
+    }
+            
+>>>>>>> a843171f61508af6c6f24fb12bfa1e039c2f960f
     
 }
