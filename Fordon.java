@@ -20,7 +20,8 @@ public class Fordon {
     this.Fordons_ID=Fordons_ID;
     this.Beskrivning=Beskrivning;
     this.RegistreringsDatum=RegistreringsDatum;
-    this.ArsModell=ArsModell;}
+    this.ArsModell=ArsModell;
+    }
             
     
 }
