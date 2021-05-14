@@ -37,10 +37,17 @@ public class Start {
         {
             Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        String fraga = "Select namn from agent where Agent_ID = 1";
-        String svar = idb.fetchSingle(fraga);
-        System.out.println(svar);
+//<<<<<<< HEAD:Start.java
+//        
+//        String fraga = "Select namn from agent where Agent_ID = 1";
+//        String svar = idb.fetchSingle(fraga);
+//        System.out.println(svar);
+//=======
+//                
+//        new SokOmradesChef (idb).setVisible(true);
+//        
+//
+//>>>>>>> f458f08d1b751046b24449c3e80f9cd61e12b304:Test.java
     
     } 
     
