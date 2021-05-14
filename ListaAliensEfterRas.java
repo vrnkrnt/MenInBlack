@@ -18,18 +18,15 @@ import oru.inf.InfException;
  * @author Veronika Ranta
  */
 
-public class VisaAliensEfterDatum extends javax.swing.JFrame {
+public class ListaAliensEfterRas extends javax.swing.JFrame {
 
     private InfDB idb;
 
-    /**
-     * Creates new form VisaAliensRas
-     */
-    public VisaAliensEfterDatum(InfDB idb) {
+    
+    
+    public ListaAliensEfterRas(InfDB idb) {
         initComponents();
         this.idb = idb;
-        //valjRasNamn();
-
     }
 
     /**
@@ -127,24 +124,6 @@ public class VisaAliensEfterDatum extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    /*private void valjRasNamn() {
-        String fraga = "SELECT Benamning from omrade";
-
-        ArrayList<String> allaRaser;
-
-        try {
-
-            allaRaser = idb.fetchColumn(fraga);
-
-            for (String Benamning : allaRaser) {
-                jComboBox1.addItem(Benamning);
-            }
-
-        } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Databasfel!");
-            System.out.println("Internt felmeddelande" + e.getMessage());
-        }
-    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox1;

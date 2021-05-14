@@ -36,7 +36,7 @@ public class Test {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         }
                 
-        new VisaAliensEfterRas (idb).setVisible(true);
+        new ListaAliensEfterRas (idb).setVisible(true);
         
 
     
