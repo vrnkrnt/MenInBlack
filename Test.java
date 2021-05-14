@@ -36,7 +36,7 @@ public class Test {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         }
                 
-        new ListaAliensEfterDatum (idb).setVisible(true);
+        new SokOmradesChef (idb).setVisible(true);
         
 
     
