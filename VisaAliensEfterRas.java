@@ -19,14 +19,14 @@ import oru.inf.InfException;
  * @author Veronika Ranta
  */ 
 
-public class VisaAliensOmrade extends javax.swing.JFrame {
+public class VisaAliensEfterRas extends javax.swing.JFrame {
 
     private InfDB idb;
 
     /**
      * Creates new form VisaAliensRas
      */
-    public VisaAliensOmrade(InfDB idb) {
+    public VisaAliensEfterRas(InfDB idb) {
         initComponents();
         this.idb = idb;
         valjOmradeNamn();
