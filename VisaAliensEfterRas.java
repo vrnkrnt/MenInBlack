@@ -19,17 +19,17 @@ import oru.inf.InfException;
  * @author Veronika Ranta
  */ 
 
-public class VisaAliensOmrade extends javax.swing.JFrame {
+public class VisaAliensEfterRas extends javax.swing.JFrame {
 
     private InfDB idb;
 
     /**
      * Creates new form VisaAliensRas
      */
-    public VisaAliensOmrade(InfDB idb) {
+    public VisaAliensEfterRas(InfDB idb) {
         initComponents();
         this.idb = idb;
-        valjOmradeNamn();
+        //valjRasNamn();
 
     }
 
@@ -51,10 +51,14 @@ public class VisaAliensOmrade extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Lista aliens efter område");
+        jLabel1.setText("Lista aliens efter ras");
 
-        jLabel2.setText("Välj område:");
+        jLabel2.setText("Välj ras:");
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boglodite", "Squid", "Worm" }));
+        jComboBox1.setSelectedIndex(-1);
+        jComboBox1.setToolTipText("");
+        jComboBox1.setName(""); // NOI18N
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -92,7 +96,7 @@ public class VisaAliensOmrade extends javax.swing.JFrame {
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         pack();
@@ -102,22 +106,21 @@ public class VisaAliensOmrade extends javax.swing.JFrame {
 
         jTextArea1.setText("");
 
-        ArrayList<HashMap<String, String>> soktaOmraden;
+        ArrayList<HashMap<String, String>> soktaRaser;
 
         try {
-            String valtOmrade = jComboBox1.getSelectedItem().toString();
-            String fraga = "SELECT * FROM alien WHERE Plats IN (SELECT Omrades_ID FROM omrade WHERE Benamning = '"
-                    + valtOmrade + "') ORDER BY Alien_ID;";
-            soktaOmraden = idb.fetchRows(fraga);
+            String valdRas = jComboBox1.getSelectedItem().toString();
+            //String fraga = "SELECT * FROM alien JOIN " + valdRas + "ON alien.Alien_ID = " + valdRas + ".Alien_ID";
+            String fraga = "SELECT * FROM alien JOIN " + valdRas + " ON alien.Alien_ID = " + valdRas + ".Alien_ID";
 
-            jTextArea1.append("ID \t");
-            jTextArea1.append("Namn \t");
-            jTextArea1.append("Telefon \n");
+            soktaRaser = idb.fetchRows(fraga);
 
-            for (HashMap<String, String> alien : soktaOmraden) {
+            jTextArea1.append("Alien ID \t");
+            jTextArea1.append("Namn \n");
+
+            for (HashMap<String, String> alien : soktaRaser) {
                 jTextArea1.append(alien.get("Alien_ID") + "\t");
-                jTextArea1.append(" " + alien.get("Namn") + "\t");
-                jTextArea1.append(" " + alien.get("Telefon") + "\n");
+                jTextArea1.append(" " + alien.get("Namn") + "\n");
             }
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Databasfel!");
@@ -125,16 +128,16 @@ public class VisaAliensOmrade extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void valjOmradeNamn() {
+    /*private void valjRasNamn() {
         String fraga = "SELECT Benamning from omrade";
 
-        ArrayList<String> allaOmraden;
+        ArrayList<String> allaRaser;
 
         try {
 
-            allaOmraden = idb.fetchColumn(fraga);
+            allaRaser = idb.fetchColumn(fraga);
 
-            for (String Benamning : allaOmraden) {
+            for (String Benamning : allaRaser) {
                 jComboBox1.addItem(Benamning);
             }
 
@@ -142,7 +145,7 @@ public class VisaAliensOmrade extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Databasfel!");
             System.out.println("Internt felmeddelande" + e.getMessage());
         }
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox1;
