@@ -22,6 +22,8 @@ public class VisaAliensEfterRas extends javax.swing.JFrame {
 
     private InfDB idb;
 
+    
+    
     public VisaAliensEfterRas(InfDB idb) {
         initComponents();
         this.idb = idb;
