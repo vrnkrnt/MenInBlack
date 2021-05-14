@@ -36,7 +36,8 @@ public class Test {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         }
                 
-        new VisaAliensEfterOmrade(idb).setVisible(true);
+        new VisaAliensEfterRas (idb).setVisible(true);
+        
 
     
     }
