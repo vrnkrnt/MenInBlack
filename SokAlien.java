@@ -5,6 +5,8 @@
  */
 package MenInBlack;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -14,14 +16,16 @@ import oru.inf.InfException;
  * @author josefinolsson
  */
 public class SokAlien extends javax.swing.JFrame {
-private InfDB idb;
-    /**
-     * Creates new form InformationOmAlien
-     */
+
+    private InfDB idb;
+
+  
     public SokAlien(InfDB idb) {
         initComponents();
-         this.idb= idb;
+        this.idb = idb;
     }
+
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,8 +61,8 @@ private InfDB idb;
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
+        jTextArea1.setColumns(25);
+        jTextArea1.setRows(10);
         jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -75,7 +79,7 @@ private InfDB idb;
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1)))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,18 +91,36 @@ private InfDB idb;
                     .addComponent(jButton1))
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try{String valdAlien = jTextField1.getText();}
         
-        catch(InfException e) {
-            JOptionPane.showMessageDialog(null, "Databasfel!");
-            System.out.println("Internt felmeddelande" + e.getMessage());
+        jTextArea1.setText("");
+        
+        ArrayList<HashMap<String, String>> valdAlien;
+        
+        try {
+            String namn = jTextField1.getText();
+            String fraga = "SELECT* FROM ALIEN WHERE NAMN = '" + namn + "'";
+            valdAlien = idb.fetchRows(fraga);
+            
+
+            for (HashMap<String, String> alien : valdAlien) {
+                jTextArea1.append("ID: " + alien.get("Alien_ID") + "\n");
+                jTextArea1.append("Namn: " +alien.get("Namn") + "\n");
+                jTextArea1.append("Telefonnummer: " +alien.get("Telefon") + "\n");
+                jTextArea1.append("Registreringsdatum: " +alien.get("Registreringsdatum")+ "\n");
+                jTextArea1.append("Område: " +alien.get("Plats")+ "\n");
+                jTextArea1.append("Ansvarig agent: " +alien.get("Ansvarig_Agent")+ "\n");
+            }
+        } 
+        catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Något gick fel. "
+                    + e.getMessage());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -106,41 +128,8 @@ private InfDB idb;
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InformationOmAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InformationOmAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InformationOmAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InformationOmAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-               // new SokAlien().setVisible(true);
-            }
-        });
-    }
-
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
