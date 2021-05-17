@@ -143,6 +143,7 @@ public class ListaAliensEfterDatum extends javax.swing.JFrame {
                         + "' AND '" + andraSokDatum + "'";
                 soktaDatum = idb.fetchRows(fraga);
 
+                
                 jTextArea1.append("ID \t");
                 jTextArea1.append("Namn \t");
                 jTextArea1.append("Registreringsdatum \n");
