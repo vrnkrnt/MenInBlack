@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package MenInBlack;
 
 import java.util.logging.Level;
@@ -10,10 +11,13 @@ import java.util.logging.Logger;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
-/**
- *
- * @author Emillager
+/*
+ * @author Emil Lager
+ * @author Josefin Olsson
+ * @author Karin Mäki-Kala
+ * @author Veronika Ranta
  */
+
 public class Start {
     
     private static InfDB idb;
@@ -28,7 +32,8 @@ public class Start {
             String agentNamn = "Agent Z";
             String agentID = idb.fetchSingle("select agent_id from agent where namn = '" + agentNamn + "'");
             System.out.println(agentID);
-            new RegUtrustningWin (idb).setVisible(true);  
+            //new SokAlien (idb).setVisible(true);
+           
         }
         
         
@@ -37,17 +42,6 @@ public class Start {
         {
             Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
         }
-//<<<<<<< HEAD:Start.java
-//        
-//        String fraga = "Select namn from agent where Agent_ID = 1";
-//        String svar = idb.fetchSingle(fraga);
-//        System.out.println(svar);
-//=======
-//                
-//        new SokOmradesChef (idb).setVisible(true);
-//        
-//
-//>>>>>>> f458f08d1b751046b24449c3e80f9cd61e12b304:Test.java
     
     } 
     
