@@ -7,8 +7,8 @@ package MenInBlack;
 
 /**
  *
- * @author kmaki
+ * @author Emillager
  */
-public class andralösenordagent {
+class idb {
     
 }

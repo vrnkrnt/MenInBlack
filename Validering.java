@@ -1,4 +1,7 @@
 package MenInBlack;
+
+
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -10,6 +13,7 @@ import javax.swing.JTextField;
 
 /**
  *
+<<<<<<< HEAD
  * @author kmaki
  */
 //Denna klass är till för att kolla att ett lösenord är mer än 0 bokstäver och färre än 7
@@ -38,4 +42,9 @@ public class Validering {
     }
     return result;
     }
+
+    static boolean textvalue(JLabel nyttLosen) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
+

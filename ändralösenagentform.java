@@ -42,12 +42,12 @@ public class ändralösenagentform extends javax.swing.JFrame {
         jColorChooser4 = new javax.swing.JColorChooser();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        cnfpass = new javax.swing.JPasswordField();
-        newpass = new javax.swing.JPasswordField();
-        oldpass = new javax.swing.JPasswordField();
         nyttLosen = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        nyttLosen1 = new javax.swing.JLabel();
+        jOldpass = new javax.swing.JLabel();
+        jTextOld = new javax.swing.JTextField();
+        jTextCnf = new javax.swing.JTextField();
+        jTextNew = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,27 +75,32 @@ public class ändralösenagentform extends javax.swing.JFrame {
                 .addGap(72, 72, 72))
         );
 
-        cnfpass.setText("jPasswordField1");
-        cnfpass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cnfpassActionPerformed(evt);
-            }
-        });
-
-        newpass.setText("jPasswordField2");
-
-        oldpass.setText("jPasswordField3");
-        oldpass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                oldpassActionPerformed(evt);
-            }
-        });
-
         nyttLosen.setText("Nytt Lösenord");
 
         jLabel1.setText("Upprepa nytt lösenord");
 
-        nyttLosen1.setText("Gammalt lösenord");
+        jOldpass.setText("Gammalt lösenord");
+
+        jTextOld.setText("Gamalt Lösenord");
+        jTextOld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextOldActionPerformed(evt);
+            }
+        });
+
+        jTextCnf.setText("Upprepa lösenord");
+        jTextCnf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextCnfActionPerformed(evt);
+            }
+        });
+
+        jTextNew.setText("Nytt Lösenord");
+        jTextNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextNewActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,34 +111,40 @@ public class ändralösenagentform extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(nyttLosen)
-                        .addGap(44, 44, 44)
-                        .addComponent(newpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(nyttLosen1)
-                        .addGap(18, 18, 18)
-                        .addComponent(oldpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(cnfpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jOldpass)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextOld, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(18, 18, 18))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(nyttLosen)
+                                        .addGap(44, 44, 44)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextCnf, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                                    .addComponent(jTextNew))))
+                        .addGap(8, 8, 8)))
                 .addContainerGap(126, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(108, Short.MAX_VALUE)
+                .addContainerGap(111, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(oldpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nyttLosen1))
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nyttLosen))
+                    .addComponent(jOldpass)
+                    .addComponent(jTextOld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(nyttLosen)
+                    .addComponent(jTextNew, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cnfpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jTextCnf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -143,33 +154,38 @@ public class ändralösenagentform extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // Denna metod är till för att man ska kunna byta lösenord
+        // Denna metod är till för att man ska kunna ändra lösenord
+       
+        String oldpass = "'" + jTextOld.getText() + "'";
+        String newpass = "'" + jTextNew.getText() + "'";
         
-        String oldpass = "'" + nyttLosen1.getText() + "'";
-        String newpass = "'" + nyttLosen.getText() + "'";
-        
-        if (Validering.(nyttLosen) && Validering.textvalue(nyttLosen)
-            && Validering.maxSexPass(nyttLosen1) && Validering.textvalue(nyttLosen1)){
+            if (Validering.maxSexPass(jTextNew) && Validering.maxSexPass(jTextNew)
+            && Validering.textvalue(jTextOld) && Validering.textvalue(jTextOld)){
     try {
-        idb.update("UPDATE AGENT SET LOSENORD = " + newpass + " WHERE Losenord = " + oldpass);
+        idb.update("update Agent set Losenord = " + newpass + " where Losenord = " + oldpass);
         JOptionPane.showMessageDialog(null, "lösenord ändrat");
         
         
          } catch (InfException ex) {
         Logger.getLogger(ändralösenagentform.class.getName()).log(Level.SEVERE, null, ex);
-    }
-        
-    }    
+         }
+            }
+    
+      
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void cnfpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnfpassActionPerformed
+    private void jTextOldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextOldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cnfpassActionPerformed
+    }//GEN-LAST:event_jTextOldActionPerformed
 
-    private void oldpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oldpassActionPerformed
+    private void jTextCnfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCnfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_oldpassActionPerformed
+    }//GEN-LAST:event_jTextCnfActionPerformed
+
+    private void jTextNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextNewActionPerformed
 public static void main(String args[]) {
         /* Set the Nimbus look and feel /
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -204,18 +220,18 @@ public static void main(String args[]) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField cnfpass;
     private javax.swing.JButton jButton1;
     private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JColorChooser jColorChooser2;
     private javax.swing.JColorChooser jColorChooser3;
     private javax.swing.JColorChooser jColorChooser4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jOldpass;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField newpass;
+    private javax.swing.JTextField jTextCnf;
+    private javax.swing.JTextField jTextNew;
+    private javax.swing.JTextField jTextOld;
     private javax.swing.JLabel nyttLosen;
-    private javax.swing.JLabel nyttLosen1;
-    private javax.swing.JPasswordField oldpass;
     // End of variables declaration//GEN-END:variables
 }
 
