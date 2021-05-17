@@ -28,7 +28,7 @@ public class Start {
             String agentNamn = "Agent Z";
             String agentID = idb.fetchSingle("select agent_id from agent where namn = '" + agentNamn + "'");
             System.out.println(agentID);
-           
+            new RegUtrustningWin (idb).setVisible(true);  
         }
         
         
