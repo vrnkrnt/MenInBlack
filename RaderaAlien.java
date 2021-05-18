@@ -43,10 +43,10 @@ public class RaderaAlien extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         bRadera = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        inputID = new javax.swing.JTextField();
         bTillbaka = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        visaAlienInfo = new javax.swing.JTextArea();
         bInfo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,11 +70,16 @@ public class RaderaAlien extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        visaAlienInfo.setColumns(20);
+        visaAlienInfo.setRows(5);
+        jScrollPane1.setViewportView(visaAlienInfo);
 
         bInfo.setText("Visa info om alien");
+        bInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bInfoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,21 +88,22 @@ public class RaderaAlien extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(bTillbaka, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(bRadera)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel1)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel3)
                                     .addGap(37, 37, 37)
-                                    .addComponent(jTextField1))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(inputID, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(bInfo))
-                        .addGap(0, 174, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bTillbaka, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bRadera, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -108,14 +114,14 @@ public class RaderaAlien extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bInfo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bRadera)
-                .addGap(24, 24, 24)
+                .addGap(29, 29, 29)
                 .addComponent(bTillbaka)
                 .addContainerGap())
         );
@@ -124,14 +130,12 @@ public class RaderaAlien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bRaderaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRaderaActionPerformed
-        ArrayList<HashMap<String, String>> soktAlien;
-        
         try {
-            if(Validering.textFaltHarVarde(jTextField1)){
-            String valdAlien = jTextField1.getText();
+            if(Validering.textFaltHarVarde(inputID)){
+            String valdAlien = inputID.getText();
             
             String fraga = "DELETE FROM alien WHERE Alien_ID = " + valdAlien + ";";
-            soktAlien = idb.fetchRows(fraga);
+            idb.fetchRows(fraga);
             }
         }
         
@@ -145,6 +149,32 @@ public class RaderaAlien extends javax.swing.JFrame {
     private void bTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTillbakaActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_bTillbakaActionPerformed
+
+    private void bInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInfoActionPerformed
+        //inputID.setText("");
+        
+        ArrayList<HashMap<String, String>> soktAlien;
+        
+        try {
+            String id = inputID.getText();
+            String fraga = "SELECT * FROM alien WHERE Alien_ID = '" + id + "'";
+            soktAlien = idb.fetchRows(fraga);
+            
+
+            for (HashMap<String, String> alien : soktAlien) {
+                visaAlienInfo.append("ID: " + alien.get("Alien_ID") + "\n");
+                visaAlienInfo.append("Namn: " + alien.get("Namn") + "\n");
+                visaAlienInfo.append("Telefonnummer: " + alien.get("Telefon") + "\n");
+                visaAlienInfo.append("Registreringsdatum: " + alien.get("Registreringsdatum")+ "\n");
+                visaAlienInfo.append("Område: " + alien.get("Plats")+ "\n");
+                visaAlienInfo.append("Ansvarig agent: " + alien.get("Ansvarig_Agent")+ "\n");
+            }
+        } 
+        catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Något gick fel. "
+                    + e.getMessage());
+        }
+    }//GEN-LAST:event_bInfoActionPerformed
 
     /*private void listaAlienNamn() {
         String fraga = "SELECT Namn from alien";
@@ -203,10 +233,10 @@ public class RaderaAlien extends javax.swing.JFrame {
     private javax.swing.JButton bInfo;
     private javax.swing.JButton bRadera;
     private javax.swing.JButton bTillbaka;
+    private javax.swing.JTextField inputID;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextArea visaAlienInfo;
     // End of variables declaration//GEN-END:variables
 }
