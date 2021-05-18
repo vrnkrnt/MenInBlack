@@ -41,30 +41,38 @@ public class ListaEnAgentsUtrustning extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        inputID = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        listaUtrustning = new javax.swing.JTextArea();
+        bSok = new javax.swing.JButton();
+        bTillbaka = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Sök ID:");
 
-        jTextField1.setColumns(3);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        inputID.setColumns(3);
+        inputID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                inputIDActionPerformed(evt);
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        listaUtrustning.setColumns(20);
+        listaUtrustning.setRows(5);
+        jScrollPane1.setViewportView(listaUtrustning);
 
-        jButton1.setText("Sök");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bSok.setText("Sök");
+        bSok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bSokActionPerformed(evt);
+            }
+        });
+
+        bTillbaka.setText("Tillbaka");
+        bTillbaka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bTillbakaActionPerformed(evt);
             }
         });
 
@@ -79,10 +87,14 @@ public class ListaEnAgentsUtrustning extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(inputID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
+                        .addComponent(bSok)))
                 .addContainerGap(105, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bTillbaka)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,44 +102,52 @@ public class ListaEnAgentsUtrustning extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(inputID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bSok))
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addComponent(bTillbaka))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void inputIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputIDActionPerformed
 
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_inputIDActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       jTextArea1.setText("");
+    private void bSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSokActionPerformed
+        listaUtrustning.setText("");
 
         ArrayList<HashMap<String, String>> utrustningsLista;
+        if (Validering.textFaltHarVarde(inputID) && Validering.isHeltal(inputID)) {
 
-        try {
-            String id = jTextField1.getText();
-            String fraga = "SELECT * FROM Utrustning WHERE Utrustnings_ID IN "
-                    + "(SELECT Utrustnings_ID FROM Innehar_Utrustning WHERE Agent_ID='" + id + "')";
-            utrustningsLista = idb.fetchRows(fraga);
-            
-            jTextArea1.append("ID \t");
-            jTextArea1.append("Benämning \n");
-            
-             for (HashMap<String, String> utrustning : utrustningsLista) {
-                jTextArea1.append(utrustning.get("Utrustnings_ID") + "\t");
-                jTextArea1.append(utrustning.get("Benamning") + "\n");
-             }
-            
-        } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Databasfel!");
-            System.out.println("Internt felmeddelande" + e.getMessage());
-        }                         
-    }//GEN-LAST:event_jButton1ActionPerformed
+            try {
+                String id = inputID.getText();
+                String fraga = "SELECT * FROM Utrustning WHERE Utrustnings_ID IN "
+                        + "(SELECT Utrustnings_ID FROM Innehar_Utrustning WHERE Agent_ID='" + id + "')";
+                utrustningsLista = idb.fetchRows(fraga);
+                
+               
+               listaUtrustning.append("ID \t");
+                listaUtrustning.append("Benämning \n");
+
+                for (HashMap<String, String> utrustning : utrustningsLista) {
+                    listaUtrustning.append(utrustning.get("Utrustnings_ID") + "\t");
+                    listaUtrustning.append(utrustning.get("Benamning") + "\n");
+                }
+
+            } catch (InfException e) {
+                JOptionPane.showMessageDialog(null, "Databasfel!");
+                System.out.println("Internt felmeddelande" + e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_bSokActionPerformed
+
+    private void bTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTillbakaActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_bTillbakaActionPerformed
 
     /**
      *
@@ -166,10 +186,11 @@ public class ListaEnAgentsUtrustning extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton bSok;
+    private javax.swing.JButton bTillbaka;
+    private javax.swing.JTextField inputID;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextArea listaUtrustning;
     // End of variables declaration//GEN-END:variables
 }
