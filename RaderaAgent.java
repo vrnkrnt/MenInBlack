@@ -11,20 +11,17 @@ import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
-/*
- * @author Emil Lager
- * @author Josefin Olsson
- * @author Karin Mäki-Kala
- * @author Veronika Ranta
+/**
+ *
+ * @author veron
  */
-public class RaderaAlien extends javax.swing.JFrame {
+public class RaderaAgent extends javax.swing.JFrame {
 
     private static InfDB idb;
-
     /**
-     * Creates new form RaderaAlienWin
+     * Creates new form RaderaAgent
      */
-    public RaderaAlien(InfDB idb) {
+    public RaderaAgent(InfDB idb) {
         initComponents();
         this.idb = idb;
     }
@@ -39,22 +36,35 @@ public class RaderaAlien extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        bRadera = new javax.swing.JButton();
-        inputID = new javax.swing.JTextField();
-        bTillbaka = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        visaAlienInfo = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
         bInfo = new javax.swing.JButton();
+        inputID = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        visaAgentInfo = new javax.swing.JTextArea();
+        bRadera = new javax.swing.JButton();
+        bTillbaka = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Radera alien");
+        jLabel1.setText("Radera agent");
 
-        jLabel3.setText("Skriv in ID:");
+        jLabel2.setText("Skriv in ID: ");
 
-        bRadera.setText("Radera alien");
+        bInfo.setText("Visa info om agent");
+        bInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bInfoActionPerformed(evt);
+            }
+        });
+
+        inputID.setColumns(8);
+
+        visaAgentInfo.setColumns(20);
+        visaAgentInfo.setRows(5);
+        jScrollPane1.setViewportView(visaAgentInfo);
+
+        bRadera.setText("Radera agent");
         bRadera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bRaderaActionPerformed(evt);
@@ -68,17 +78,6 @@ public class RaderaAlien extends javax.swing.JFrame {
             }
         });
 
-        visaAlienInfo.setColumns(20);
-        visaAlienInfo.setRows(5);
-        jScrollPane1.setViewportView(visaAlienInfo);
-
-        bInfo.setText("Visa info om alien");
-        bInfo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bInfoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,21 +86,23 @@ public class RaderaAlien extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addGap(37, 37, 37)
-                                    .addComponent(inputID, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(bInfo))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(bRadera)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bTillbaka, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(bTillbaka, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(95, 95, 95))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(24, 24, 24)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(inputID)
+                                    .addComponent(bInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -109,18 +110,18 @@ public class RaderaAlien extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
                     .addComponent(inputID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(bInfo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bTillbaka)
-                    .addComponent(bRadera))
+                    .addComponent(bRadera)
+                    .addComponent(bTillbaka))
                 .addContainerGap())
         );
 
@@ -141,7 +142,6 @@ public class RaderaAlien extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Något gick fel. "
                     + e.getMessage());
         }
-
     }//GEN-LAST:event_bRaderaActionPerformed
 
     private void bTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTillbakaActionPerformed
@@ -149,22 +149,22 @@ public class RaderaAlien extends javax.swing.JFrame {
     }//GEN-LAST:event_bTillbakaActionPerformed
 
     private void bInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInfoActionPerformed
-        visaAlienInfo.setText("");
+        visaAgentInfo.setText("");
 
-        ArrayList<HashMap<String, String>> soktAlien;
+        ArrayList<HashMap<String, String>> soktAgent;
         if (Validering.textFaltHarVarde(inputID) && Validering.isHeltal(inputID)) {
             try {
                 String id = inputID.getText();
-                String fraga = "SELECT * FROM alien WHERE Alien_ID = '" + id + "'";
-                soktAlien = idb.fetchRows(fraga);
+                String fraga = "SELECT * FROM agent WHERE Agent_ID = '" + id + "'";
+                soktAgent = idb.fetchRows(fraga);
 
-                for (HashMap<String, String> alien : soktAlien) {
-                    visaAlienInfo.append("ID: " + alien.get("Alien_ID") + "\n");
-                    visaAlienInfo.append("Namn: " + alien.get("Namn") + "\n");
-                    visaAlienInfo.append("Telefonnummer: " + alien.get("Telefon") + "\n");
-                    visaAlienInfo.append("Registreringsdatum: " + alien.get("Registreringsdatum") + "\n");
-                    visaAlienInfo.append("Område: " + alien.get("Plats") + "\n");
-                    visaAlienInfo.append("Ansvarig agent: " + alien.get("Ansvarig_Agent") + "\n");
+                for (HashMap<String, String> agent : soktAgent) {
+                    visaAgentInfo.append("ID: \t" + agent.get("Agent_ID") + "\n");
+                    visaAgentInfo.append("Namn: \t" + agent.get("Namn") + "\n");
+                    visaAgentInfo.append("Telnr: \t" + agent.get("Telefon") + "\n");
+                    visaAgentInfo.append("Anst. datum: \t" + agent.get("Anstallningsdatum") + "\n");
+                    visaAgentInfo.append("Admin J/N: \t" + agent.get("Administrator") + "\n");
+                    visaAgentInfo.append("Område: \t" + agent.get("Omrade") + "\n");
                 }
             } catch (InfException e) {
                 JOptionPane.showMessageDialog(null, "Något gick fel. "
@@ -172,6 +172,7 @@ public class RaderaAlien extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_bInfoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -189,20 +190,20 @@ public class RaderaAlien extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RaderaAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RaderaAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RaderaAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RaderaAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RaderaAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RaderaAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RaderaAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RaderaAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RaderaAlien(idb).setVisible(true);
+                new RaderaAgent(idb).setVisible(true);
             }
         });
     }
@@ -213,8 +214,8 @@ public class RaderaAlien extends javax.swing.JFrame {
     private javax.swing.JButton bTillbaka;
     private javax.swing.JTextField inputID;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea visaAlienInfo;
+    private javax.swing.JTextArea visaAgentInfo;
     // End of variables declaration//GEN-END:variables
 }
