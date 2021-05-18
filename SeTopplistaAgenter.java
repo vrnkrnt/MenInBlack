@@ -1,12 +1,18 @@
 package MenInBlack;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-/*
+ /*
  * @author Emil Lager
  * @author Josefin Olsson
  * @author Karin Mäki-Kala
@@ -15,11 +21,15 @@ package MenInBlack;
 
 public class SeTopplistaAgenter extends javax.swing.JFrame {
 
+    private InfDB idb;
+
     /**
      * Creates new form SeTopplistaAgenter
      */
-    public SeTopplistaAgenter() {
+    public SeTopplistaAgenter(InfDB idb) {
         initComponents();
+        this.idb = idb;
+        valjOmradeNamn();
     }
 
     /**
@@ -42,6 +52,14 @@ public class SeTopplistaAgenter extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj område" }));
+        jComboBox1.setToolTipText("");
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Välj område:");
 
@@ -71,7 +89,7 @@ public class SeTopplistaAgenter extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -82,6 +100,58 @@ public class SeTopplistaAgenter extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        jTextArea1.setText("");
+
+        ArrayList<HashMap<String, String>> soktaOmraden;
+
+        try {
+            String valtOmrade = jComboBox1.getSelectedItem().toString();
+            String fraga = "SELECT * FROM agent a "
+                    + "JOIN(SELECT namn, Ansvarig_Agent, COUNT(Ansvarig_Agent) "
+                    + "AS AntalAnsvar FROM alien WHERE Plats IN"
+                    + "(SELECT Omrades_ID FROM omrade WHERE Benamning = '" + valtOmrade + "') "
+                    + "GROUP BY Ansvarig_Agent HAVING COUNT( *) > 0) b ON a.Agent_ID = b.Ansvarig_Agent "
+                    + "ORDER BY AntalAnsvar LIMIT 3;";
+
+            soktaOmraden = idb.fetchRows(fraga);
+
+            jTextArea1.append("ID \t");
+            jTextArea1.append("Namn \t");
+            jTextArea1.append("Telefon \t");
+            jTextArea1.append("Antal ansvar\n");
+
+            for (HashMap<String, String> agent : soktaOmraden) {
+                jTextArea1.append(agent.get("Agent_ID") + "\t");
+                jTextArea1.append(" " + agent.get("Namn") + "\t");
+                jTextArea1.append(" " + agent.get("Telefon") + "\t");
+                jTextArea1.append(" " + agent.get("AntalAnsvar") + "\n");
+            }
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+            System.out.println("Internt felmeddelande" + e.getMessage());
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void valjOmradeNamn() {
+        String fraga = "SELECT Benamning from omrade";
+
+        ArrayList<String> allaOmraden;
+
+        try {
+
+            allaOmraden = idb.fetchColumn(fraga);
+
+            for (String Benamning : allaOmraden) {
+                jComboBox1.addItem(Benamning);
+            }
+
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+            System.out.println("Internt felmeddelande" + e.getMessage());
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -113,7 +183,7 @@ public class SeTopplistaAgenter extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SeTopplistaAgenter().setVisible(true);
+                //new SeTopplistaAgenter().setVisible(true);
             }
         });
     }
