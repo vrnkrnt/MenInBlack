@@ -31,9 +31,7 @@ public class Start {
             new AgentWin(idb).setVisible(true);
             String agentNamn = "Agent Z";
             String agentID = idb.fetchSingle("select agent_id from agent where namn = '" + agentNamn + "'");
-            System.out.println(agentID);
-            new SeTopplistaAgenter (idb).setVisible(true);
-           
+            System.out.println(agentID);           
         }
         
         

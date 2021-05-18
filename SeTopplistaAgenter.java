@@ -21,7 +21,7 @@ import oru.inf.InfException;
 
 public class SeTopplistaAgenter extends javax.swing.JFrame {
 
-    private InfDB idb;
+    private static InfDB idb;
 
     /**
      * Creates new form SeTopplistaAgenter
@@ -183,7 +183,7 @@ public class SeTopplistaAgenter extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new SeTopplistaAgenter().setVisible(true);
+                //new SeTopplistaAgenter(idb).setVisible(true);
             }
         });
     }
