@@ -53,9 +53,9 @@ public class AgentWin extends javax.swing.JFrame {
         });
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Lista alien ▽");
+        jMenu3.setText("Lista alien över ▽");
 
-        jMenuItem1.setText("över område ");
+        jMenuItem1.setText("- område ");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -63,7 +63,7 @@ public class AgentWin extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem1);
 
-        jMenuItem2.setText("ras");
+        jMenuItem2.setText("- ras");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -71,7 +71,7 @@ public class AgentWin extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem2);
 
-        jMenuItem3.setText("över tidsperiod");
+        jMenuItem3.setText("- tidsperiod");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
