@@ -133,12 +133,12 @@ public class RaderaAgent extends javax.swing.JFrame {
 
     private void bRaderaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRaderaActionPerformed
         try {
-            if (Validering.textFaltHarVarde(inputID)) {
-                String valdAlien = inputID.getText();
+            if (Validering.textFaltHarVarde(inputID) && Validering.finnsAgentID(inputID)) {
+                String valdAgent = inputID.getText();
 
-                String fraga = "DELETE FROM alien WHERE Alien_ID = " + valdAlien + ";";
+                String fraga = "DELETE FROM agent WHERE Agent_ID = " + valdAgent + ";";
                 idb.delete(fraga);
-                JOptionPane.showMessageDialog(null, "Alien har raderats.");
+                JOptionPane.showMessageDialog(null, "Agenten har raderats.");
             }
 
         } catch (InfException e) {
