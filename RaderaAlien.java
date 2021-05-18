@@ -18,7 +18,7 @@ import oru.inf.InfException;
  * @author Veronika Ranta
  */
 public class RaderaAlien extends javax.swing.JFrame {
-    
+
     private static InfDB idb;
 
     /**
@@ -27,7 +27,6 @@ public class RaderaAlien extends javax.swing.JFrame {
     public RaderaAlien(InfDB idb) {
         initComponents();
         this.idb = idb;
-        //listaAlienNamn();
     }
 
     /**
@@ -132,15 +131,17 @@ public class RaderaAlien extends javax.swing.JFrame {
         try {
             if (Validering.textFaltHarVarde(inputID)) {
                 String valdAlien = inputID.getText();
-                
+
                 String fraga = "DELETE FROM alien WHERE Alien_ID = " + valdAlien + ";";
-                idb.fetchRows(fraga);
+                idb.delete(fraga);
+                JOptionPane.showMessageDialog(null, "Alien har raderats.");
             }
+
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick fel. "
                     + e.getMessage());
         }
-        
+
     }//GEN-LAST:event_bRaderaActionPerformed
 
     private void bTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTillbakaActionPerformed
@@ -149,14 +150,14 @@ public class RaderaAlien extends javax.swing.JFrame {
 
     private void bInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInfoActionPerformed
         visaAlienInfo.setText("");
-        
+
         ArrayList<HashMap<String, String>> soktAlien;
         if (Validering.textFaltHarVarde(inputID) && Validering.isHeltal(inputID)) {
             try {
                 String id = inputID.getText();
                 String fraga = "SELECT * FROM alien WHERE Alien_ID = '" + id + "'";
                 soktAlien = idb.fetchRows(fraga);
-                
+
                 for (HashMap<String, String> alien : soktAlien) {
                     visaAlienInfo.append("ID: " + alien.get("Alien_ID") + "\n");
                     visaAlienInfo.append("Namn: " + alien.get("Namn") + "\n");
@@ -171,25 +172,6 @@ public class RaderaAlien extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_bInfoActionPerformed
-
-    /*private void listaAlienNamn() {
-        String fraga = "SELECT Namn from alien";
-
-        ArrayList<String> allaAliens;
-
-        try {
-
-            allaAliens = idb.fetchColumn(fraga);
-
-            for (String alienNamn : allaAliens) {
-                jComboBox1.addItem(alienNamn);
-            }
-
-        } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Databasfel!");
-            System.out.println("Internt felmeddelande" + e.getMessage());
-        }
-    }*/
     /**
      * @param args the command line arguments
      */
