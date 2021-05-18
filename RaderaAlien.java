@@ -148,7 +148,7 @@ public class RaderaAlien extends javax.swing.JFrame {
     }//GEN-LAST:event_bTillbakaActionPerformed
 
     private void bInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInfoActionPerformed
-        //inputID.setText("");
+        visaAlienInfo.setText("");
         
         ArrayList<HashMap<String, String>> soktAlien;
         if (Validering.textFaltHarVarde(inputID) && Validering.isHeltal(inputID)) {
