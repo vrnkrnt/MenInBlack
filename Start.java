@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package MenInBlack;
 
 import java.util.logging.Level;
@@ -17,31 +16,21 @@ import oru.inf.InfException;
  * @author Karin Mäki-Kala
  * @author Veronika Ranta
  */
-
 public class Start {
-    
-    private static InfDB idb;
-    
 
-    public static void main(String[] args) throws InfException
-    {
-        try 
-        {
+    private static InfDB idb;
+
+    public static void main(String[] args) throws InfException {
+        try {
             idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
             new AgentWin(idb).setVisible(true);
             String agentNamn = "Agent Z";
             String agentID = idb.fetchSingle("select agent_id from agent where namn = '" + agentNamn + "'");
-            System.out.println(agentID);    
-            new RaderaAlienWin(idb).setVisible(true);
-        }
-        
-        
-        
-        catch (InfException ex)
-        {
+            System.out.println(agentID);
+        } catch (InfException ex) {
             Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
-    } 
-    
+
+    }
+
 }
