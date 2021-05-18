@@ -15,14 +15,14 @@ import oru.inf.InfException;
  *
  * @author kmaki
  */
-public class ändralösenagentform extends javax.swing.JFrame {
+public class AndraLosenAgent extends javax.swing.JFrame {
 
     private static InfDB idb;
 
     /**
      * Creates new form ändralösenagentform
      */
-    public ändralösenagentform() {
+    public AndraLosenAgent(InfDB idb) {
         initComponents();
         this.idb = idb;
     }
@@ -167,7 +167,7 @@ public class ändralösenagentform extends javax.swing.JFrame {
         
         
          } catch (InfException ex) {
-        Logger.getLogger(ändralösenagentform.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(AndraLosenAgent.class.getName()).log(Level.SEVERE, null, ex);
          }
             }
     
@@ -213,7 +213,7 @@ public static void main(String args[]) {
         / Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ändralösenagentform().setVisible(true);
+                new ändralösenagentform(idb).setVisible(true);
                 
             }
         });
