@@ -15,17 +15,21 @@ import oru.inf.InfException;
  *
  * @author josefinolsson
  */
-public class SokAlien extends javax.swing.JFrame {
+public class ListaEnAgentsUtrustning extends javax.swing.JFrame {
 
-    private InfDB idb;
+    private static InfDB idb;
 
-  
-    public SokAlien(InfDB idb) {
+    public ListaEnAgentsUtrustning(InfDB idb) {
         initComponents();
         this.idb = idb;
     }
 
-  
+    /**
+     * Creates new form ListaEnAgentsUtrustning
+     */
+    public ListaEnAgentsUtrustning() {
+        initComponents();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,21 +42,24 @@ public class SokAlien extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Sök namn:");
+        jLabel1.setText("Sök ID:");
 
-        jTextField1.setColumns(8);
-        jTextField1.setToolTipText("");
+        jTextField1.setColumns(3);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         jButton1.setText("Sök");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -61,75 +68,103 @@ public class SokAlien extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setColumns(25);
-        jTextArea1.setRows(8);
-        jScrollPane1.setViewportView(jTextArea1);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(30, 30, 30)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addGap(32, 32, 32)
+                .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        jTextArea1.setText("");
-        
-        ArrayList<HashMap<String, String>> valdAlien;
-        
-        try {
-            String namn = jTextField1.getText();
-            String fraga = "SELECT* FROM ALIEN WHERE NAMN = '" + namn + "'";
-            valdAlien = idb.fetchRows(fraga);
-            
-
-            for (HashMap<String, String> alien : valdAlien) {
-                jTextArea1.append("ID: " + alien.get("Alien_ID") + "\n");
-                jTextArea1.append("Namn: " +alien.get("Namn") + "\n");
-                jTextArea1.append("Telefonnummer: " +alien.get("Telefon") + "\n");
-                jTextArea1.append("Registreringsdatum: " +alien.get("Registreringsdatum")+ "\n");
-                jTextArea1.append("Område: " +alien.get("Plats")+ "\n");
-                jTextArea1.append("Ansvarig agent: " +alien.get("Ansvarig_Agent")+ "\n");
-            }
-        } 
-        catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Något gick fel. "
-                    + e.getMessage());
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    
-    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       jTextArea1.setText("");
+
+        ArrayList<HashMap<String, String>> utrustningsLista;
+
+        try {
+            String id = jTextField1.getText();
+            String fraga = "SELECT * FROM Utrustning WHERE Utrustnings_ID IN "
+                    + "(SELECT Utrustnings_ID FROM Innehar_Utrustning WHERE Agent_ID='" + id + "')";
+            utrustningsLista = idb.fetchRows(fraga);
+            
+            jTextArea1.append("ID \t");
+            jTextArea1.append("Benämning \n");
+            
+             for (HashMap<String, String> utrustning : utrustningsLista) {
+                jTextArea1.append(utrustning.get("Utrustnings_ID") + "\t");
+                jTextArea1.append(utrustning.get("Benamning") + "\n");
+             }
+            
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+            System.out.println("Internt felmeddelande" + e.getMessage());
+        }                         
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    /**
+     *
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ListaEnAgentsUtrustning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ListaEnAgentsUtrustning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ListaEnAgentsUtrustning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ListaEnAgentsUtrustning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ListaEnAgentsUtrustning(idb).setVisible(true);
+            }
+        });
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
