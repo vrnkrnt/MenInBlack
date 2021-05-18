@@ -53,7 +53,7 @@ public class AgentWin extends javax.swing.JFrame {
         });
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Lista alien...");
+        jMenu3.setText("Lista alien ▽");
 
         jMenuItem1.setText("över område ");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
