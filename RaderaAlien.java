@@ -17,11 +17,10 @@ import oru.inf.InfException;
  * @author Karin Mäki-Kala
  * @author Veronika Ranta
  */
-
 public class RaderaAlien extends javax.swing.JFrame {
-
-    private static InfDB idb;
     
+    private static InfDB idb;
+
     /**
      * Creates new form RaderaAlienWin
      */
@@ -131,18 +130,16 @@ public class RaderaAlien extends javax.swing.JFrame {
 
     private void bRaderaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRaderaActionPerformed
         try {
-            if(Validering.textFaltHarVarde(inputID)){
-            String valdAlien = inputID.getText();
-            
-            String fraga = "DELETE FROM alien WHERE Alien_ID = " + valdAlien + ";";
-            idb.fetchRows(fraga);
+            if (Validering.textFaltHarVarde(inputID)) {
+                String valdAlien = inputID.getText();
+                
+                String fraga = "DELETE FROM alien WHERE Alien_ID = " + valdAlien + ";";
+                idb.fetchRows(fraga);
             }
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Något gick fel. "
+                    + e.getMessage());
         }
-        
-        catch (InfException e) {
-                JOptionPane.showMessageDialog(null, "Något gick fel. "
-                        + e.getMessage());
-            }
         
     }//GEN-LAST:event_bRaderaActionPerformed
 
@@ -154,25 +151,24 @@ public class RaderaAlien extends javax.swing.JFrame {
         //inputID.setText("");
         
         ArrayList<HashMap<String, String>> soktAlien;
-        
-        try {
-            String id = inputID.getText();
-            String fraga = "SELECT * FROM alien WHERE Alien_ID = '" + id + "'";
-            soktAlien = idb.fetchRows(fraga);
-            
-
-            for (HashMap<String, String> alien : soktAlien) {
-                visaAlienInfo.append("ID: " + alien.get("Alien_ID") + "\n");
-                visaAlienInfo.append("Namn: " + alien.get("Namn") + "\n");
-                visaAlienInfo.append("Telefonnummer: " + alien.get("Telefon") + "\n");
-                visaAlienInfo.append("Registreringsdatum: " + alien.get("Registreringsdatum")+ "\n");
-                visaAlienInfo.append("Område: " + alien.get("Plats")+ "\n");
-                visaAlienInfo.append("Ansvarig agent: " + alien.get("Ansvarig_Agent")+ "\n");
+        if (Validering.textFaltHarVarde(inputID) && Validering.isHeltal(inputID)) {
+            try {
+                String id = inputID.getText();
+                String fraga = "SELECT * FROM alien WHERE Alien_ID = '" + id + "'";
+                soktAlien = idb.fetchRows(fraga);
+                
+                for (HashMap<String, String> alien : soktAlien) {
+                    visaAlienInfo.append("ID: " + alien.get("Alien_ID") + "\n");
+                    visaAlienInfo.append("Namn: " + alien.get("Namn") + "\n");
+                    visaAlienInfo.append("Telefonnummer: " + alien.get("Telefon") + "\n");
+                    visaAlienInfo.append("Registreringsdatum: " + alien.get("Registreringsdatum") + "\n");
+                    visaAlienInfo.append("Område: " + alien.get("Plats") + "\n");
+                    visaAlienInfo.append("Ansvarig agent: " + alien.get("Ansvarig_Agent") + "\n");
+                }
+            } catch (InfException e) {
+                JOptionPane.showMessageDialog(null, "Något gick fel. "
+                        + e.getMessage());
             }
-        } 
-        catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Något gick fel. "
-                    + e.getMessage());
         }
     }//GEN-LAST:event_bInfoActionPerformed
 
