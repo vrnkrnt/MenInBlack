@@ -11,10 +11,13 @@ import java.util.logging.Logger;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
-/**
- *
- * @author Emillager
+/*
+ * @author Emil Lager
+ * @author Josefin Olsson
+ * @author Karin Mäki-Kala
+ * @author Veronika Ranta
  */
+
 public class Start {
     
     private static InfDB idb;
@@ -25,12 +28,7 @@ public class Start {
         try 
         {
             idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-            new LogInWin(idb).setVisible(true);
-            // new AgentWin(idb).setVisible(true);
-//            String agentNamn = "Agent Z";
-//            String agentID = idb.fetchSingle("select agent_id from agent where namn = '" + agentNamn + "'");
-//            System.out.println(agentID);
-           
+            new LogInWin(idb).setVisible(true);           
         }
         
         
