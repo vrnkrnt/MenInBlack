@@ -223,47 +223,51 @@ public class RegAlienWin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        try {
-            String id = idb.getAutoIncrement("ALIEN", "ALIEN_ID"); 
-            //String id = inputID.getText();
-            //int intID = Integer.parseInt(id);
-            String namn = "'" + inputName.getText() + "'";
-            String pass = "'" + inputPass.getText() + "'";
-            String date = "'" + inputDat.getText() + "'";
-            String tele = "'" + inputTele.getText() + "'";
-            String plats = jComboPlats.getSelectedItem().toString();
-            String agentNamn = jComboAgent.getSelectedItem().toString();
-            String ras = jComboRas.getSelectedItem().toString();
-            String agentID = idb.fetchSingle("select agent_id from agent where namn = '" + agentNamn + "'");
-            String platsID = idb.fetchSingle("select plats_id from plats where benamning = '" + plats + "'");
-            String q = "INSERT INTO ALIEN (ALIEN_ID, REGISTRERINGSDATUM, LOSENORD, NAMN, TELEFON, PLATS, ANSVARIG_AGENT)"
-                        + " VALUES (" + id + "," + date + "," + pass + "," + namn + "," + tele + "," + platsID
-                        + "," + agentID + ")";
-            idb.insert(q);
-            
-            switch(ras)
-            {
-                case "Boglodite":
-                new Boglodite(idb, id).setVisible(true);
-                dispose();
-                break;
-                
-                case "Squid":
-                new Squid(idb, id).setVisible(true);
-                dispose();
-                break;
-                
-                case "Worm":
-                String addWorm = ("INSERT INTO WORM VALUES (" + id + ")");
-                idb.insert(addWorm);
-                JOptionPane.showMessageDialog(null, "En worm har registrerats!");
-            }
-                     
-            
-        }
-        catch (InfException ex)
+        if(Validering.textFaltHarVarde(inputName) && Validering.textFaltHarVarde(inputPass)
+                && Validering.textFaltHarVarde(inputDat) && Validering.textFaltHarVarde(inputTele))
         {
-            JOptionPane.showMessageDialog(null, "Kunde inte lägga till alien :( ");
+            try {
+                String id = idb.getAutoIncrement("ALIEN", "ALIEN_ID"); 
+                //String id = inputID.getText();
+                //int intID = Integer.parseInt(id);
+                String namn = "'" + inputName.getText() + "'";
+                String pass = "'" + inputPass.getText() + "'";
+                String date = "'" + inputDat.getText() + "'";
+                String tele = "'" + inputTele.getText() + "'";
+                String plats = jComboPlats.getSelectedItem().toString();
+                String agentNamn = jComboAgent.getSelectedItem().toString();
+                String ras = jComboRas.getSelectedItem().toString();
+                String agentID = idb.fetchSingle("select agent_id from agent where namn = '" + agentNamn + "'");
+                String platsID = idb.fetchSingle("select plats_id from plats where benamning = '" + plats + "'");
+                String q = "INSERT INTO ALIEN (ALIEN_ID, REGISTRERINGSDATUM, LOSENORD, NAMN, TELEFON, PLATS, ANSVARIG_AGENT)"
+                            + " VALUES (" + id + "," + date + "," + pass + "," + namn + "," + tele + "," + platsID
+                            + "," + agentID + ")";
+                idb.insert(q);
+
+                switch(ras)
+                {
+                    case "Boglodite":
+                    new Boglodite(idb, id).setVisible(true);
+                    dispose();
+                    break;
+
+                    case "Squid":
+                    new Squid(idb, id).setVisible(true);
+                    dispose();
+                    break;
+
+                    case "Worm":
+                    String addWorm = ("INSERT INTO WORM VALUES (" + id + ")");
+                    idb.insert(addWorm);
+                    JOptionPane.showMessageDialog(null, "En worm har registrerats!");
+                }
+
+
+            }
+            catch (InfException ex)
+            {
+                JOptionPane.showMessageDialog(null, "Kunde inte lägga till alien :( ");
+            }
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed

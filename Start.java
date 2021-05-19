@@ -24,10 +24,11 @@ public class Start {
         try 
         {
             idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-            new AgentWin(idb).setVisible(true);
-            String agentNamn = "Agent Z";
-            String agentID = idb.fetchSingle("select agent_id from agent where namn = '" + agentNamn + "'");
-            System.out.println(agentID);
+            new LogInWin(idb).setVisible(true);
+            // new AgentWin(idb).setVisible(true);
+//            String agentNamn = "Agent Z";
+//            String agentID = idb.fetchSingle("select agent_id from agent where namn = '" + agentNamn + "'");
+//            System.out.println(agentID);
            
         }
         
