@@ -37,6 +37,7 @@ public class AgentWin extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         minUtrustningBtn = new javax.swing.JMenuItem();
+        visaTopp3AgenterBtn = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         alienBtn = new javax.swing.JMenuItem();
         utrustningBtn = new javax.swing.JMenuItem();
@@ -62,6 +63,14 @@ public class AgentWin extends javax.swing.JFrame {
             }
         });
         jMenu1.add(minUtrustningBtn);
+
+        visaTopp3AgenterBtn.setText("-topp 3 agenter");
+        visaTopp3AgenterBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visaTopp3AgenterBtnActionPerformed(evt);
+            }
+        });
+        jMenu1.add(visaTopp3AgenterBtn);
 
         jMenuBar1.add(jMenu1);
 
@@ -229,6 +238,11 @@ public class AgentWin extends javax.swing.JFrame {
         // TODO add your handling code here:
         new ListaEnAgentsUtrustning(idb, id).setVisible(true);
     }//GEN-LAST:event_minUtrustningBtnActionPerformed
+
+    private void visaTopp3AgenterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visaTopp3AgenterBtnActionPerformed
+        // TODO add your handling code here:
+        new SeTopplistaAgenter(idb).setVisible(true);
+    }//GEN-LAST:event_visaTopp3AgenterBtnActionPerformed
 //
     /**
      * @param args the command line arguments
@@ -252,5 +266,6 @@ public class AgentWin extends javax.swing.JFrame {
     private javax.swing.JMenuItem periodBtn;
     private javax.swing.JMenuItem rasBtn;
     private javax.swing.JMenuItem utrustningBtn;
+    private javax.swing.JMenuItem visaTopp3AgenterBtn;
     // End of variables declaration//GEN-END:variables
 }
