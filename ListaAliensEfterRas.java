@@ -19,7 +19,7 @@ import oru.inf.InfException;
  */
 public class ListaAliensEfterRas extends javax.swing.JFrame {
 
-    private InfDB idb;
+    private static InfDB idb;
 
     public ListaAliensEfterRas(InfDB idb) {
         initComponents();

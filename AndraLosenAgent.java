@@ -164,6 +164,7 @@ public class AndraLosenAgent extends javax.swing.JFrame {
     try {
         idb.update("update Agent set Losenord = " + newpass + " where Losenord = " + oldpass);
         JOptionPane.showMessageDialog(null, "lösenord ändrat");
+        this.setVisible(false);
         
         
          } catch (InfException ex) {
