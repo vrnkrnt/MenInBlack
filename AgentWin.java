@@ -69,9 +69,9 @@ public class AgentWin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Lista alien...");
+        jMenu3.setText("Lista alien över ▽");
 
-        jMenuItem1.setText("över område ");
+        jMenuItem1.setText("- område ");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -79,20 +79,10 @@ public class AgentWin extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem1);
 
-        jMenuItem2.setText("ras");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
+        jMenuItem2.setText("- ras");
         jMenu3.add(jMenuItem2);
 
-        jMenuItem3.setText("över tidsperiod");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
+        jMenuItem3.setText("- tidsperiod");
         jMenu3.add(jMenuItem3);
 
         jMenuBar1.add(jMenu3);
@@ -114,19 +104,19 @@ public class AgentWin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+
         new ListaAliensEfterOmrade(idb).setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         new ListaAliensEfterDatum(idb).setVisible(true);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }                                          
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         new ListaAliensEfterRas(idb).setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }                                          
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
@@ -137,7 +127,7 @@ public class AgentWin extends javax.swing.JFrame {
         // TODO add your handling code here:
         new RegUtrustning(idb,id).setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
-
+//
     /**
      * @param args the command line arguments
      */
