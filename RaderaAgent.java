@@ -11,10 +11,13 @@ import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
-/**
- *
- * @author veron
+/*
+ * @author Emil Lager
+ * @author Josefin Olsson
+ * @author Karin Mäki-Kala
+ * @author Veronika Ranta
  */
+
 public class RaderaAgent extends javax.swing.JFrame {
 
     private static InfDB idb;
@@ -131,11 +134,11 @@ public class RaderaAgent extends javax.swing.JFrame {
     private void bRaderaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRaderaActionPerformed
         try {
             if (Validering.textFaltHarVarde(inputID)) {
-                String valdAlien = inputID.getText();
+                String valdAgent = inputID.getText();
 
-                String fraga = "DELETE FROM alien WHERE Alien_ID = " + valdAlien + ";";
+                String fraga = "DELETE FROM agent WHERE Agent_ID = " + valdAgent + ";";
                 idb.delete(fraga);
-                JOptionPane.showMessageDialog(null, "Alien har raderats.");
+                JOptionPane.showMessageDialog(null, "Agenten har raderats.");
             }
 
         } catch (InfException e) {

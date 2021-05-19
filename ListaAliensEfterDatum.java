@@ -173,6 +173,8 @@ public class ListaAliensEfterDatum extends javax.swing.JFrame {
                         + e.getMessage());
             }
         }
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -213,6 +215,7 @@ public class ListaAliensEfterDatum extends javax.swing.JFrame {
             }
         });
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField datum1;
