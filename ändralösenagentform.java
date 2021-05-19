@@ -187,6 +187,8 @@ public class ändralösenagentform extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextNewActionPerformed
 public static void main(String args[]) {
+    
+        // HÄR BORDE VI HA SÅ MAN KOMMER TILLBAKA TILL START
         /* Set the Nimbus look and feel /
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         / If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
