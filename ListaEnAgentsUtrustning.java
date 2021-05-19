@@ -18,10 +18,12 @@ import oru.inf.InfException;
 public class ListaEnAgentsUtrustning extends javax.swing.JFrame {
 
     private static InfDB idb;
+    private static String id;
 
-    public ListaEnAgentsUtrustning(InfDB idb) {
+    public ListaEnAgentsUtrustning(InfDB idb, String id) {
         initComponents();
         this.idb = idb;
+        this.id = id;
     }
 
     /**
@@ -30,6 +32,8 @@ public class ListaEnAgentsUtrustning extends javax.swing.JFrame {
     public ListaEnAgentsUtrustning() {
         initComponents();
     }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,8 +44,6 @@ public class ListaEnAgentsUtrustning extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        inputID = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaUtrustning = new javax.swing.JTextArea();
         bSok = new javax.swing.JButton();
@@ -49,20 +51,11 @@ public class ListaEnAgentsUtrustning extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Sök ID:");
-
-        inputID.setColumns(3);
-        inputID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputIDActionPerformed(evt);
-            }
-        });
-
         listaUtrustning.setColumns(20);
         listaUtrustning.setRows(5);
         jScrollPane1.setViewportView(listaUtrustning);
 
-        bSok.setText("Sök");
+        bSok.setText("Visa");
         bSok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bSokActionPerformed(evt);
@@ -80,51 +73,38 @@ public class ListaEnAgentsUtrustning extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(inputID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(bSok)))
-                .addContainerGap(105, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bTillbaka)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bSok, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(inputID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bSok))
-                .addGap(26, 26, 26)
+                .addGap(81, 81, 81)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bSok)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addComponent(bTillbaka))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void inputIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputIDActionPerformed
-
-    }//GEN-LAST:event_inputIDActionPerformed
-
     private void bSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSokActionPerformed
         listaUtrustning.setText("");
 
         ArrayList<HashMap<String, String>> utrustningsLista;
-        if (Validering.textFaltHarVarde(inputID) && Validering.isHeltal(inputID)) {
 
             try {
-                String id = inputID.getText();
+                //String id = inputID.getText();
                 String fraga = "SELECT * FROM Utrustning WHERE Utrustnings_ID IN "
                         + "(SELECT Utrustnings_ID FROM Innehar_Utrustning WHERE Agent_ID='" + id + "')";
                 utrustningsLista = idb.fetchRows(fraga);
@@ -142,7 +122,6 @@ public class ListaEnAgentsUtrustning extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Databasfel!");
                 System.out.println("Internt felmeddelande" + e.getMessage());
             }
-        }
     }//GEN-LAST:event_bSokActionPerformed
 
     private void bTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTillbakaActionPerformed
@@ -180,7 +159,7 @@ public class ListaEnAgentsUtrustning extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListaEnAgentsUtrustning(idb).setVisible(true);
+                new ListaEnAgentsUtrustning(idb, id).setVisible(true);
             }
         });
     }
@@ -188,8 +167,6 @@ public class ListaEnAgentsUtrustning extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bSok;
     private javax.swing.JButton bTillbaka;
-    private javax.swing.JTextField inputID;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea listaUtrustning;
     // End of variables declaration//GEN-END:variables
