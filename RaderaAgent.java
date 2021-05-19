@@ -133,7 +133,7 @@ public class RaderaAgent extends javax.swing.JFrame {
 
     private void bRaderaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRaderaActionPerformed
         try {
-            if (Validering.textFaltHarVarde(inputID) && Validering.finnsAgentID(inputID)) {
+            if (Validering.textFaltHarVarde(inputID)) {
                 String valdAgent = inputID.getText();
 
                 String fraga = "DELETE FROM agent WHERE Agent_ID = " + valdAgent + ";";
