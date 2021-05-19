@@ -97,7 +97,7 @@ public class SokOmradesChef extends javax.swing.JFrame {
                     +"(SELECT Omrades_ID  FROM omrade WHERE Benamning = '"+ valtOmrade +"'))ORDER BY Agent_ID";
             soktaOmradesChefer = idb.fetchRows(fraga);
 
-            jTextArea1.append("ID \t");
+            jTextArea1. append("ID \t");
             jTextArea1.append("Namn \t");
             jTextArea1.append("Telefon \n");
 
