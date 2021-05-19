@@ -5,15 +5,26 @@
  */
 package MenInBlack;
 
+import javax.swing.JOptionPane;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+
 /**
  *
  * @author josefinolsson
  */
 public class AndraKontorschef extends javax.swing.JFrame {
 
+    private static InfDB idb;
+
     /**
-     * Creates new form AndraKontorschef
+     * Creates new form ändralösenagentform
      */
+    public AndraKontorschef(InfDB idb) {
+        initComponents();
+        this.idb = idb;
+    }
+
     public AndraKontorschef() {
         initComponents();
     }
@@ -72,10 +83,20 @@ public class AndraKontorschef extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bBekraftaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBekraftaActionPerformed
-       
-        String nyKontorschef= "' "+ TextNyKontorsChef.getText()+ "'";
-        
-        try{idb.update(update )}
+
+        if (Validering.textFaltHarVarde(TextNyKontorsChef) && Validering.isHeltal(TextNyKontorsChef)) {
+
+            try {
+                String nyKontorschef = TextNyKontorsChef.getText();
+                int ID = Integer.parseInt(nyKontorschef);
+                idb.update("update kontorschef set Agent_ID="+nyKontorschef+"");
+                JOptionPane.showMessageDialog(null, "Kontorschefen är ändrad");
+
+            } catch (InfException e) {
+                JOptionPane.showMessageDialog(null, "Något gick fel. "
+                        + e.getMessage());
+            }
+        }
     }//GEN-LAST:event_bBekraftaActionPerformed
 
     /**
