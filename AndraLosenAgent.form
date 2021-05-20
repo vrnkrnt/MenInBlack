@@ -147,6 +147,7 @@
         <Property name="text" type="java.lang.String" value="Gamalt L&#xf6;senord"/>
       </Properties>
       <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTextOldMousePressed"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextOldActionPerformed"/>
       </Events>
     </Component>
@@ -155,6 +156,7 @@
         <Property name="text" type="java.lang.String" value="Upprepa l&#xf6;senord"/>
       </Properties>
       <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTextCnfMousePressed"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextCnfActionPerformed"/>
       </Events>
     </Component>
@@ -163,6 +165,7 @@
         <Property name="text" type="java.lang.String" value="Nytt L&#xf6;senord"/>
       </Properties>
       <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTextNewMousePressed"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextNewActionPerformed"/>
       </Events>
     </Component>
