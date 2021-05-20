@@ -5,7 +5,10 @@
  */
 package MenInBlack;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -16,42 +19,43 @@ import oru.inf.InfException;
 public class HittaOmradesChef extends javax.swing.JFrame {
     private static InfDB idb;
     private static String id;
+
+    private HittaOmradesChef(InfDB idb) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    HittaOmradesChef(InfDB idb, String id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     // denna metod ska hämta info om ens områdeschef
-public static String getOmradesChef() {
+private void HittaChef() {
 
-    agent_ID = idb.fetchSingle(agent_IDsql);
-
-            String agent_ID;
+     String agentid;
      String namn;
      String telefon;
      String område; 
 
-    String agent_IDsql = "SELECT ANSVARIG_AGENT FROM ALIEN WHERE Alien_ID = " + "'" + id + "'";
+    String agentidSql = "SELECT ANSVARIG_AGENT FROM ALIEN WHERE LOSENORD = " + "'" + id + "'";
 
     try {
-    agent_ID = idb.fetchSingle(agent_IDsql);
+    agentid = idb.fetchSingle(agentidSql);
 
-    String namnsql = "SELECT NAMN FROM AGENT WHERE AGENT_ID = "  + agent_ID;
-    String telefonsql = "SELECT TELEFON FROM AGENT WHERE AGENT_ID = " + agent_ID;
-    String omradesql = "SELECT OMRADE FROM AGENT WHERE AGENT_ID = " + agent_ID;
-
-     namn = idb.fetchSingle(namnsql);
-    telefon = idb.fetchSingle(telefonsql);
-    område = idb.fetchSingle(omradesql);
-
-
- 
-    JOptionPane.showMessageDialog(null, namnsql, telefonsql, omradesql);
-
-    } catch (InfException ettUndantag) {
-            JOptionPane.showMessageDialog(null, "Något gick fel!");
-            System.out.println("Internt felmeddelande" + ettUndantag.getMessage());
+    String namnFraga = "SELECT NAMN FROM AGENT WHERE AGENT_ID = "  + agentid;
+    String telefonFraga = "SELECT TELEFON FROM AGENT WHERE AGENT_ID = " + agentid;
+    String områdeFraga = "SELECT OMRADE FROM AGENT WHERE AGENT_ID = " + agentid;
+    
+     namn = idb.fetchSingle(namnFraga);
+    telefon = idb.fetchSingle(telefonFraga);
+    område = idb.fetchSingle(områdeFraga);
     }
-
-    HittaOmrådesChef(InfDB idb, String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    //Felmeddelande
+    catch(InfException ex){
+        Logger.getLogger(AndraLosenAgent.class.getName()).log(Level.SEVERE, null, ex);
     }
 }
+  
+            
+
 
 
     /**
@@ -117,7 +121,7 @@ public static String getOmradesChef() {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HittaOmradesChef().setVisible(true);
+                new HittaOmradesChef(idb).setVisible(true);
             }
         });
     }
