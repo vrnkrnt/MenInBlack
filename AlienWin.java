@@ -119,16 +119,6 @@ public class AlienWin extends javax.swing.JFrame {
     private void jVisaAliensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVisaAliensActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jVisaAliensActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
-        new ListaAliensEfterDatum(idb).setVisible(true);
-    }                                          
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
-        new ListaAliensEfterRas(idb, id).setVisible(true);
-    }                                          
 //
     /**
      * @param args the command line arguments
