@@ -17,9 +17,6 @@ public class AndraKontorschef extends javax.swing.JFrame {
 
     private static InfDB idb;
 
-    /**
-     * Creates new form ändralösenagentform
-     */
     public AndraKontorschef(InfDB idb) {
         initComponents();
         this.idb = idb;
