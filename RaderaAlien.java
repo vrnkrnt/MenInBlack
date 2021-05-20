@@ -52,7 +52,7 @@ public class RaderaAlien extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Radera alien");
 
-        jLabel3.setText("Skriv in ID:");
+        jLabel3.setText("Skriv in Namn:");
 
         bRadera.setText("Radera alien");
         bRadera.addActionListener(new java.awt.event.ActionListener() {
@@ -132,7 +132,7 @@ public class RaderaAlien extends javax.swing.JFrame {
             if (Validering.textFaltHarVarde(inputID)) {
                 String valdAlien = inputID.getText();
 
-                String fraga = "DELETE FROM alien WHERE Alien_ID = " + valdAlien + ";";
+                String fraga = "DELETE FROM alien WHERE Namn = " + valdAlien + ";";
                 idb.delete(fraga);
                 JOptionPane.showMessageDialog(null, "Alien har raderats.");
             }
@@ -152,10 +152,10 @@ public class RaderaAlien extends javax.swing.JFrame {
         visaAlienInfo.setText("");
 
         ArrayList<HashMap<String, String>> soktAlien;
-        if (Validering.textFaltHarVarde(inputID) && Validering.isHeltal(inputID)) {
+        if (Validering.textFaltHarVarde(inputID)) {
             try {
-                String id = inputID.getText();
-                String fraga = "SELECT * FROM alien WHERE Alien_ID = '" + id + "'";
+                String namn = inputID.getText();
+                String fraga = "SELECT * FROM alien WHERE Namn = '" + namn + "'";
                 soktAlien = idb.fetchRows(fraga);
 
                 for (HashMap<String, String> alien : soktAlien) {

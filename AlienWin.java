@@ -5,18 +5,21 @@
  */
 package MenInBlack;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import oru.inf.InfDB;
 import oru.inf.InfException;
+
 /**
  *
  * @author Emillager
  */
 public class AlienWin extends javax.swing.JFrame {
-    private static InfDB idb;
+    private InfDB idb;
     private static String id;
 
     /**
-     * Creates new form AlienWin
+     * Creates new form AgentWin
      */
     public AlienWin(InfDB idb, String id) {
         initComponents();
@@ -33,68 +36,99 @@ public class AlienWin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jAndraLosen = new javax.swing.JButton();
+        jVisaOchef = new javax.swing.JButton();
+        jVisaAliens = new javax.swing.JButton();
+        jMejl = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("ALIEN");
+        jAndraLosen.setText("Ändra lösenord");
+        jAndraLosen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAndraLosenActionPerformed(evt);
+            }
+        });
+
+        jVisaOchef.setText("Visa min områdeschef");
+        jVisaOchef.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jVisaOchefActionPerformed(evt);
+            }
+        });
+
+        jVisaAliens.setText("Visa aliens i mitt område");
+        jVisaAliens.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jVisaAliensActionPerformed(evt);
+            }
+        });
+
+        jMejl.setText("Mejla min områdenschef");
+        jMejl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMejlActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(163, 163, 163)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(129, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(400, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jAndraLosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jVisaOchef, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jVisaAliens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jMejl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(85, 85, 85))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(jLabel1)
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addComponent(jVisaOchef)
+                .addGap(18, 18, 18)
+                .addComponent(jAndraLosen)
+                .addGap(18, 18, 18)
+                .addComponent(jVisaAliens)
+                .addGap(18, 18, 18)
+                .addComponent(jMejl)
+                .addContainerGap(205, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jAndraLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAndraLosenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jAndraLosenActionPerformed
+
+    private void jVisaOchefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVisaOchefActionPerformed
+        // TODO add your handling code here:
+        new HittaOmradesChef(idb, id).setVisible(true);
+    
+    
+    }//GEN-LAST:event_jVisaOchefActionPerformed
+
+    private void jMejlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMejlActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMejlActionPerformed
+
+    private void jVisaAliensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVisaAliensActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jVisaAliensActionPerformed
+//
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AlienWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AlienWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AlienWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AlienWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AlienWin(idb, id).setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jAndraLosen;
+    private javax.swing.JButton jMejl;
+    private javax.swing.JButton jVisaAliens;
+    private javax.swing.JButton jVisaOchef;
     // End of variables declaration//GEN-END:variables
 }

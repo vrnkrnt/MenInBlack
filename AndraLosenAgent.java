@@ -82,6 +82,11 @@ public class AndraLosenAgent extends javax.swing.JFrame {
         jOldpass.setText("Gammalt lösenord");
 
         jTextOld.setText("Gamalt Lösenord");
+        jTextOld.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTextOldMousePressed(evt);
+            }
+        });
         jTextOld.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextOldActionPerformed(evt);
@@ -89,6 +94,11 @@ public class AndraLosenAgent extends javax.swing.JFrame {
         });
 
         jTextCnf.setText("Upprepa lösenord");
+        jTextCnf.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTextCnfMousePressed(evt);
+            }
+        });
         jTextCnf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextCnfActionPerformed(evt);
@@ -96,6 +106,11 @@ public class AndraLosenAgent extends javax.swing.JFrame {
         });
 
         jTextNew.setText("Nytt Lösenord");
+        jTextNew.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTextNewMousePressed(evt);
+            }
+        });
         jTextNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextNewActionPerformed(evt);
@@ -162,6 +177,7 @@ public class AndraLosenAgent extends javax.swing.JFrame {
             if (Validering.maxSexPass(jTextNew) && Validering.maxSexPass(jTextNew)
             && Validering.textvalue(jTextOld) && Validering.textvalue(jTextOld)){
     try {
+        
         idb.update("update Agent set Losenord = " + newpass + " where Losenord = " + oldpass);
         JOptionPane.showMessageDialog(null, "lösenord ändrat");
         this.setVisible(false);
@@ -187,7 +203,24 @@ public class AndraLosenAgent extends javax.swing.JFrame {
     private void jTextNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNewActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextNewActionPerformed
+
+    private void jTextOldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextOldMousePressed
+        // TODO add your handling code here:
+        jTextOld.setText("");
+    }//GEN-LAST:event_jTextOldMousePressed
+
+    private void jTextNewMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextNewMousePressed
+        // TODO add your handling code here:
+        jTextNew.setText("");
+    }//GEN-LAST:event_jTextNewMousePressed
+
+    private void jTextCnfMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextCnfMousePressed
+        // TODO add your handling code here:
+        jTextCnf.setText("");
+    }//GEN-LAST:event_jTextCnfMousePressed
 public static void main(String args[]) {
+    
+    
     
         // HÄR BORDE VI HA SÅ MAN KOMMER TILLBAKA TILL START
         /* Set the Nimbus look and feel /
