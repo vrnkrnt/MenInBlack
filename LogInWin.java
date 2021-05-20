@@ -135,7 +135,7 @@ public class LogInWin extends javax.swing.JFrame {
                     if(q.equals(pass))
                     {
                         System.out.println("admin");
-                        new Admin(idb, userID).setVisible(true);
+                        new AdminWin(idb, userID).setVisible(true);
                         this.setVisible(false);
                         correctPass = true;
                         break;

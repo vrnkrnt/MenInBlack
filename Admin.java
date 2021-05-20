@@ -34,31 +34,131 @@ public class Admin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        regAlienBtn = new javax.swing.JMenuItem();
+        regAgentBtn = new javax.swing.JMenuItem();
+        regAdminBtn = new javax.swing.JMenuItem();
+        regUtrBtn = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        taBortAgentBtn = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        andraAlienBtn = new javax.swing.JMenuItem();
+        andraAgentBtn = new javax.swing.JMenuItem();
+        andraOmradeBtn = new javax.swing.JMenuItem();
+        andraKontorBtn = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        sammanfattStatBtn = new javax.swing.JMenuItem();
+        skrivStatBtn = new javax.swing.JMenuItem();
+        visaToppAgentBtn = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("ADMIN");
+        jMenu1.setText("Registrera");
+
+        regAlienBtn.setText("-ny alien");
+        regAlienBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regAlienBtnActionPerformed(evt);
+            }
+        });
+        jMenu1.add(regAlienBtn);
+
+        regAgentBtn.setText("-ny agent");
+        jMenu1.add(regAgentBtn);
+
+        regAdminBtn.setText("-ny admin");
+        jMenu1.add(regAdminBtn);
+
+        regUtrBtn.setText("-ny utrustning");
+        regUtrBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regUtrBtnActionPerformed(evt);
+            }
+        });
+        jMenu1.add(regUtrBtn);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Ta bort");
+
+        jMenuItem1.setText("-alien");
+        jMenu2.add(jMenuItem1);
+
+        jMenuItem2.setText("-agent");
+        jMenu2.add(jMenuItem2);
+
+        taBortAgentBtn.setText("-utrustning");
+        jMenu2.add(taBortAgentBtn);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Ändra info om");
+
+        andraAlienBtn.setText("-alien");
+        jMenu3.add(andraAlienBtn);
+
+        andraAgentBtn.setText("-agent");
+        jMenu3.add(andraAgentBtn);
+
+        andraOmradeBtn.setText("-områdeschef");
+        jMenu3.add(andraOmradeBtn);
+
+        andraKontorBtn.setText("-kontorschef");
+        jMenu3.add(andraKontorBtn);
+
+        jMenuBar1.add(jMenu3);
+
+        jMenu4.setText("Visa");
+
+        sammanfattStatBtn.setText("-sammanfattande statistik");
+        jMenu4.add(sammanfattStatBtn);
+
+        skrivStatBtn.setText("-skriv ut statistikrapport");
+        jMenu4.add(skrivStatBtn);
+
+        visaToppAgentBtn.setText("-topp 3 agenter i område");
+        visaToppAgentBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visaToppAgentBtnActionPerformed(evt);
+            }
+        });
+        jMenu4.add(visaToppAgentBtn);
+
+        jMenuBar1.add(jMenu4);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(151, 151, 151)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(149, Short.MAX_VALUE))
+            .addGap(0, 490, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jLabel1)
-                .addContainerGap(186, Short.MAX_VALUE))
+            .addGap(0, 283, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void regAlienBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regAlienBtnActionPerformed
+        // TODO add your handling code here:
+        new RegAlienWin(idb).setVisible(true);
+    }//GEN-LAST:event_regAlienBtnActionPerformed
+
+    private void regUtrBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regUtrBtnActionPerformed
+        // TODO add your handling code here:
+        new RegUtrustningWin(idb).setVisible(true);
+    }//GEN-LAST:event_regUtrBtnActionPerformed
+
+    private void visaToppAgentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visaToppAgentBtnActionPerformed
+        // TODO add your handling code here:
+        new SeTopplistaAgenter(idb).setVisible(true);
+    }//GEN-LAST:event_visaToppAgentBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -96,6 +196,24 @@ public class Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenuItem andraAgentBtn;
+    private javax.swing.JMenuItem andraAlienBtn;
+    private javax.swing.JMenuItem andraKontorBtn;
+    private javax.swing.JMenuItem andraOmradeBtn;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem regAdminBtn;
+    private javax.swing.JMenuItem regAgentBtn;
+    private javax.swing.JMenuItem regAlienBtn;
+    private javax.swing.JMenuItem regUtrBtn;
+    private javax.swing.JMenuItem sammanfattStatBtn;
+    private javax.swing.JMenuItem skrivStatBtn;
+    private javax.swing.JMenuItem taBortAgentBtn;
+    private javax.swing.JMenuItem visaToppAgentBtn;
     // End of variables declaration//GEN-END:variables
 }
