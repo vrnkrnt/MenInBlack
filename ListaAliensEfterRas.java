@@ -19,11 +19,15 @@ import oru.inf.InfException;
  */
 public class ListaAliensEfterRas extends javax.swing.JFrame {
 
-    private InfDB idb;
+    private static InfDB idb;
 
     public ListaAliensEfterRas(InfDB idb) {
         initComponents();
         this.idb = idb;
+    }
+
+    ListaAliensEfterRas(InfDB idb, String id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
