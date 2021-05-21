@@ -28,6 +28,7 @@ public class Start {
         {
             idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
             new LogInWin(idb).setVisible(true);     
+            new RaderaAgent(idb).setVisible(true);
         }
         
         catch (InfException ex)

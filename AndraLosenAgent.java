@@ -174,8 +174,8 @@ public class AndraLosenAgent extends javax.swing.JFrame {
         String oldpass = "'" + jTextOld.getText() + "'";
         String newpass = "'" + jTextNew.getText() + "'";
         
-            if (Validering.maxSexPass(jTextNew) && Validering.maxSexPass(jTextNew)
-            && Validering.textvalue(jTextOld) && Validering.textvalue(jTextOld)){
+            if (Validering.maxSexPass(jTextNew) && Validering.maxSexPass(jTextOld)
+            && Validering.textFaltHarVarde(jTextNew) && Validering.textFaltHarVarde(jTextOld)){
     try {
         
         idb.update("update Agent set Losenord = " + newpass + " where Losenord = " + oldpass);
