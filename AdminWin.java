@@ -194,6 +194,11 @@ public class AdminWin extends javax.swing.JFrame {
         jMenu6.add(taBortAgentBtn);
 
         taBortUtrBtn.setText("-utrustning");
+        taBortUtrBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taBortUtrBtnActionPerformed(evt);
+            }
+        });
         jMenu6.add(taBortUtrBtn);
 
         jMenuBar1.add(jMenu6);
@@ -207,6 +212,11 @@ public class AdminWin extends javax.swing.JFrame {
         jMenu7.add(andraAlienBtn);
 
         andraOmradeChefBtn.setText("-områdeschef");
+        andraOmradeChefBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                andraOmradeChefBtnActionPerformed(evt);
+            }
+        });
         jMenu7.add(andraOmradeChefBtn);
 
         andraKontorChefBtn.setText("-kontorschef");
@@ -345,6 +355,16 @@ public class AdminWin extends javax.swing.JFrame {
         // TODO add your handling code here:
         new AndraKontorschef(idb).setVisible(true);
     }//GEN-LAST:event_andraKontorChefBtnActionPerformed
+
+    private void andraOmradeChefBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_andraOmradeChefBtnActionPerformed
+        // TODO add your handling code here:
+        new AndraOmradeschef(idb).setVisible(true);
+    }//GEN-LAST:event_andraOmradeChefBtnActionPerformed
+
+    private void taBortUtrBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taBortUtrBtnActionPerformed
+        // TODO add your handling code here:
+        new RaderaUtrustning(idb).setVisible(true);
+    }//GEN-LAST:event_taBortUtrBtnActionPerformed
 //
     /**
      * @param args the command line arguments
