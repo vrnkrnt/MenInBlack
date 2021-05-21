@@ -318,9 +318,7 @@ public class AndraAlien extends javax.swing.JFrame {
             }
             
             JOptionPane.showMessageDialog(null, "En alien har uppdaterats!");
-            this.setVisible(false);
-            new AndraAlien(idb).setVisible(true);
-            
+            this.setVisible(false);            
 
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Kunde inte lägga till alien :( " + ex.getMessage());
