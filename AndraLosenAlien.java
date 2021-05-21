@@ -129,7 +129,7 @@ public class AndraLosenAlien extends javax.swing.JFrame {
         String newpass = "'" + TextNewPass.getText() + "'";
 
         if (Validering.maxSexPass(TextNewPass) && Validering.maxSexPass(TextOldPass)
-                && Validering.textvalue(TextNewPass) && Validering.textvalue(TextOldPass)) {
+                && Validering.textFaltHarVarde(TextNewPass) && Validering.textFaltHarVarde(TextOldPass)) {
             try {
 
                 idb.update("update Alien set Losenord = " + newpass + " where Losenord = " + oldpass);

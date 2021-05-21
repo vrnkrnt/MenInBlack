@@ -47,7 +47,7 @@
               <Component id="jScrollPane1" min="-2" pref="87" max="-2" attributes="0"/>
               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
               <Component id="jTextnamn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="35" pref="35" max="-2" attributes="0"/>
+              <EmptySpace min="41" pref="41" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jTabort" min="-2" max="-2" attributes="0"/>
                   <Component id="jLaggtill" min="-2" max="-2" attributes="0"/>
