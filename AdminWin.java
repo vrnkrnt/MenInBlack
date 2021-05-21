@@ -89,6 +89,11 @@ public class AdminWin extends javax.swing.JFrame {
         jMenu2.add(utrustningBtn);
 
         regNyAgentBtn.setText("-Ny Agent");
+        regNyAgentBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regNyAgentBtnActionPerformed(evt);
+            }
+        });
         jMenu2.add(regNyAgentBtn);
 
         regNyAdminBtn.setText("-Ny admin");
@@ -324,7 +329,7 @@ public class AdminWin extends javax.swing.JFrame {
 
     private void changePassBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePassBtnActionPerformed
         // TODO add your handling code here:
-        new AndraLosenAgent(idb).setVisible(true);
+        new AndraLosenAgent(idb, id).setVisible(true);
     }//GEN-LAST:event_changePassBtnActionPerformed
 
     private void minUtrustningBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minUtrustningBtnActionPerformed
@@ -365,6 +370,11 @@ public class AdminWin extends javax.swing.JFrame {
         // TODO add your handling code here:
         new RaderaUtrustning(idb).setVisible(true);
     }//GEN-LAST:event_taBortUtrBtnActionPerformed
+
+    private void regNyAgentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regNyAgentBtnActionPerformed
+        // TODO add your handling code here:
+        new RegAgentWin(idb).setVisible(true);
+    }//GEN-LAST:event_regNyAgentBtnActionPerformed
 //
     /**
      * @param args the command line arguments

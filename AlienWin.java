@@ -102,7 +102,7 @@ public class AlienWin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jAndraLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAndraLosenActionPerformed
-        // TODO add your handling code here:
+        new AndraLosenAlien(idb,id).setVisible(true);
     }//GEN-LAST:event_jAndraLosenActionPerformed
 
     private void jVisaOchefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVisaOchefActionPerformed
