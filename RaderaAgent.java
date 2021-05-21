@@ -158,7 +158,7 @@ public class RaderaAgent extends javax.swing.JFrame {
         if (Validering.textFaltHarVarde(inputID) && Validering.isHeltal(inputID)) {
             try {
                 String id = inputID.getText();
-                String fraga = "SELECT * FROM agent WHERE Agent_ID = '" + id + "'";
+                String fraga = "SELECT * FROM agent WHERE Agent_ID = " + id;
                 soktAgent = idb.fetchRows(fraga);
 
                 for (HashMap<String, String> agent : soktAgent) {
