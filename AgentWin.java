@@ -231,7 +231,7 @@ public class AgentWin extends javax.swing.JFrame {
 
     private void changePassBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePassBtnActionPerformed
         // TODO add your handling code here:
-        new AndraLosenAgent(idb).setVisible(true);
+        new AndraLosenAgent(idb, id).setVisible(true);
     }//GEN-LAST:event_changePassBtnActionPerformed
 
     private void minUtrustningBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minUtrustningBtnActionPerformed
