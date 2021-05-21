@@ -152,6 +152,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="-utrustning"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="taBortUtrBtnActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -174,6 +177,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="-omr&#xe5;deschef"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="andraOmradeChefBtnActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="andraKontorChefBtn">
               <Properties>

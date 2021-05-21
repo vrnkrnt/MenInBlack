@@ -3,21 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package MenInBlack;
 
+package MenInBlack;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
-/*
+/**
+ *
  * @author Emil Lager
  * @author Josefin Olsson
  * @author Karin Mäki-Kala
  * @author Veronika Ranta
+ * 
  */
 
-public class Start {
+public class Test {
     
     private static InfDB idb;
     
@@ -27,14 +29,13 @@ public class Start {
         try 
         {
             idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-            new LogInWin(idb).setVisible(true);     
         }
         
         catch (InfException ex)
         {
-            Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         }
     
-    } 
+    }
     
 }
