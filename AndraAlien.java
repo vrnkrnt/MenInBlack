@@ -281,7 +281,6 @@ public class AndraAlien extends javax.swing.JFrame {
         try {
             String alienNamn = comboValdAlien.getSelectedItem().toString();
             String alienID = idb.fetchSingle("SELECT Alien_ID FROM alien WHERE Namn = '" + alienNamn + "'");
-            System.out.println(alienID);
             String nyttNamn = inputName.getText();
             String nyttDatum = inputRegDat.getText();
             String nyttPass = inputLosenord.getText();
@@ -289,21 +288,12 @@ public class AndraAlien extends javax.swing.JFrame {
             String nyPlats = comboValdPlats.getSelectedItem().toString();
             String nyAnsvarigAgent = comboValdAgent.getSelectedItem().toString();
             String nyRas = comboValdRas.getSelectedItem().toString();
-            System.out.println(alienID);
-            System.out.println(nyttNamn);
-            System.out.println(nyttPass);
-            System.out.println(nyttDatum);
-            System.out.println(nyttTele);
-            System.out.println(alienID);
-            System.out.println(nyPlats);
-            System.out.println(nyAnsvarigAgent);
             String platsID = idb.fetchSingle("SELECT Plats_ID FROM plats WHERE Benamning = '" + nyPlats + "'");
             String agentID = idb.fetchSingle("SELECT Agent_ID FROM agent WHERE Namn = '" + nyAnsvarigAgent + "'");
             String fraga = "UPDATE alien SET Alien_ID = " + alienID + ", Registreringsdatum = '" + nyttDatum + "', "
                     + "losenord = '" + nyttPass + "', Namn = '" + nyttNamn + "', Telefon = '" + nyttTele + "', Plats = " + platsID + ", "
                     + "Ansvarig_Agent = " + agentID + " WHERE Alien_ID = " + alienID;
             idb.update(fraga);
-            System.out.println("Frågan funka");
             
             String raderaGammalRas = "DELETE FROM boglodite WHERE Alien_ID = " + alienID;
             String raderaGammal = "DELETE FROM worm WHERE Alien_ID = " + alienID;
@@ -316,22 +306,18 @@ public class AndraAlien extends javax.swing.JFrame {
                 String antalBoogies = inputAntal.getText();
                 String uppdateraRas = "INSERT INTO boglodite VALUES(" + alienID + ", " + antalBoogies + ")";
                 idb.insert(uppdateraRas);
-                System.out.println("Boglodite funka");            
             }
             if (nyRas.equalsIgnoreCase("Squid")) {
                 String antalArmar = inputAntal.getText();
                 String uppdateraRas = "INSERT INTO squid VALUES(" + alienID + ", " + antalArmar + ")";
                 idb.insert(uppdateraRas);
-                System.out.println("Squid funka");
             }
             if (nyRas.equalsIgnoreCase("Worm")) {
                 String uppdateraRas = "INSERT INTO worm VALUES(" + alienID + ")";
                 idb.insert(uppdateraRas);
-                System.out.println("Worm funka");
             }
             
             JOptionPane.showMessageDialog(null, "En alien har uppdaterats!");
-            //ransaFalt();
             this.setVisible(false);
             new AndraAlien(idb).setVisible(true);
             
