@@ -5,14 +5,20 @@
  */
 package MenInBlack;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
-/**
- *
- * @author Emillager
+/*
+ * @author Emil Lager
+ * @author Josefin Olsson
+ * @author Karin Mäki-Kala
+ * @author Veronika Ranta
  */
 public class AgentWin extends javax.swing.JFrame {
+
     private InfDB idb;
     private static String id;
 
@@ -23,6 +29,7 @@ public class AgentWin extends javax.swing.JFrame {
         initComponents();
         this.idb = idb;
         this.id = id;
+        visaMinInformation();
     }
 
     /**
@@ -34,6 +41,9 @@ public class AgentWin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         minUtrustningBtn = new javax.swing.JMenuItem();
@@ -54,7 +64,14 @@ public class AgentWin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Visa...");
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Min information");
+
+        jMenu1.setText("Visa ▽");
 
         minUtrustningBtn.setText("-min utrustning");
         minUtrustningBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +91,7 @@ public class AgentWin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Registrera...");
+        jMenu2.setText("Registrera ▽");
 
         alienBtn.setText("Alien");
         alienBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -122,7 +139,7 @@ public class AgentWin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("Sök...");
+        jMenu4.setText("Sök ▽");
 
         omradesChefBtn.setText("-områdeschef");
         omradesChefBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -168,11 +185,21 @@ public class AgentWin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 548, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 281, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -183,14 +210,14 @@ public class AgentWin extends javax.swing.JFrame {
         new ListaAliensEfterOmrade(idb).setVisible(true);
     }//GEN-LAST:event_omradeBtnActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         new ListaAliensEfterDatum(idb).setVisible(true);
-    }                                          
+    }
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                          
+    }
 
     private void alienBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alienBtnActionPerformed
         // TODO add your handling code here:
@@ -210,7 +237,7 @@ public class AgentWin extends javax.swing.JFrame {
     private void periodBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodBtnActionPerformed
         // TODO add your handling code here:
         new ListaAliensEfterDatum(idb).setVisible(true);
-        
+
     }//GEN-LAST:event_periodBtnActionPerformed
 
     private void omradesChefBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_omradesChefBtnActionPerformed
@@ -243,15 +270,38 @@ public class AgentWin extends javax.swing.JFrame {
         // TODO add your handling code here:
         new SeTopplistaAgenter(idb).setVisible(true);
     }//GEN-LAST:event_visaTopp3AgenterBtnActionPerformed
-//
-    /**
-     * @param args the command line arguments
-     */
 
+    private void visaMinInformation() {
+
+        ArrayList<HashMap<String, String>> valdAgent;
+
+        try {
+            String fraga = "SELECT * FROM agent WHERE Agent_ID = " + id;
+            valdAgent = idb.fetchRows(fraga);
+            System.out.println(valdAgent);
+            System.out.println(id);
+            String omradeNamn = idb.fetchSingle("SELECT Benamning FROM omrade WHERE Omrades_ID IN "
+                    + "(SELECT Omrade FROM Agent WHERE Agent_ID = " + id + ");");
+            System.out.println(omradeNamn);
+            for (HashMap<String, String> agent : valdAgent) {
+                jTextArea1.append("ID:\t" + agent.get("Agent_ID") + "\n");
+                jTextArea1.append("Namn:\t" + agent.get("Namn") + "\n");
+                jTextArea1.append("Tel. nr.:\t" + agent.get("Telefon") + "\n");
+                jTextArea1.append("Anst. dat.:\t" + agent.get("Anstallningsdatum") + "\n");
+                jTextArea1.append("Admin J/N:\t" + agent.get("Administrator") + "\n");
+                jTextArea1.append("Område:\t" + omradeNamn);
+            }
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Något gick fel. "
+                    + e.getMessage());
+        }
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem alienBtn;
     private javax.swing.JMenuItem changePassBtn;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -259,6 +309,8 @@ public class AgentWin extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JMenuItem logOutBtn;
     private javax.swing.JMenuItem minUtrustningBtn;
     private javax.swing.JMenuItem omradeBtn;
