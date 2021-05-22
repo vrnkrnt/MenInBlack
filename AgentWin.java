@@ -278,11 +278,9 @@ public class AgentWin extends javax.swing.JFrame {
         try {
             String fraga = "SELECT * FROM agent WHERE Agent_ID = " + id;
             valdAgent = idb.fetchRows(fraga);
-            System.out.println(valdAgent);
             System.out.println(id);
             String omradeNamn = idb.fetchSingle("SELECT Benamning FROM omrade WHERE Omrades_ID IN "
                     + "(SELECT Omrade FROM Agent WHERE Agent_ID = " + id + ");");
-            System.out.println(omradeNamn);
             for (HashMap<String, String> agent : valdAgent) {
                 jTextArea1.append("ID:\t" + agent.get("Agent_ID") + "\n");
                 jTextArea1.append("Namn:\t" + agent.get("Namn") + "\n");
@@ -292,7 +290,7 @@ public class AgentWin extends javax.swing.JFrame {
                 jTextArea1.append("Område:\t" + omradeNamn);
             }
         } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Något gick fel. "
+            JOptionPane.showMessageDialog(null, "Kunde inte visa information. \n "
                     + e.getMessage());
         }
         
