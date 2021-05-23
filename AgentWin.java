@@ -44,6 +44,7 @@ public class AgentWin extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         minUtrustningBtn = new javax.swing.JMenuItem();
@@ -60,7 +61,6 @@ public class AgentWin extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         changePassBtn = new javax.swing.JMenuItem();
-        logOutBtn = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,9 +71,16 @@ public class AgentWin extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Min information");
 
+        jButton1.setText("Logga ut");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         jMenu1.setText("Visa ▽");
 
-        minUtrustningBtn.setText("-min utrustning");
+        minUtrustningBtn.setText("- min utrustning");
         minUtrustningBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 minUtrustningBtnActionPerformed(evt);
@@ -81,7 +88,7 @@ public class AgentWin extends javax.swing.JFrame {
         });
         jMenu1.add(minUtrustningBtn);
 
-        visaTopp3AgenterBtn.setText("-topp 3 agenter");
+        visaTopp3AgenterBtn.setText("- topp 3 agenter");
         visaTopp3AgenterBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 visaTopp3AgenterBtnActionPerformed(evt);
@@ -93,7 +100,7 @@ public class AgentWin extends javax.swing.JFrame {
 
         jMenu2.setText("Registrera ▽");
 
-        alienBtn.setText("Alien");
+        alienBtn.setText("- alien");
         alienBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 alienBtnActionPerformed(evt);
@@ -101,7 +108,7 @@ public class AgentWin extends javax.swing.JFrame {
         });
         jMenu2.add(alienBtn);
 
-        utrustningBtn.setText("Ny utrustning");
+        utrustningBtn.setText("- utrustning");
         utrustningBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 utrustningBtnActionPerformed(evt);
@@ -121,7 +128,7 @@ public class AgentWin extends javax.swing.JFrame {
         });
         jMenu3.add(omradeBtn);
 
-        rasBtn.setText("-ras");
+        rasBtn.setText("- ras");
         rasBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rasBtnActionPerformed(evt);
@@ -129,7 +136,7 @@ public class AgentWin extends javax.swing.JFrame {
         });
         jMenu3.add(rasBtn);
 
-        periodBtn.setText("-tidsperiod");
+        periodBtn.setText("- tidsperiod");
         periodBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 periodBtnActionPerformed(evt);
@@ -141,7 +148,7 @@ public class AgentWin extends javax.swing.JFrame {
 
         jMenu4.setText("Sök ▽");
 
-        omradesChefBtn.setText("-områdeschef");
+        omradesChefBtn.setText("- områdeschef");
         omradesChefBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 omradesChefBtnActionPerformed(evt);
@@ -149,7 +156,7 @@ public class AgentWin extends javax.swing.JFrame {
         });
         jMenu4.add(omradesChefBtn);
 
-        jMenuItem1.setText("-alien");
+        jMenuItem1.setText("- alien");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -159,23 +166,15 @@ public class AgentWin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setText("Inställningar");
+        jMenu5.setText("Inställningar ▽");
 
-        changePassBtn.setText("-ändra lösenord");
+        changePassBtn.setText("- ändra lösenord");
         changePassBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 changePassBtnActionPerformed(evt);
             }
         });
         jMenu5.add(changePassBtn);
-
-        logOutBtn.setText("-logga ut");
-        logOutBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logOutBtnActionPerformed(evt);
-            }
-        });
-        jMenu5.add(logOutBtn);
 
         jMenuBar1.add(jMenu5);
 
@@ -188,17 +187,25 @@ public class AgentWin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(148, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -250,12 +257,6 @@ public class AgentWin extends javax.swing.JFrame {
         new SokAlien(idb).setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutBtnActionPerformed
-        // TODO add your handling code here:
-        new LogInWin(idb).setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_logOutBtnActionPerformed
-
     private void changePassBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePassBtnActionPerformed
         // TODO add your handling code here:
         new AndraLosenAgent(idb, id).setVisible(true);
@@ -270,6 +271,11 @@ public class AgentWin extends javax.swing.JFrame {
         // TODO add your handling code here:
         new SeTopplistaAgenter(idb).setVisible(true);
     }//GEN-LAST:event_visaTopp3AgenterBtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new LogInWin(idb).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void visaMinInformation() {
 
@@ -299,6 +305,7 @@ public class AgentWin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem alienBtn;
     private javax.swing.JMenuItem changePassBtn;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -309,7 +316,6 @@ public class AgentWin extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JMenuItem logOutBtn;
     private javax.swing.JMenuItem minUtrustningBtn;
     private javax.swing.JMenuItem omradeBtn;
     private javax.swing.JMenuItem omradesChefBtn;
