@@ -11,7 +11,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="alienBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Alien"/>
+                <Property name="text" type="java.lang.String" value="- alien"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="alienBtnActionPerformed"/>
@@ -19,7 +19,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="utrustningBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ny utrustning"/>
+                <Property name="text" type="java.lang.String" value="- utrustning"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="utrustningBtnActionPerformed"/>
@@ -27,7 +27,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="regNyAgentBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="-Ny Agent"/>
+                <Property name="text" type="java.lang.String" value="- agent"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="regNyAgentBtnActionPerformed"/>
@@ -35,7 +35,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="regNyAdminBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="-Ny admin"/>
+                <Property name="text" type="java.lang.String" value="- admin"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="regNyAdminBtnActionPerformed"/>
@@ -50,7 +50,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="minUtrustningBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="-min utrustning"/>
+                <Property name="text" type="java.lang.String" value="- min utrustning"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="minUtrustningBtnActionPerformed"/>
@@ -58,7 +58,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="visaTopp3AgenterBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="-topp 3 agenter"/>
+                <Property name="text" type="java.lang.String" value="- topp 3 agenter"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="visaTopp3AgenterBtnActionPerformed"/>
@@ -66,12 +66,12 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="samStatBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="-sammanfattande statistik"/>
+                <Property name="text" type="java.lang.String" value="- sammanfattande statistik"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="printRapportBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="-skriv ut statistikrapport"/>
+                <Property name="text" type="java.lang.String" value="- skriv ut statistikrapport"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -81,32 +81,32 @@
             <Property name="text" type="java.lang.String" value="S&#xf6;k &#x25bd;"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="omradesChefBtn">
+            <MenuItem class="javax.swing.JMenuItem" name="visaOmradesChefBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="-omr&#xe5;deschef"/>
+                <Property name="text" type="java.lang.String" value="- omr&#xe5;deschef"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="omradesChefBtnActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="visaOmradesChefBtnActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="sokAlienbtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="-alien"/>
+                <Property name="text" type="java.lang.String" value="- alien"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sokAlienbtnActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Lista alien &#xf6;ver &#x25bd;"/>
+            <Property name="text" type="java.lang.String" value="Lista alien efter &#x25bd;"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="omradeBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="- omr&#xe5;de "/>
+                <Property name="text" type="java.lang.String" value="- omr&#xe5;de"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="omradeBtnActionPerformed"/>
@@ -114,7 +114,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="rasBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="-ras"/>
+                <Property name="text" type="java.lang.String" value="- ras"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rasBtnActionPerformed"/>
@@ -122,7 +122,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="periodBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="-tidsperiod"/>
+                <Property name="text" type="java.lang.String" value="- tidsperiod"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="periodBtnActionPerformed"/>
@@ -137,7 +137,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="taBortAlienBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="-alien"/>
+                <Property name="text" type="java.lang.String" value="- alien"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="taBortAlienBtnActionPerformed"/>
@@ -145,7 +145,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="taBortAgentBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="-agent"/>
+                <Property name="text" type="java.lang.String" value="- agent"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="taBortAgentBtnActionPerformed"/>
@@ -153,7 +153,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="taBortUtrBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="-utrustning"/>
+                <Property name="text" type="java.lang.String" value="- utrustning"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="taBortUtrBtnActionPerformed"/>
@@ -168,17 +168,23 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="andraAgentBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="-agentinfo"/>
+                <Property name="text" type="java.lang.String" value="- agent"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="andraAgentBtnActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="andraAlienBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="-alieninfo"/>
+                <Property name="text" type="java.lang.String" value="- alien"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="andraAlienBtnActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="andraOmradeChefBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="-omr&#xe5;deschef"/>
+                <Property name="text" type="java.lang.String" value="- omr&#xe5;deschef"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="andraOmradeChefBtnActionPerformed"/>
@@ -186,7 +192,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="andraKontorChefBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="-kontorschef"/>
+                <Property name="text" type="java.lang.String" value="- kontorschef"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="andraKontorChefBtnActionPerformed"/>
@@ -201,18 +207,10 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="changePassBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="-&#xe4;ndra l&#xf6;senord"/>
+                <Property name="text" type="java.lang.String" value="- &#xe4;ndra l&#xf6;senord"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changePassBtnActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="logOutBtn">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="-logga ut"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logOutBtnActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -246,10 +244,20 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel1" min="-2" pref="134" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel1" min="-2" pref="134" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="53" pref="322" max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="398" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="loggaUtbtn" min="-2" pref="99" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -260,7 +268,9 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="174" max="-2" attributes="0"/>
-              <EmptySpace pref="68" max="32767" attributes="0"/>
+              <EmptySpace pref="34" max="32767" attributes="0"/>
+              <Component id="loggaUtbtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -289,5 +299,13 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="loggaUtbtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Logga ut"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loggaUtbtnActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>
