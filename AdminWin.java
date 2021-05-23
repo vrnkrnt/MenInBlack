@@ -84,7 +84,7 @@ public class AdminWin extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jMenu2.setText("Registrera...");
+        jMenu2.setText("Registrera ▽");
 
         alienBtn.setText("Alien");
         alienBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -120,7 +120,7 @@ public class AdminWin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu1.setText("Visa...");
+        jMenu1.setText("Visa ▽");
 
         minUtrustningBtn.setText("-min utrustning");
         minUtrustningBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +146,7 @@ public class AdminWin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu4.setText("Sök...");
+        jMenu4.setText("Sök ▽");
 
         omradesChefBtn.setText("-områdeschef");
         omradesChefBtn.addActionListener(new java.awt.event.ActionListener() {

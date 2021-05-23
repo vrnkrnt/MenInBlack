@@ -6,7 +6,7 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Registrera..."/>
+            <Property name="text" type="java.lang.String" value="Registrera &#x25bd;"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="alienBtn">
@@ -45,7 +45,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Visa..."/>
+            <Property name="text" type="java.lang.String" value="Visa &#x25bd;"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="minUtrustningBtn">
@@ -78,7 +78,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="S&#xf6;k..."/>
+            <Property name="text" type="java.lang.String" value="S&#xf6;k &#x25bd;"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="omradesChefBtn">
