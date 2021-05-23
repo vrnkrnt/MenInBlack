@@ -132,7 +132,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ta bort"/>
+            <Property name="text" type="java.lang.String" value="Ta bort &#x25bd;"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="taBortAlienBtn">
@@ -163,7 +163,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu7">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&#xc4;ndra"/>
+            <Property name="text" type="java.lang.String" value="&#xc4;ndra &#x25bd;"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="andraAgentBtn">
@@ -196,7 +196,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu5">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Inst&#xe4;llningar"/>
+            <Property name="text" type="java.lang.String" value="Inst&#xe4;llningar &#x25bd;"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="changePassBtn">

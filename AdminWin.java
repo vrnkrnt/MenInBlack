@@ -194,7 +194,7 @@ public class AdminWin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu6.setText("Ta bort");
+        jMenu6.setText("Ta bort ▽");
 
         taBortAlienBtn.setText("-alien");
         taBortAlienBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -222,7 +222,7 @@ public class AdminWin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu6);
 
-        jMenu7.setText("Ändra");
+        jMenu7.setText("Ändra ▽");
 
         andraAgentBtn.setText("-agentinfo");
         jMenu7.add(andraAgentBtn);
@@ -248,7 +248,7 @@ public class AdminWin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu7);
 
-        jMenu5.setText("Inställningar");
+        jMenu5.setText("Inställningar ▽");
 
         changePassBtn.setText("-ändra lösenord");
         changePassBtn.addActionListener(new java.awt.event.ActionListener() {
