@@ -120,7 +120,7 @@ public class AgentWin extends javax.swing.JFrame {
 
         jMenu3.setText("Lista alien över ▽");
 
-        omradeBtn.setText("- område ");
+        omradeBtn.setText("- plats");
         omradeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 omradeBtnActionPerformed(evt);
@@ -214,7 +214,7 @@ public class AgentWin extends javax.swing.JFrame {
 
     private void omradeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_omradeBtnActionPerformed
 
-        new ListaAliensEfterOmrade(idb).setVisible(true);
+        new ListaAliensEfterPlats(idb).setVisible(true);
     }//GEN-LAST:event_omradeBtnActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {

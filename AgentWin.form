@@ -57,7 +57,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="omradeBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="- omr&#xe5;de "/>
+                <Property name="text" type="java.lang.String" value="- plats"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="omradeBtnActionPerformed"/>
