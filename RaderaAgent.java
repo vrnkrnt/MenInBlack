@@ -53,7 +53,7 @@ public class RaderaAgent extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Radera agent");
 
-        jLabel2.setText("Skriv in ID: ");
+        jLabel2.setText("Välj agent:");
 
         bInfo.setText("Visa info om agent");
         bInfo.addActionListener(new java.awt.event.ActionListener() {
@@ -120,7 +120,7 @@ public class RaderaAgent extends javax.swing.JFrame {
                 .addComponent(bInfo)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bRadera)
                     .addComponent(bTillbaka))
@@ -157,6 +157,8 @@ public class RaderaAgent extends javax.swing.JFrame {
             String agentID = idb.fetchSingle("SELECT Agent_ID FROM agent WHERE Namn = '" + agentNamn + "'");
             String fraga = "SELECT * FROM agent WHERE Agent_ID = " + agentID;
             soktAgent = idb.fetchRows(fraga);
+            String omradeNamn = idb.fetchSingle("SELECT Benamning FROM omrade WHERE Omrades_ID IN "
+                    + "(SELECT Omrade FROM Agent WHERE Agent_ID = " + agentID + ");");
 
             for (HashMap<String, String> agent : soktAgent) {
                 visaAgentInfo.append("ID: \t" + agent.get("Agent_ID") + "\n");
@@ -164,7 +166,7 @@ public class RaderaAgent extends javax.swing.JFrame {
                 visaAgentInfo.append("Telnr: \t" + agent.get("Telefon") + "\n");
                 visaAgentInfo.append("Anst. datum: \t" + agent.get("Anstallningsdatum") + "\n");
                 visaAgentInfo.append("Admin J/N: \t" + agent.get("Administrator") + "\n");
-                visaAgentInfo.append("Område: \t" + agent.get("Omrade") + "\n");
+                visaAgentInfo.append("Område: \t" + omradeNamn + "\n");
             }
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick fel. "
