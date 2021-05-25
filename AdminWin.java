@@ -5,14 +5,20 @@
  */
 package MenInBlack;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
-/**
- *
- * @author Emillager
+/*
+ * @author Emil Lager
+ * @author Josefin Olsson
+ * @author Karin Mäki-Kala
+ * @author Veronika Ranta
  */
 public class AdminWin extends javax.swing.JFrame {
+
     private InfDB idb;
     private static String id;
 
@@ -23,6 +29,7 @@ public class AdminWin extends javax.swing.JFrame {
         initComponents();
         this.idb = idb;
         this.id = id;
+        visaMinInformation();
     }
 
     /**
@@ -35,6 +42,9 @@ public class AdminWin extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        loggaUtbtn = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         alienBtn = new javax.swing.JMenuItem();
@@ -47,8 +57,8 @@ public class AdminWin extends javax.swing.JFrame {
         samStatBtn = new javax.swing.JMenuItem();
         printRapportBtn = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        omradesChefBtn = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        visaOmradesChefBtn = new javax.swing.JMenuItem();
+        sokAlienbtn = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         omradeBtn = new javax.swing.JMenuItem();
         rasBtn = new javax.swing.JMenuItem();
@@ -64,15 +74,26 @@ public class AdminWin extends javax.swing.JFrame {
         andraKontorChefBtn = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         changePassBtn = new javax.swing.JMenuItem();
-        logOutBtn = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("admin");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Min information");
 
-        jMenu2.setText("Registrera...");
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
-        alienBtn.setText("Alien");
+        loggaUtbtn.setText("Logga ut");
+        loggaUtbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loggaUtbtnActionPerformed(evt);
+            }
+        });
+
+        jMenu2.setText("Registrera ▽");
+
+        alienBtn.setText("- alien");
         alienBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 alienBtnActionPerformed(evt);
@@ -80,7 +101,7 @@ public class AdminWin extends javax.swing.JFrame {
         });
         jMenu2.add(alienBtn);
 
-        utrustningBtn.setText("Ny utrustning");
+        utrustningBtn.setText("- utrustning");
         utrustningBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 utrustningBtnActionPerformed(evt);
@@ -88,10 +109,15 @@ public class AdminWin extends javax.swing.JFrame {
         });
         jMenu2.add(utrustningBtn);
 
-        regNyAgentBtn.setText("-Ny Agent");
+        regNyAgentBtn.setText("- agent");
+        regNyAgentBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regNyAgentBtnActionPerformed(evt);
+            }
+        });
         jMenu2.add(regNyAgentBtn);
 
-        regNyAdminBtn.setText("-Ny admin");
+        regNyAdminBtn.setText("- admin");
         regNyAdminBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 regNyAdminBtnActionPerformed(evt);
@@ -101,9 +127,9 @@ public class AdminWin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu1.setText("Visa...");
+        jMenu1.setText("Visa ▽");
 
-        minUtrustningBtn.setText("-min utrustning");
+        minUtrustningBtn.setText("- min utrustning");
         minUtrustningBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 minUtrustningBtnActionPerformed(evt);
@@ -111,7 +137,7 @@ public class AdminWin extends javax.swing.JFrame {
         });
         jMenu1.add(minUtrustningBtn);
 
-        visaTopp3AgenterBtn.setText("-topp 3 agenter");
+        visaTopp3AgenterBtn.setText("- topp 3 agenter");
         visaTopp3AgenterBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 visaTopp3AgenterBtnActionPerformed(evt);
@@ -119,37 +145,37 @@ public class AdminWin extends javax.swing.JFrame {
         });
         jMenu1.add(visaTopp3AgenterBtn);
 
-        samStatBtn.setText("-sammanfattande statistik");
+        samStatBtn.setText("- sammanfattande statistik");
         jMenu1.add(samStatBtn);
 
-        printRapportBtn.setText("-skriv ut statistikrapport");
+        printRapportBtn.setText("- skriv ut statistikrapport");
         jMenu1.add(printRapportBtn);
 
         jMenuBar1.add(jMenu1);
 
-        jMenu4.setText("Sök...");
+        jMenu4.setText("Sök ▽");
 
-        omradesChefBtn.setText("-områdeschef");
-        omradesChefBtn.addActionListener(new java.awt.event.ActionListener() {
+        visaOmradesChefBtn.setText("- områdeschef");
+        visaOmradesChefBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                omradesChefBtnActionPerformed(evt);
+                visaOmradesChefBtnActionPerformed(evt);
             }
         });
-        jMenu4.add(omradesChefBtn);
+        jMenu4.add(visaOmradesChefBtn);
 
-        jMenuItem1.setText("-alien");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        sokAlienbtn.setText("- alien");
+        sokAlienbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                sokAlienbtnActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem1);
+        jMenu4.add(sokAlienbtn);
 
         jMenuBar1.add(jMenu4);
 
-        jMenu3.setText("Lista alien över ▽");
+        jMenu3.setText("Lista alien efter ▽");
 
-        omradeBtn.setText("- område ");
+        omradeBtn.setText("- plats");
         omradeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 omradeBtnActionPerformed(evt);
@@ -157,7 +183,7 @@ public class AdminWin extends javax.swing.JFrame {
         });
         jMenu3.add(omradeBtn);
 
-        rasBtn.setText("-ras");
+        rasBtn.setText("- ras");
         rasBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rasBtnActionPerformed(evt);
@@ -165,7 +191,7 @@ public class AdminWin extends javax.swing.JFrame {
         });
         jMenu3.add(rasBtn);
 
-        periodBtn.setText("-tidsperiod");
+        periodBtn.setText("- tidsperiod");
         periodBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 periodBtnActionPerformed(evt);
@@ -175,9 +201,9 @@ public class AdminWin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu6.setText("Ta bort");
+        jMenu6.setText("Ta bort ▽");
 
-        taBortAlienBtn.setText("-alien");
+        taBortAlienBtn.setText("- alien");
         taBortAlienBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 taBortAlienBtnActionPerformed(evt);
@@ -185,7 +211,7 @@ public class AdminWin extends javax.swing.JFrame {
         });
         jMenu6.add(taBortAlienBtn);
 
-        taBortAgentBtn.setText("-agent");
+        taBortAgentBtn.setText("- agent");
         taBortAgentBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 taBortAgentBtnActionPerformed(evt);
@@ -193,23 +219,43 @@ public class AdminWin extends javax.swing.JFrame {
         });
         jMenu6.add(taBortAgentBtn);
 
-        taBortUtrBtn.setText("-utrustning");
+        taBortUtrBtn.setText("- utrustning");
+        taBortUtrBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taBortUtrBtnActionPerformed(evt);
+            }
+        });
         jMenu6.add(taBortUtrBtn);
 
         jMenuBar1.add(jMenu6);
 
-        jMenu7.setText("Ändra");
+        jMenu7.setText("Ändra ▽");
 
-        andraAgentBtn.setText("-agentinfo");
+        andraAgentBtn.setText("- agent");
+        andraAgentBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                andraAgentBtnActionPerformed(evt);
+            }
+        });
         jMenu7.add(andraAgentBtn);
 
-        andraAlienBtn.setText("-alieninfo");
+        andraAlienBtn.setText("- alien");
+        andraAlienBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                andraAlienBtnActionPerformed(evt);
+            }
+        });
         jMenu7.add(andraAlienBtn);
 
-        andraOmradeChefBtn.setText("-områdeschef");
+        andraOmradeChefBtn.setText("- områdeschef");
+        andraOmradeChefBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                andraOmradeChefBtnActionPerformed(evt);
+            }
+        });
         jMenu7.add(andraOmradeChefBtn);
 
-        andraKontorChefBtn.setText("-kontorschef");
+        andraKontorChefBtn.setText("- kontorschef");
         andraKontorChefBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 andraKontorChefBtnActionPerformed(evt);
@@ -219,23 +265,15 @@ public class AdminWin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu7);
 
-        jMenu5.setText("Inställningar");
+        jMenu5.setText("Inställningar ▽");
 
-        changePassBtn.setText("-ändra lösenord");
+        changePassBtn.setText("- ändra lösenord");
         changePassBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 changePassBtnActionPerformed(evt);
             }
         });
         jMenu5.add(changePassBtn);
-
-        logOutBtn.setText("-logga ut");
-        logOutBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logOutBtnActionPerformed(evt);
-            }
-        });
-        jMenu5.add(logOutBtn);
 
         jMenuBar1.add(jMenu5);
 
@@ -246,110 +284,133 @@ public class AdminWin extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(229, 229, 229)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(328, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(loggaUtbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(139, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(128, 128, 128))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(loggaUtbtn)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void omradeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_omradeBtnActionPerformed
-
-        new ListaAliensEfterOmrade(idb).setVisible(true);
+        new ListaAliensEfterPlats(idb).setVisible(true);
     }//GEN-LAST:event_omradeBtnActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
-        new ListaAliensEfterDatum(idb).setVisible(true);
-    }                                          
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
-    }                                          
-
     private void alienBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alienBtnActionPerformed
-        // TODO add your handling code here:
         new RegAlienWin(idb).setVisible(true);
     }//GEN-LAST:event_alienBtnActionPerformed
 
     private void utrustningBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_utrustningBtnActionPerformed
-        // TODO add your handling code here:
         new RegUtrustningWin(idb).setVisible(true);
     }//GEN-LAST:event_utrustningBtnActionPerformed
 
     private void rasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rasBtnActionPerformed
-        // TODO add your handling code here:
         new ListaAliensEfterRas(idb).setVisible(true);
     }//GEN-LAST:event_rasBtnActionPerformed
 
     private void periodBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodBtnActionPerformed
-        // TODO add your handling code here:
         new ListaAliensEfterDatum(idb).setVisible(true);
-        
     }//GEN-LAST:event_periodBtnActionPerformed
 
-    private void omradesChefBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_omradesChefBtnActionPerformed
-        // TODO add your handling code here:
+    private void visaOmradesChefBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visaOmradesChefBtnActionPerformed
         new SokOmradesChef(idb).setVisible(true);
-    }//GEN-LAST:event_omradesChefBtnActionPerformed
+    }//GEN-LAST:event_visaOmradesChefBtnActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+    private void sokAlienbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sokAlienbtnActionPerformed
         new SokAlien(idb).setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutBtnActionPerformed
-        // TODO add your handling code here:
-        new LogInWin(idb).setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_logOutBtnActionPerformed
-
-    private void changePassBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePassBtnActionPerformed
-        // TODO add your handling code here:
-        new AndraLosenAgent(idb).setVisible(true);
-    }//GEN-LAST:event_changePassBtnActionPerformed
-
+    }//GEN-LAST:event_sokAlienbtnActionPerformed
     private void minUtrustningBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minUtrustningBtnActionPerformed
-        // TODO add your handling code here:
         new ListaEnAgentsUtrustning(idb, id).setVisible(true);
     }//GEN-LAST:event_minUtrustningBtnActionPerformed
 
     private void visaTopp3AgenterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visaTopp3AgenterBtnActionPerformed
-        // TODO add your handling code here:
         new SeTopplistaAgenter(idb).setVisible(true);
     }//GEN-LAST:event_visaTopp3AgenterBtnActionPerformed
 
     private void taBortAlienBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taBortAlienBtnActionPerformed
-        // TODO add your handling code here:
         new RaderaAlien(idb).setVisible(true);
     }//GEN-LAST:event_taBortAlienBtnActionPerformed
 
     private void taBortAgentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taBortAgentBtnActionPerformed
-        // TODO add your handling code here:
         new RaderaAgent(idb).setVisible(true);
     }//GEN-LAST:event_taBortAgentBtnActionPerformed
 
     private void regNyAdminBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regNyAdminBtnActionPerformed
-        // TODO add your handling code here:
+        new RegAgentWin(idb).setVisible(true);
     }//GEN-LAST:event_regNyAdminBtnActionPerformed
 
     private void andraKontorChefBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_andraKontorChefBtnActionPerformed
-        // TODO add your handling code here:
         new AndraKontorschef(idb).setVisible(true);
     }//GEN-LAST:event_andraKontorChefBtnActionPerformed
-//
-    /**
-     * @param args the command line arguments
-     */
 
+    private void andraOmradeChefBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_andraOmradeChefBtnActionPerformed
+        new AndraOmradeschef(idb).setVisible(true);
+    }//GEN-LAST:event_andraOmradeChefBtnActionPerformed
+
+    private void taBortUtrBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taBortUtrBtnActionPerformed
+        new RaderaUtrustning(idb).setVisible(true);
+    }//GEN-LAST:event_taBortUtrBtnActionPerformed
+
+    private void regNyAgentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regNyAgentBtnActionPerformed
+        new RegAgentWin(idb).setVisible(true);
+    }//GEN-LAST:event_regNyAgentBtnActionPerformed
+
+    private void loggaUtbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loggaUtbtnActionPerformed
+        new LogInWin(idb).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_loggaUtbtnActionPerformed
+
+    private void changePassBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePassBtnActionPerformed
+        new AndraLosenAgent(idb, id).setVisible(true);
+    }//GEN-LAST:event_changePassBtnActionPerformed
+
+    private void andraAgentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_andraAgentBtnActionPerformed
+        new AndraAgent(idb).setVisible(true);
+    }//GEN-LAST:event_andraAgentBtnActionPerformed
+
+    private void andraAlienBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_andraAlienBtnActionPerformed
+        new AndraAlien(idb).setVisible(true);
+    }//GEN-LAST:event_andraAlienBtnActionPerformed
+
+    private void visaMinInformation() {
+
+        ArrayList<HashMap<String, String>> valdAgent;
+
+        try {
+            String fraga = "SELECT * FROM agent WHERE Agent_ID = " + id;
+            valdAgent = idb.fetchRows(fraga);
+            String omradeNamn = idb.fetchSingle("SELECT Benamning FROM omrade WHERE Omrades_ID IN "
+                    + "(SELECT Omrade FROM Agent WHERE Agent_ID = " + id + ");");
+            for (HashMap<String, String> agent : valdAgent) {
+                jTextArea1.append("ID:\t" + agent.get("Agent_ID") + "\n");
+                jTextArea1.append("Namn:\t" + agent.get("Namn") + "\n");
+                jTextArea1.append("Tel. nr.:\t" + agent.get("Telefon") + "\n");
+                jTextArea1.append("Anst. dat.:\t" + agent.get("Anstallningsdatum") + "\n");
+                jTextArea1.append("Admin J/N:\t" + agent.get("Administrator") + "\n");
+                jTextArea1.append("Område:\t" + omradeNamn);
+            }
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Något gick fel. "
+                    + e.getMessage());
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem alienBtn;
@@ -367,21 +428,23 @@ public class AdminWin extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem logOutBtn;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton loggaUtbtn;
     private javax.swing.JMenuItem minUtrustningBtn;
     private javax.swing.JMenuItem omradeBtn;
-    private javax.swing.JMenuItem omradesChefBtn;
     private javax.swing.JMenuItem periodBtn;
     private javax.swing.JMenuItem printRapportBtn;
     private javax.swing.JMenuItem rasBtn;
     private javax.swing.JMenuItem regNyAdminBtn;
     private javax.swing.JMenuItem regNyAgentBtn;
     private javax.swing.JMenuItem samStatBtn;
+    private javax.swing.JMenuItem sokAlienbtn;
     private javax.swing.JMenuItem taBortAgentBtn;
     private javax.swing.JMenuItem taBortAlienBtn;
     private javax.swing.JMenuItem taBortUtrBtn;
     private javax.swing.JMenuItem utrustningBtn;
+    private javax.swing.JMenuItem visaOmradesChefBtn;
     private javax.swing.JMenuItem visaTopp3AgenterBtn;
     // End of variables declaration//GEN-END:variables
 }

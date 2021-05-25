@@ -7,7 +7,7 @@ package MenInBlack;
 
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
-
+import oru.inf.InfException;
 
 /**
  *
@@ -40,7 +40,6 @@ public class AndraAdmin extends javax.swing.JFrame {
         jLaggtill = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextnamn.setText("Agent namn");
         jTextnamn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -53,14 +52,11 @@ public class AndraAdmin extends javax.swing.JFrame {
                 jTextnamnActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextnamn, new org.netbeans.lib.awtextra.AbsoluteConstraints(141, 112, 113, -1));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jTextArea1.setText("Ändra en agents administratörstatus");
         jScrollPane1.setViewportView(jTextArea1);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 19, 220, 87));
 
         jTabort.setText("Ta bort");
         jTabort.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -73,7 +69,6 @@ public class AndraAdmin extends javax.swing.JFrame {
                 jTabortActionPerformed(evt);
             }
         });
-        getContentPane().add(jTabort, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 173, 73, -1));
 
         jLaggtill.setText("Lägg till");
         jLaggtill.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -86,7 +81,35 @@ public class AndraAdmin extends javax.swing.JFrame {
                 jLaggtillActionPerformed(evt);
             }
         });
-        getContentPane().add(jLaggtill, new org.netbeans.lib.awtextra.AbsoluteConstraints(233, 173, 73, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(86, 86, 86)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(141, 141, 141)
+                .addComponent(jTextnamn, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addComponent(jTabort, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88)
+                .addComponent(jLaggtill, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jTextnamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabort)
+                    .addComponent(jLaggtill)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -97,15 +120,7 @@ public class AndraAdmin extends javax.swing.JFrame {
 
     private void jLaggtillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLaggtillActionPerformed
         // TODO add your handling code here:
-        if (Validering.textFaltHarVarde(jTextnamn)){
-            String namn = jTextnamn.getText();
-        String qJ = "UPDATE AGENT SET ADMINISTRATOR = 'J' WHERE NAMN = '" + namn + "'";
-        JOptionPane.showMessageDialog(null, "Agent tillagd som administratör! ");
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Något gick snett :/! ");
-            
-        }
+
         
     }//GEN-LAST:event_jLaggtillActionPerformed
 

@@ -48,10 +48,6 @@ public class Validering {
         return result;
     }
 
-    static boolean textvalue(JLabel nyttLosen) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public static boolean textFaltHarVarde(JTextField rutaAttKolla) {
         boolean resultat = true;
 
@@ -77,6 +73,24 @@ public class Validering {
         }
 
         return resultat;
+    }
+
+    public static boolean isSammaLosen(JTextField rutaAttKolla1, JTextField rutaAttKolla2) {
+        boolean lika = false;
+
+        try {
+
+            String losen1 = rutaAttKolla1.getText();
+            String losen2 = rutaAttKolla2.getText();
+
+            if (losen1.equals(losen2)) {
+                lika = true;
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Kontrollera det upprepande lösenordet");
+        }
+        return lika;
     }
 
     /*public static boolean finnsAgentID(JTextField rutaAttKolla) {

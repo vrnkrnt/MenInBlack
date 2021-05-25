@@ -11,29 +11,26 @@ import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
-/**
- *
- * @author josefinolsson
+/*
+ * @author Emil Lager
+ * @author Josefin Olsson
+ * @author Karin Mäki-Kala
+ * @author Veronika Ranta
  */
 public class ListaEnAgentsUtrustning extends javax.swing.JFrame {
 
     private static InfDB idb;
     private static String id;
 
+    /**
+     * Creates new form ListaEnAgentsUtrustning
+     */
     public ListaEnAgentsUtrustning(InfDB idb, String id) {
         initComponents();
         this.idb = idb;
         this.id = id;
+        visaAgentsUtrustning();
     }
-
-    /**
-     * Creates new form ListaEnAgentsUtrustning
-     */
-    public ListaEnAgentsUtrustning() {
-        initComponents();
-    }
-    
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,21 +43,14 @@ public class ListaEnAgentsUtrustning extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         listaUtrustning = new javax.swing.JTextArea();
-        bSok = new javax.swing.JButton();
         bTillbaka = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         listaUtrustning.setColumns(20);
         listaUtrustning.setRows(5);
         jScrollPane1.setViewportView(listaUtrustning);
-
-        bSok.setText("Visa");
-        bSok.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bSokActionPerformed(evt);
-            }
-        });
 
         bTillbaka.setText("Tillbaka");
         bTillbaka.addActionListener(new java.awt.event.ActionListener() {
@@ -69,64 +59,64 @@ public class ListaEnAgentsUtrustning extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Min utrustning");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(89, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bTillbaka)
+                .addComponent(bTillbaka, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bSok, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(105, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bSok)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addComponent(bTillbaka))
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(bTillbaka)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSokActionPerformed
-        listaUtrustning.setText("");
-
-        ArrayList<HashMap<String, String>> utrustningsLista;
-
-            try {
-                //String id = inputID.getText();
-                String fraga = "SELECT * FROM Utrustning WHERE Utrustnings_ID IN "
-                        + "(SELECT Utrustnings_ID FROM Innehar_Utrustning WHERE Agent_ID='" + id + "')";
-                utrustningsLista = idb.fetchRows(fraga);
-                
-               
-               listaUtrustning.append("ID \t");
-                listaUtrustning.append("Benämning \n");
-
-                for (HashMap<String, String> utrustning : utrustningsLista) {
-                    listaUtrustning.append(utrustning.get("Utrustnings_ID") + "\t");
-                    listaUtrustning.append(utrustning.get("Benamning") + "\n");
-                }
-
-            } catch (InfException e) {
-                JOptionPane.showMessageDialog(null, "Databasfel!");
-                System.out.println("Internt felmeddelande" + e.getMessage());
-            }
-    }//GEN-LAST:event_bSokActionPerformed
-
     private void bTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTillbakaActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_bTillbakaActionPerformed
+
+    private void visaAgentsUtrustning() {
+        ArrayList<HashMap<String, String>> utrustningsLista;
+
+        try {
+            String fraga = "SELECT * FROM utrustning WHERE Utrustnings_ID IN "
+                    + "(SELECT Utrustnings_ID FROM innehar_utrustning WHERE Agent_ID = " + id + ")";
+            utrustningsLista = idb.fetchRows(fraga);
+
+            listaUtrustning.append("ID \t");
+            listaUtrustning.append("Benämning \n");
+
+            for (HashMap<String, String> utrustning : utrustningsLista) {
+                listaUtrustning.append(utrustning.get("Utrustnings_ID") + "\t");
+                listaUtrustning.append(utrustning.get("Benamning") + "\n");
+            }
+
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+            System.out.println("Internt felmeddelande" + e.getMessage());
+        }
+    }
 
     /**
      *
@@ -165,8 +155,8 @@ public class ListaEnAgentsUtrustning extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bSok;
     private javax.swing.JButton bTillbaka;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea listaUtrustning;
     // End of variables declaration//GEN-END:variables
