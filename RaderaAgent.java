@@ -17,16 +17,17 @@ import oru.inf.InfException;
  * @author Karin Mäki-Kala
  * @author Veronika Ranta
  */
-
 public class RaderaAgent extends javax.swing.JFrame {
 
     private static InfDB idb;
+
     /**
      * Creates new form RaderaAgent
      */
     public RaderaAgent(InfDB idb) {
         initComponents();
         this.idb = idb;
+        valjAgent();
     }
 
     /**
@@ -41,18 +42,18 @@ public class RaderaAgent extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         bInfo = new javax.swing.JButton();
-        inputID = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         visaAgentInfo = new javax.swing.JTextArea();
         bRadera = new javax.swing.JButton();
         bTillbaka = new javax.swing.JButton();
+        comboValjAgent = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Radera agent");
 
-        jLabel2.setText("Skriv in ID: ");
+        jLabel2.setText("Välj agent:");
 
         bInfo.setText("Visa info om agent");
         bInfo.addActionListener(new java.awt.event.ActionListener() {
@@ -60,8 +61,6 @@ public class RaderaAgent extends javax.swing.JFrame {
                 bInfoActionPerformed(evt);
             }
         });
-
-        inputID.setColumns(8);
 
         visaAgentInfo.setColumns(20);
         visaAgentInfo.setRows(5);
@@ -103,8 +102,8 @@ public class RaderaAgent extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addGap(24, 24, 24)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(inputID)
-                                    .addComponent(bInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(bInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(comboValjAgent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -116,12 +115,12 @@ public class RaderaAgent extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(inputID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboValjAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(bInfo)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bRadera)
                     .addComponent(bTillbaka))
@@ -133,14 +132,11 @@ public class RaderaAgent extends javax.swing.JFrame {
 
     private void bRaderaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRaderaActionPerformed
         try {
-            if (Validering.textFaltHarVarde(inputID)) {
-                String valdAgent = inputID.getText();
-
-                String fraga = "DELETE FROM agent WHERE Agent_ID = " + valdAgent + ";";
-                idb.delete(fraga);
-                JOptionPane.showMessageDialog(null, "Agenten har raderats.");
-            }
-
+            String agentNamn = comboValjAgent.getSelectedItem().toString();
+            String agentID = idb.fetchSingle("SELECT Agent_ID FROM agent WHERE Namn = '" + agentNamn + "'");
+            String fraga = "DELETE FROM agent WHERE Agent_ID = " + agentID + ";";
+            idb.delete(fraga);
+            JOptionPane.showMessageDialog(null, "Agenten har raderats.");
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick fel. "
                     + e.getMessage());
@@ -155,26 +151,47 @@ public class RaderaAgent extends javax.swing.JFrame {
         visaAgentInfo.setText("");
 
         ArrayList<HashMap<String, String>> soktAgent;
-        if (Validering.textFaltHarVarde(inputID) && Validering.isHeltal(inputID)) {
-            try {
-                String id = inputID.getText();
-                String fraga = "SELECT * FROM agent WHERE Agent_ID = " + id;
-                soktAgent = idb.fetchRows(fraga);
 
-                for (HashMap<String, String> agent : soktAgent) {
-                    visaAgentInfo.append("ID: \t" + agent.get("Agent_ID") + "\n");
-                    visaAgentInfo.append("Namn: \t" + agent.get("Namn") + "\n");
-                    visaAgentInfo.append("Telnr: \t" + agent.get("Telefon") + "\n");
-                    visaAgentInfo.append("Anst. datum: \t" + agent.get("Anstallningsdatum") + "\n");
-                    visaAgentInfo.append("Admin J/N: \t" + agent.get("Administrator") + "\n");
-                    visaAgentInfo.append("Område: \t" + agent.get("Omrade") + "\n");
-                }
-            } catch (InfException e) {
-                JOptionPane.showMessageDialog(null, "Något gick fel. "
-                        + e.getMessage());
+        try {
+            String agentNamn = comboValjAgent.getSelectedItem().toString();
+            String agentID = idb.fetchSingle("SELECT Agent_ID FROM agent WHERE Namn = '" + agentNamn + "'");
+            String fraga = "SELECT * FROM agent WHERE Agent_ID = " + agentID;
+            soktAgent = idb.fetchRows(fraga);
+            String omradeNamn = idb.fetchSingle("SELECT Benamning FROM omrade WHERE Omrades_ID IN "
+                    + "(SELECT Omrade FROM Agent WHERE Agent_ID = " + agentID + ");");
+
+            for (HashMap<String, String> agent : soktAgent) {
+                visaAgentInfo.append("ID: \t" + agent.get("Agent_ID") + "\n");
+                visaAgentInfo.append("Namn: \t" + agent.get("Namn") + "\n");
+                visaAgentInfo.append("Telnr: \t" + agent.get("Telefon") + "\n");
+                visaAgentInfo.append("Anst. datum: \t" + agent.get("Anstallningsdatum") + "\n");
+                visaAgentInfo.append("Admin J/N: \t" + agent.get("Administrator") + "\n");
+                visaAgentInfo.append("Område: \t" + omradeNamn + "\n");
             }
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Något gick fel. "
+                    + e.getMessage());
         }
+
     }//GEN-LAST:event_bInfoActionPerformed
+
+    private void valjAgent() {
+        comboValjAgent.addItem(" ");
+        String fraga = "SELECT Namn FROM agent";
+        ArrayList<String> allaAgenter;
+        try {
+
+            allaAgenter = idb.fetchColumn(fraga);
+
+            for (String agentNamn : allaAgenter) {
+                comboValjAgent.addItem(agentNamn);
+            }
+
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+            System.out.println("Internt felmeddelande" + e.getMessage());
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -215,7 +232,7 @@ public class RaderaAgent extends javax.swing.JFrame {
     private javax.swing.JButton bInfo;
     private javax.swing.JButton bRadera;
     private javax.swing.JButton bTillbaka;
-    private javax.swing.JTextField inputID;
+    private javax.swing.JComboBox<String> comboValjAgent;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

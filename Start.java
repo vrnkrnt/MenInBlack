@@ -27,7 +27,7 @@ public class Start {
         try 
         {
             idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-            new LogInWin(idb).setVisible(true);     
+            new LogInWin(idb).setVisible(true);    
         }
         
         catch (InfException ex)
@@ -36,5 +36,11 @@ public class Start {
         }
     
     } 
+<<<<<<< HEAD
 }
     
+=======
+    
+
+}
+>>>>>>> 38d7258d4a0c43a0b1a56067d1ea9d8c2026ed04

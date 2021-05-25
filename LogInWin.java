@@ -10,10 +10,13 @@ import oru.inf.InfException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Emillager
+/*
+ * @author Emil Lager
+ * @author Josefin Olsson
+ * @author Karin Mäki-Kala
+ * @author Veronika Ranta
  */
+
 public class LogInWin extends javax.swing.JFrame {
     private static InfDB idb;
 

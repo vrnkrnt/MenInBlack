@@ -86,7 +86,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" pref="19" max="32767" attributes="0"/>
+              <EmptySpace type="separate" pref="21" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
@@ -147,7 +147,7 @@
                           <Component id="tillhorRas" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="inputAntal" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="44" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="46" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -235,7 +235,9 @@
     <Component class="javax.swing.JComboBox" name="comboValdPlats">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="1">
+            <StringItem index="0" value="V&#xe4;lj plats"/>
+          </StringArray>
         </Property>
       </Properties>
       <AuxValues>
@@ -245,7 +247,9 @@
     <Component class="javax.swing.JComboBox" name="comboValdAgent">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="1">
+            <StringItem index="0" value="V&#xe4;lj agent"/>
+          </StringArray>
         </Property>
       </Properties>
       <AuxValues>
@@ -299,10 +303,11 @@
     <Component class="javax.swing.JComboBox" name="comboValdRas">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="Boglodite"/>
-            <StringItem index="1" value="Squid"/>
-            <StringItem index="2" value="Worm"/>
+          <StringArray count="4">
+            <StringItem index="0" value="V&#xe4;lj ras"/>
+            <StringItem index="1" value="Boglodite"/>
+            <StringItem index="2" value="Squid"/>
+            <StringItem index="3" value="Worm"/>
           </StringArray>
         </Property>
       </Properties>

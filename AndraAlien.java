@@ -101,6 +101,10 @@ public class AndraAlien extends javax.swing.JFrame {
 
         inputTelNR.setColumns(8);
 
+        comboValdPlats.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj plats" }));
+
+        comboValdAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj agent" }));
+
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
@@ -128,7 +132,7 @@ public class AndraAlien extends javax.swing.JFrame {
 
         jLabel9.setText("Ny ras:");
 
-        comboValdRas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boglodite", "Squid", "Worm" }));
+        comboValdRas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj ras", "Boglodite", "Squid", "Worm" }));
         comboValdRas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboValdRasActionPerformed(evt);
@@ -191,7 +195,7 @@ public class AndraAlien extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 19, Short.MAX_VALUE)
+                .addGap(18, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -238,7 +242,7 @@ public class AndraAlien extends javax.swing.JFrame {
                             .addComponent(comboValdRas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tillhorRas)
                             .addComponent(inputAntal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 44, Short.MAX_VALUE)))
+                        .addGap(0, 46, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
