@@ -8,10 +8,13 @@ package MenInBlack;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
-/**
- *
- * @author Emillager
+/*
+ * @author Emil Lager
+ * @author Josefin Olsson
+ * @author Karin Mäki-Kala
+ * @author Veronika Ranta
  */
+
 public class RegUtrustning extends javax.swing.JFrame {
     private static InfDB idb;
     private static String id;
