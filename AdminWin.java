@@ -314,7 +314,7 @@ public class AdminWin extends javax.swing.JFrame {
     }//GEN-LAST:event_omradeBtnActionPerformed
 
     private void alienBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alienBtnActionPerformed
-        new RegAlienWin(idb).setVisible(true);
+        new RegAlien(idb).setVisible(true);
     }//GEN-LAST:event_alienBtnActionPerformed
 
     private void utrustningBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_utrustningBtnActionPerformed

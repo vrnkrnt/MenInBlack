@@ -20,12 +20,12 @@ import oru.inf.InfException;
  * @author Veronika Ranta
  */
 
-public class RegAlienWin extends javax.swing.JFrame {
+public class RegAlien extends javax.swing.JFrame {
     private InfDB idb;
     /**
      * Creates new form RegAlienWin
      */
-    public RegAlienWin(InfDB idb) {
+    public RegAlien(InfDB idb) {
         initComponents();
         this.idb = idb;
         fyllAgentCombo();

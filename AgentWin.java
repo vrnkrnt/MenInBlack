@@ -228,7 +228,7 @@ public class AgentWin extends javax.swing.JFrame {
 
     private void alienBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alienBtnActionPerformed
         // TODO add your handling code here:
-        new RegAlienWin(idb).setVisible(true);
+        new RegAlien(idb).setVisible(true);
     }//GEN-LAST:event_alienBtnActionPerformed
 
     private void utrustningBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_utrustningBtnActionPerformed
