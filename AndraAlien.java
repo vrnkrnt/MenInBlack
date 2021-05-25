@@ -101,6 +101,10 @@ public class AndraAlien extends javax.swing.JFrame {
 
         inputTelNR.setColumns(8);
 
+        comboValdPlats.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj plats" }));
+
+        comboValdAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj agent" }));
+
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
@@ -128,7 +132,7 @@ public class AndraAlien extends javax.swing.JFrame {
 
         jLabel9.setText("Ny ras:");
 
-        comboValdRas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boglodite", "Squid", "Worm" }));
+        comboValdRas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj ras", "Boglodite", "Squid", "Worm" }));
         comboValdRas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboValdRasActionPerformed(evt);
@@ -191,7 +195,7 @@ public class AndraAlien extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 19, Short.MAX_VALUE)
+                .addGap(18, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -238,7 +242,7 @@ public class AndraAlien extends javax.swing.JFrame {
                             .addComponent(comboValdRas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tillhorRas)
                             .addComponent(inputAntal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 44, Short.MAX_VALUE)))
+                        .addGap(0, 46, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -281,7 +285,6 @@ public class AndraAlien extends javax.swing.JFrame {
         try {
             String alienNamn = comboValdAlien.getSelectedItem().toString();
             String alienID = idb.fetchSingle("SELECT Alien_ID FROM alien WHERE Namn = '" + alienNamn + "'");
-            System.out.println(alienID);
             String nyttNamn = inputName.getText();
             String nyttDatum = inputRegDat.getText();
             String nyttPass = inputLosenord.getText();
@@ -289,21 +292,12 @@ public class AndraAlien extends javax.swing.JFrame {
             String nyPlats = comboValdPlats.getSelectedItem().toString();
             String nyAnsvarigAgent = comboValdAgent.getSelectedItem().toString();
             String nyRas = comboValdRas.getSelectedItem().toString();
-            System.out.println(alienID);
-            System.out.println(nyttNamn);
-            System.out.println(nyttPass);
-            System.out.println(nyttDatum);
-            System.out.println(nyttTele);
-            System.out.println(alienID);
-            System.out.println(nyPlats);
-            System.out.println(nyAnsvarigAgent);
             String platsID = idb.fetchSingle("SELECT Plats_ID FROM plats WHERE Benamning = '" + nyPlats + "'");
             String agentID = idb.fetchSingle("SELECT Agent_ID FROM agent WHERE Namn = '" + nyAnsvarigAgent + "'");
             String fraga = "UPDATE alien SET Alien_ID = " + alienID + ", Registreringsdatum = '" + nyttDatum + "', "
                     + "losenord = '" + nyttPass + "', Namn = '" + nyttNamn + "', Telefon = '" + nyttTele + "', Plats = " + platsID + ", "
                     + "Ansvarig_Agent = " + agentID + " WHERE Alien_ID = " + alienID;
             idb.update(fraga);
-            System.out.println("Frågan funka");
             
             String raderaGammalRas = "DELETE FROM boglodite WHERE Alien_ID = " + alienID;
             String raderaGammal = "DELETE FROM worm WHERE Alien_ID = " + alienID;
@@ -316,25 +310,19 @@ public class AndraAlien extends javax.swing.JFrame {
                 String antalBoogies = inputAntal.getText();
                 String uppdateraRas = "INSERT INTO boglodite VALUES(" + alienID + ", " + antalBoogies + ")";
                 idb.insert(uppdateraRas);
-                System.out.println("Boglodite funka");            
             }
             if (nyRas.equalsIgnoreCase("Squid")) {
                 String antalArmar = inputAntal.getText();
                 String uppdateraRas = "INSERT INTO squid VALUES(" + alienID + ", " + antalArmar + ")";
                 idb.insert(uppdateraRas);
-                System.out.println("Squid funka");
             }
             if (nyRas.equalsIgnoreCase("Worm")) {
                 String uppdateraRas = "INSERT INTO worm VALUES(" + alienID + ")";
                 idb.insert(uppdateraRas);
-                System.out.println("Worm funka");
             }
             
             JOptionPane.showMessageDialog(null, "En alien har uppdaterats!");
-            //ransaFalt();
-            this.setVisible(false);
-            new AndraAlien(idb).setVisible(true);
-            
+            this.setVisible(false);            
 
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Kunde inte lägga till alien :( " + ex.getMessage());

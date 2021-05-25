@@ -89,25 +89,24 @@ public class RaderaAlien extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(alienCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(bRadera)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bTillbaka, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(bTillbaka, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(alienCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addComponent(bInfo)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bInfo)
-                .addGap(102, 102, 102))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,6 +135,7 @@ public class RaderaAlien extends javax.swing.JFrame {
     {
         try{
             alienCombo.removeAllItems();
+            alienCombo.addItem(" ");
             ArrayList<String> aliens;
             aliens = idb.fetchColumn("SELECT NAMN FROM ALIEN");
             for(String enAlien : aliens)
@@ -177,17 +177,20 @@ public class RaderaAlien extends javax.swing.JFrame {
         ArrayList<HashMap<String, String>> soktAlien;
         if (namn != null) {
             try {
-                
                 String fraga = "SELECT * FROM alien WHERE Namn = '" + namn + "'";
                 soktAlien = idb.fetchRows(fraga);
+                String omradeNamn = idb.fetchSingle("SELECT Benamning FROM plats WHERE Plats_ID IN "
+                        + "(SELECT plats FROM alien WHERE namn = '" + namn + "')");
+                String ansvarigAgent = idb.fetchSingle("SELECT Namn FROM agent WHERE Agent_ID IN "
+                    + "(SELECT Ansvarig_Agent FROM alien WHERE namn = '" + namn + "');");
 
                 for (HashMap<String, String> alien : soktAlien) {
                     visaAlienInfo.append("ID: " + alien.get("Alien_ID") + "\n");
                     visaAlienInfo.append("Namn: " + alien.get("Namn") + "\n");
                     visaAlienInfo.append("Telefonnummer: " + alien.get("Telefon") + "\n");
                     visaAlienInfo.append("Registreringsdatum: " + alien.get("Registreringsdatum") + "\n");
-                    visaAlienInfo.append("Område: " + alien.get("Plats") + "\n");
-                    visaAlienInfo.append("Ansvarig agent: " + alien.get("Ansvarig_Agent") + "\n");
+                    visaAlienInfo.append("Område: " + omradeNamn + "\n");
+                    visaAlienInfo.append("Ansvarig agent: " + ansvarigAgent + "\n");
                 }
             } catch (InfException e) {
                 JOptionPane.showMessageDialog(null, "Något gick fel. "

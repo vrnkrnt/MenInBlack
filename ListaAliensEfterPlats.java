@@ -18,18 +18,17 @@ import oru.inf.InfException;
  * @author Veronika Ranta
  */
 
-public class ListaAliensEfterOmrade extends javax.swing.JFrame {
+public class ListaAliensEfterPlats extends javax.swing.JFrame {
 
     private InfDB idb;
 
     /**
      * Creates new form VisaAliensRas
      */
-    public ListaAliensEfterOmrade(InfDB idb) {
+    public ListaAliensEfterPlats(InfDB idb) {
         initComponents();
         this.idb = idb;
-        valjOmradeNamn();
-
+        valjPlatsNamn();
     }
 
     /**
@@ -51,11 +50,10 @@ public class ListaAliensEfterOmrade extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Lista aliens efter område");
+        jLabel1.setText("Lista aliens efter plats");
 
-        jLabel2.setText("Välj område:");
+        jLabel2.setText("Välj plats:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -78,19 +76,22 @@ public class ListaAliensEfterOmrade extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addGap(18, 18, 18)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addComponent(jLabel1)))
-                .addContainerGap(62, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel1))
+                                .addGap(0, 190, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -103,8 +104,8 @@ public class ListaAliensEfterOmrade extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -116,19 +117,19 @@ public class ListaAliensEfterOmrade extends javax.swing.JFrame {
 
         jTextArea1.setText("");
 
-        ArrayList<HashMap<String, String>> soktaOmraden;
+        ArrayList<HashMap<String, String>> soktaPlatser;
 
         try {
-            String valtOmrade = jComboBox1.getSelectedItem().toString();
-            String fraga = "SELECT * FROM alien WHERE Plats IN (SELECT Omrades_ID FROM omrade WHERE Benamning = '"
-                    + valtOmrade + "') ORDER BY Alien_ID;";
-            soktaOmraden = idb.fetchRows(fraga);
+            String valdPlats = jComboBox1.getSelectedItem().toString();
+            String fraga = "SELECT * FROM alien WHERE Plats IN (SELECT Plats_ID FROM plats WHERE Benamning = '"
+                    + valdPlats + "') ORDER BY Alien_ID;";
+            soktaPlatser = idb.fetchRows(fraga);
 
             jTextArea1.append("ID \t");
             jTextArea1.append("Namn \t");
             jTextArea1.append("Telefon \n");
 
-            for (HashMap<String, String> alien : soktaOmraden) {
+            for (HashMap<String, String> alien : soktaPlatser) {
                 jTextArea1.append(alien.get("Alien_ID") + "\t");
                 jTextArea1.append(" " + alien.get("Namn") + "\t");
                 jTextArea1.append(" " + alien.get("Telefon") + "\n");
@@ -143,16 +144,16 @@ public class ListaAliensEfterOmrade extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void valjOmradeNamn() {
-        String fraga = "SELECT Benamning from omrade";
-
-        ArrayList<String> allaOmraden;
+    private void valjPlatsNamn() {
+        String fraga = "SELECT Benamning from plats";
+        jComboBox1.addItem(" ");
+        ArrayList<String> allaPlatser;
 
         try {
 
-            allaOmraden = idb.fetchColumn(fraga);
+            allaPlatser = idb.fetchColumn(fraga);
 
-            for (String Benamning : allaOmraden) {
+            for (String Benamning : allaPlatser) {
                 jComboBox1.addItem(Benamning);
             }
 
