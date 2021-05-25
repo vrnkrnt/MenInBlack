@@ -314,7 +314,7 @@ public class AdminWin extends javax.swing.JFrame {
     }//GEN-LAST:event_omradeBtnActionPerformed
 
     private void alienBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alienBtnActionPerformed
-        new RegAlienWin(idb).setVisible(true);
+        new RegAlien(idb).setVisible(true);
     }//GEN-LAST:event_alienBtnActionPerformed
 
     private void utrustningBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_utrustningBtnActionPerformed
@@ -353,7 +353,7 @@ public class AdminWin extends javax.swing.JFrame {
     }//GEN-LAST:event_taBortAgentBtnActionPerformed
 
     private void regNyAdminBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regNyAdminBtnActionPerformed
-        new RegAgentWin(idb).setVisible(true);
+        new RegAgent(idb).setVisible(true);
     }//GEN-LAST:event_regNyAdminBtnActionPerformed
 
     private void andraKontorChefBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_andraKontorChefBtnActionPerformed
@@ -369,7 +369,7 @@ public class AdminWin extends javax.swing.JFrame {
     }//GEN-LAST:event_taBortUtrBtnActionPerformed
 
     private void regNyAgentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regNyAgentBtnActionPerformed
-        new RegAgentWin(idb).setVisible(true);
+        new RegAgent(idb).setVisible(true);
     }//GEN-LAST:event_regNyAgentBtnActionPerformed
 
     private void loggaUtbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loggaUtbtnActionPerformed
