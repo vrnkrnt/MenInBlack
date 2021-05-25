@@ -233,7 +233,7 @@ public class AgentWin extends javax.swing.JFrame {
 
     private void utrustningBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_utrustningBtnActionPerformed
         // TODO add your handling code here:
-        new RegUtrustningWin(idb).setVisible(true);
+        new RegUtrustning(idb).setVisible(true);
     }//GEN-LAST:event_utrustningBtnActionPerformed
 
     private void rasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rasBtnActionPerformed
