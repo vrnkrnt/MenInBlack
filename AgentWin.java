@@ -217,15 +217,6 @@ public class AgentWin extends javax.swing.JFrame {
         new ListaAliensEfterPlats(idb).setVisible(true);
     }//GEN-LAST:event_omradeBtnActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        new ListaAliensEfterDatum(idb).setVisible(true);
-    }
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
     private void alienBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alienBtnActionPerformed
         // TODO add your handling code here:
         new RegAlien(idb).setVisible(true);
