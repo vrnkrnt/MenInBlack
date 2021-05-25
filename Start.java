@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> df51d7d0dd4084211623ba23c317496c59be69f7
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -40,15 +36,5 @@ public class Start {
         }
     
     } 
+}
     
-<<<<<<< HEAD
-}
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-=======
-}
->>>>>>> df51d7d0dd4084211623ba23c317496c59be69f7
