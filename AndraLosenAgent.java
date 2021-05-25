@@ -23,11 +23,12 @@ public class AndraLosenAgent extends javax.swing.JFrame {
     /**
      * Creates new form ändralösenagentform
      */
-    public AndraLosenAgent(InfDB idb, String id) {
+
+    public AndraLosenAgent(InfDB idb, String id ) {
         initComponents();
         this.idb = idb;
         this.id = id;
-    }
+           }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -149,6 +150,7 @@ public class AndraLosenAgent extends javax.swing.JFrame {
 
         String newpass = "'" + jTextNew.getText() + "'";
 
+
         if (Validering.maxSexPass(jTextNew)
                 && Validering.textFaltHarVarde(jTextNew)
                 && Validering.isSammaLosen(jTextNew, jTextCnf)) {
@@ -160,6 +162,7 @@ public class AndraLosenAgent extends javax.swing.JFrame {
 
             } catch (InfException ex) {
                 Logger.getLogger(AndraLosenAgent.class.getName()).log(Level.SEVERE, null, ex);
+
             }
         }
 

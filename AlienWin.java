@@ -144,6 +144,7 @@ public class AlienWin extends javax.swing.JFrame {
 
     private void jVisaAliensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVisaAliensActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jVisaAliensActionPerformed
 
     private void visaMinInformation() {
