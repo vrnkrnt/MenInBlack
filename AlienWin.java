@@ -132,10 +132,7 @@ public class AlienWin extends javax.swing.JFrame {
     }//GEN-LAST:event_jAndraLosenActionPerformed
 
     private void jVisaOchefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVisaOchefActionPerformed
-        // TODO add your handling code here:
-        new HittaOmradesChef(idb, id).setVisible(true);
-    
-    
+        new VisaAliensOmradesChef(idb, id).setVisible(true);
     }//GEN-LAST:event_jVisaOchefActionPerformed
 
     private void jMejlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMejlActionPerformed
