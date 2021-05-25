@@ -7,7 +7,7 @@ package MenInBlack;
 
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
-import oru.inf.InfException;
+
 
 /**
  *
@@ -97,7 +97,15 @@ public class AndraAdmin extends javax.swing.JFrame {
 
     private void jLaggtillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLaggtillActionPerformed
         // TODO add your handling code here:
-
+        if (Validering.textFaltHarVarde(jTextnamn)){
+            String namn = jTextnamn.getText();
+        String qJ = "UPDATE AGENT SET ADMINISTRATOR = 'J' WHERE NAMN = '" + namn + "'";
+        JOptionPane.showMessageDialog(null, "Agent tillagd som administratör! ");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Något gick snett :/! ");
+            
+        }
         
     }//GEN-LAST:event_jLaggtillActionPerformed
 

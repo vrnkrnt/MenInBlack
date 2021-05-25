@@ -18,13 +18,16 @@ import oru.inf.InfException;
 public class AndraLosenAgent extends javax.swing.JFrame {
 
     private static InfDB idb;
+    private static String id;
 
     /**
      * Creates new form ändralösenagentform
      */
-    public AndraLosenAgent(InfDB idb) {
+    public AndraLosenAgent(InfDB idb, String id ) {
         initComponents();
         this.idb = idb;
+        this.id = id;
+        
     }
 
     /**
@@ -178,7 +181,7 @@ public class AndraLosenAgent extends javax.swing.JFrame {
             && Validering.textvalue(jTextOld) && Validering.textvalue(jTextOld)){
     try {
         
-        idb.update("update Agent set Losenord = " + newpass + " where Losenord = " + oldpass);
+        idb.update("update Agent set Losenord = " + newpass + " where Losenord = " + oldpass + id);
         JOptionPane.showMessageDialog(null, "lösenord ändrat");
         this.setVisible(false);
         
