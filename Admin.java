@@ -17,7 +17,7 @@ import oru.inf.InfException;
  * @author Karin Mäki-Kala
  * @author Veronika Ranta
  */
-public class AdminWin extends javax.swing.JFrame {
+public class Admin extends javax.swing.JFrame {
 
     private InfDB idb;
     private static String id;
@@ -25,7 +25,7 @@ public class AdminWin extends javax.swing.JFrame {
     /**
      * Creates new form AgentWin
      */
-    public AdminWin(InfDB idb, String id) {
+    public Admin(InfDB idb, String id) {
         initComponents();
         this.idb = idb;
         this.id = id;
