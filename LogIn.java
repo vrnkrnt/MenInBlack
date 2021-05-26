@@ -17,13 +17,13 @@ import javax.swing.JOptionPane;
  * @author Veronika Ranta
  */
 
-public class LogInWin extends javax.swing.JFrame {
+public class LogIn extends javax.swing.JFrame {
     private static InfDB idb;
 
     /**
      * Creates new form LogInWin
      */
-    public LogInWin(InfDB idb) {
+    public LogIn(InfDB idb) {
         initComponents();
         this.idb = idb;
         jComboBox1.removeAllItems();
@@ -146,7 +146,7 @@ public class LogInWin extends javax.swing.JFrame {
                     if(q.equals(pass))
                     {
                         System.out.println("admin");
-                        new AdminWin(idb, userID).setVisible(true);
+                        new Admin(idb, userID).setVisible(true);
                         this.setVisible(false);
                         correctPass = true;
                         break;
@@ -172,7 +172,7 @@ public class LogInWin extends javax.swing.JFrame {
                     if(q.equals(pass))
                     {
                         System.out.println("agent");
-                        new AgentWin(idb, userID).setVisible(true);
+                        new Agent(idb, userID).setVisible(true);
                         this.setVisible(false);
                         correctPass = true;
                         break; 
@@ -197,7 +197,7 @@ public class LogInWin extends javax.swing.JFrame {
                     if(q.equals(pass))
                     {
                         System.out.println("alien");
-                        new AlienWin(idb, userID).setVisible(true);
+                        new Alien(idb, userID).setVisible(true);
                         this.setVisible(false);
                         correctPass = true;
                     }
@@ -237,20 +237,20 @@ public class LogInWin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LogInWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LogInWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LogInWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LogInWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LogInWin(idb).setVisible(true);
+                new LogIn(idb).setVisible(true);
             }
         });
     }
