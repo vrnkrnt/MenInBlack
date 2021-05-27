@@ -45,7 +45,6 @@ public class AlienStart extends javax.swing.JFrame {
         jAndraLosen = new javax.swing.JButton();
         jVisaOchef = new javax.swing.JButton();
         jVisaAliens = new javax.swing.JButton();
-        jMejl = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -73,13 +72,6 @@ public class AlienStart extends javax.swing.JFrame {
             }
         });
 
-        jMejl.setText("Mejla min områdenschef");
-        jMejl.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMejlActionPerformed(evt);
-            }
-        });
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Min information");
 
@@ -95,32 +87,31 @@ public class AlienStart extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jAndraLosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jVisaOchef, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jVisaAliens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jMejl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(85, 85, 85))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jAndraLosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jVisaOchef, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jVisaAliens, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jVisaOchef)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addComponent(jAndraLosen)
-                .addGap(18, 18, 18)
-                .addComponent(jVisaAliens)
-                .addGap(18, 18, 18)
-                .addComponent(jMejl)
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addGap(47, 47, 47)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(82, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jVisaOchef)
+                        .addGap(18, 18, 18)
+                        .addComponent(jAndraLosen)
+                        .addGap(18, 18, 18)
+                        .addComponent(jVisaAliens))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(142, 142, 142))
         );
 
@@ -135,12 +126,7 @@ public class AlienStart extends javax.swing.JFrame {
         new VisaAliensOmradesChef(idb, id).setVisible(true);
     }//GEN-LAST:event_jVisaOchefActionPerformed
 
-    private void jMejlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMejlActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMejlActionPerformed
-
     private void jVisaAliensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVisaAliensActionPerformed
-        // TODO add your handling code here:
         
     }//GEN-LAST:event_jVisaAliensActionPerformed
 
@@ -167,7 +153,7 @@ public class AlienStart extends javax.swing.JFrame {
                 jTextArea1.append("");
             }
         } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Kunde inte visa information. \n"
+            JOptionPane.showMessageDialog(null, "Kunde inte visa aliens information. \n"
                     + e.getMessage());
         }
     }
@@ -176,7 +162,6 @@ public class AlienStart extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jAndraLosen;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton jMejl;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton jVisaAliens;
