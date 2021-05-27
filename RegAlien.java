@@ -238,6 +238,7 @@ public class RegAlien extends javax.swing.JFrame {
                         String addWorm = ("INSERT INTO WORM VALUES (" + id + ")");
                         idb.insert(addWorm);
                         JOptionPane.showMessageDialog(null, "En worm har registrerats!");
+                        dispose();
                 }
             } catch (InfException ex) {
                 JOptionPane.showMessageDialog(null, "Kunde inte lägga till alien :( ");
