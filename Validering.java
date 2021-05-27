@@ -80,6 +80,7 @@ public class Validering {
             JOptionPane.showMessageDialog(null, "Lösenordet får innehålla max 6 bokstäver");
             result = false;
             passwordCheck.requestFocus();
+            System.out.print("sexpass");
         }
         return result;
     }
@@ -91,6 +92,7 @@ public class Validering {
             JOptionPane.showMessageDialog(null, "Inmatningsrutan är tom.");
             resultat = false;
             rutaAttKolla.requestFocus();
+            System.out.print("textharvarde");
         }
 
         return resultat;
@@ -109,24 +111,6 @@ public class Validering {
         }
 
         return resultat;
-    }
-
-    public static boolean isSammaLosen(JTextField rutaAttKolla1, JTextField rutaAttKolla2) {
-        boolean lika = false;
-
-        try {
-
-            String losen1 = rutaAttKolla1.getText();
-            String losen2 = rutaAttKolla2.getText();
-
-            if (losen1.equals(losen2)) {
-                lika = true;
-            }
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Kontrollera det upprepande lösenordet");
-        }
-        return lika;
     }
 
     /*public static boolean finnsAgentID(JTextField rutaAttKolla) {
