@@ -31,7 +31,6 @@ public class AndraAlien extends javax.swing.JFrame {
         valjPlats();
         valjAnsvarigAgent();
         inputAntal.setVisible(false);
-        //fyllRasCombo();
     }
 
     /**
@@ -88,11 +87,6 @@ public class AndraAlien extends javax.swing.JFrame {
         jLabel8.setText("Ny ansvarig agent:");
 
         comboValdAlien.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj alien" }));
-        comboValdAlien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboValdAlienActionPerformed(evt);
-            }
-        });
 
         inputName.setColumns(8);
 
@@ -251,10 +245,6 @@ public class AndraAlien extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_bTillbakaActionPerformed
 
-    private void comboValdAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboValdAlienActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboValdAlienActionPerformed
-
     private void bVisaInformationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVisaInformationActionPerformed
         jTextArea1.setText("");
 
@@ -288,19 +278,19 @@ public class AndraAlien extends javax.swing.JFrame {
             String nyttLosen = inputLosenord.getText();
             String nyttTele = inputTelNR.getText();
 
-                if (nyttNamn != null && !nyttNamn.isEmpty()) {
+                if (nyttNamn != null && !Validering.textFaltHarVarde(inputName)) {
                     String updateraNamn = "UPDATE alien SET Namn = '" + nyttNamn + "' WHERE Alien_ID = " + alienID;
                     idb.update(updateraNamn);
                 }
-                if (nyttDatum != null && !nyttDatum.isEmpty()) {
+                if (nyttDatum != null && !Validering.textFaltHarVarde(inputRegDat)) {
                     String updateraDatum = "UPDATE alien SET Registreringsdatum = '" + nyttDatum + "' WHERE Alien_ID = " + alienID;
                     idb.update(updateraDatum);
                 }
-                if (nyttLosen != null && !nyttLosen.isEmpty()) {
+                if (nyttLosen != null && !Validering.textFaltHarVarde(inputLosenord)) {
                     String updateraLosen = "UPDATE alien SET Losenord = '" + nyttLosen + "' WHERE Alien_ID = " + alienID;
                     idb.update(updateraLosen);
                 }
-                if (nyttTele != null && !nyttTele.isEmpty()) {
+                if (nyttTele != null && !Validering.textFaltHarVarde(inputTelNR)) {
                     String updateraTele = "UPDATE alien SET Telefon = '" + nyttTele + "' WHERE Alien_ID = " + alienID;
                     idb.update(updateraTele);
                 }
