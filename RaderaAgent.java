@@ -134,6 +134,16 @@ public class RaderaAgent extends javax.swing.JFrame {
         try {
             String agentNamn = comboValjAgent.getSelectedItem().toString();
             String agentID = idb.fetchSingle("SELECT Agent_ID FROM agent WHERE Namn = '" + agentNamn + "'");
+            String raderaFaltAgent = "DELETE FROM FALTAGENT WHERE AGENT_ID = " + agentID;
+            String raderaFordon = "DELETE FROM INNEHAR_FORDON WHERE AGENT_ID = " + agentID;
+            String raderaUtr = "DELETE FROM INNEHAR_FORDON WHERE AGENT_ID = " + agentID;
+            String raderaKontor = "DELETE FROM KONTORSCHEF WHERE AGENT_ID = " + agentID;
+            String raderaOmradeschef = "DELETE FROM OMRADESCHEF WHERE AGENT_ID = " + agentID;
+            idb.delete(raderaFaltAgent);
+            idb.delete(raderaFordon);
+            idb.delete(raderaUtr);
+            idb.delete(raderaKontor);
+            idb.delete(raderaOmradeschef);
             String fraga = "DELETE FROM agent WHERE Agent_ID = " + agentID + ";";
             idb.delete(fraga);
             JOptionPane.showMessageDialog(null, "Agenten har raderats.");

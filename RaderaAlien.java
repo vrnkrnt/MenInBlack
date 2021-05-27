@@ -152,8 +152,13 @@ public class RaderaAlien extends javax.swing.JFrame {
         try {
             String valdAlien = alienCombo.getSelectedItem().toString();
             if (valdAlien != null) {
-               
-
+               String alienID = idb.fetchSingle("SELECT ALIEN_ID FROM ALIEN WHERE NAMN = '" + valdAlien + "'");
+                String raderaBog = "DELETE FROM BOGLODITE WHERE ALIEN_ID =" + alienID;
+                String raderaSquid = "DELETE FROM SQUID WHERE ALIEN_ID =" +alienID;
+                String raderaWorm = "DELETE FROM WORM WHERE ALIEN_ID = " + alienID;
+                idb.delete(raderaBog);
+                idb.delete(raderaSquid);
+                idb.delete(raderaWorm);
                 String fraga = "DELETE FROM ALIEN WHERE NAMN = '" + valdAlien + "';";
                 idb.delete(fraga);
                 JOptionPane.showMessageDialog(null, "Alien har raderats.");
