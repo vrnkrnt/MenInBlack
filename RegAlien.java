@@ -238,6 +238,7 @@ public class RegAlien extends javax.swing.JFrame {
                         String addWorm = ("INSERT INTO WORM VALUES (" + id + ")");
                         idb.insert(addWorm);
                         JOptionPane.showMessageDialog(null, "En worm har registrerats!");
+                        dispose();
                 }
             } catch (InfException ex) {
                 JOptionPane.showMessageDialog(null, "Kunde inte lägga till alien :( ");
@@ -270,7 +271,6 @@ public class RegAlien extends javax.swing.JFrame {
     }
 
     private void fyllPlatsCombo() {
-        jComboPlats.removeAllItems();
         ArrayList<String> platser;
         try {
             platser = idb.fetchColumn("select benamning from plats");
@@ -286,7 +286,6 @@ public class RegAlien extends javax.swing.JFrame {
     }
 
     private void fyllRasCombo() {
-        jComboRas.removeAllItems();
         String bog = "Boglodite";
         String squid = "Squid";
         String worm = "Worm";

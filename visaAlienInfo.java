@@ -17,11 +17,11 @@ import oru.inf.InfException;
  * @author Karin Mäki-Kala
  * @author Veronika Ranta
  */
-public class SokAlien extends javax.swing.JFrame {
+public class VisaAlienInfo extends javax.swing.JFrame {
 
     private InfDB idb;
 
-    public SokAlien(InfDB idb) {
+    public VisaAlienInfo(InfDB idb) {
         initComponents();
         this.idb = idb;
         valjAlien();
@@ -64,6 +64,8 @@ public class SokAlien extends javax.swing.JFrame {
                 bTillbakaActionPerformed(evt);
             }
         });
+
+        comboValdAlien.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj alien" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,8 +117,8 @@ public class SokAlien extends javax.swing.JFrame {
             String alienNamn = comboValdAlien.getSelectedItem().toString();
             String alienID = idb.fetchSingle("SELECT Alien_ID FROM alien WHERE Namn = '" + alienNamn + "'");
             String fraga = "SELECT* FROM ALIEN WHERE Alien_ID = " + alienID;
-            String omradeNamn = idb.fetchSingle("SELECT Benamning FROM omrade WHERE Omrades_ID IN "
-                    + "(SELECT Omrade FROM Agent WHERE Agent_ID = " + alienID + ");");
+            String platsNamn = idb.fetchSingle("SELECT Benamning FROM plats WHERE Plats_ID IN "
+                    + "(SELECT Plats FROM alien WHERE Alien_ID = " + alienID + ");");
             String ansvarigAgent = idb.fetchSingle("SELECT Namn FROM agent WHERE Agent_ID IN "
                     + "(SELECT Ansvarig_Agent FROM alien WHERE Alien_ID = " + alienID + ");");
             valdAlien = idb.fetchRows(fraga);
@@ -126,7 +128,7 @@ public class SokAlien extends javax.swing.JFrame {
                 jTextArea1.append("Namn:\t\t" + alien.get("Namn") + "\n");
                 jTextArea1.append("Telefonnummer:  \t" + alien.get("Telefon") + "\n");
                 jTextArea1.append("Registreringsdatum:\t" + alien.get("Registreringsdatum") + "\n");
-                jTextArea1.append("Område:\t\t" + omradeNamn + "\n");
+                jTextArea1.append("Plats:\t\t" + platsNamn + "\n");
                 jTextArea1.append("Ansvarig agent:  \t" + ansvarigAgent + "\n");
                 jTextArea1.append("");
             }

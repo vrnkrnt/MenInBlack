@@ -81,13 +81,13 @@
     <Component class="javax.swing.JComboBox" name="comboRas">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="Boglodite"/>
-            <StringItem index="1" value="Squid"/>
-            <StringItem index="2" value="Worm"/>
+          <StringArray count="4">
+            <StringItem index="0" value="V&#xe4;lj Ras"/>
+            <StringItem index="1" value="Boglodite"/>
+            <StringItem index="2" value="Squid"/>
+            <StringItem index="3" value="Worm"/>
           </StringArray>
         </Property>
-        <Property name="selectedIndex" type="int" value="-1"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="name" type="java.lang.String" value="" noResource="true"/>
       </Properties>

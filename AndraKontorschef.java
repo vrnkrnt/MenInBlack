@@ -100,6 +100,7 @@ public class AndraKontorschef extends javax.swing.JFrame {
             String fraga = "UPDATE kontorschef SET Agent_ID = " + agentID + " WHERE Kontorsbeteckning = 'Örebrokontoret';";
             idb.update(fraga);
             JOptionPane.showMessageDialog(null, "Kontorschefen är ändrad");
+            this.setVisible(false);
 
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick fel. "

@@ -55,7 +55,7 @@ public class AdminStart extends javax.swing.JFrame {
         visaTopp3AgenterBtn = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         visaOmradesChefBtn = new javax.swing.JMenuItem();
-        sokAlienbtn = new javax.swing.JMenuItem();
+        minUtrustningBtn1 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         omradeBtn = new javax.swing.JMenuItem();
         rasBtn = new javax.swing.JMenuItem();
@@ -146,13 +146,13 @@ public class AdminStart extends javax.swing.JFrame {
         });
         jMenu4.add(visaOmradesChefBtn);
 
-        sokAlienbtn.setText("- alien");
-        sokAlienbtn.addActionListener(new java.awt.event.ActionListener() {
+        minUtrustningBtn1.setText("- alien info");
+        minUtrustningBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sokAlienbtnActionPerformed(evt);
+                minUtrustningBtn1ActionPerformed(evt);
             }
         });
-        jMenu4.add(sokAlienbtn);
+        jMenu4.add(minUtrustningBtn1);
 
         jMenuBar1.add(jMenu4);
 
@@ -316,9 +316,6 @@ public class AdminStart extends javax.swing.JFrame {
         new SokOmradesChef(idb).setVisible(true);
     }//GEN-LAST:event_visaOmradesChefBtnActionPerformed
 
-    private void sokAlienbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sokAlienbtnActionPerformed
-        new SokAlien(idb).setVisible(true);
-    }//GEN-LAST:event_sokAlienbtnActionPerformed
     private void minUtrustningBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minUtrustningBtnActionPerformed
         new ListaEnAgentsUtrustning(idb, id).setVisible(true);
     }//GEN-LAST:event_minUtrustningBtnActionPerformed
@@ -368,6 +365,10 @@ public class AdminStart extends javax.swing.JFrame {
         new AndraAlien(idb).setVisible(true);
     }//GEN-LAST:event_andraAlienBtnActionPerformed
 
+    private void minUtrustningBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minUtrustningBtn1ActionPerformed
+        new VisaAlienInfo(idb).setVisible(true);
+    }//GEN-LAST:event_minUtrustningBtn1ActionPerformed
+
     private void visaMinInformation() {
 
         ArrayList<HashMap<String, String>> valdAgent;
@@ -411,11 +412,11 @@ public class AdminStart extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton loggaUtbtn;
     private javax.swing.JMenuItem minUtrustningBtn;
+    private javax.swing.JMenuItem minUtrustningBtn1;
     private javax.swing.JMenuItem omradeBtn;
     private javax.swing.JMenuItem periodBtn;
     private javax.swing.JMenuItem rasBtn;
     private javax.swing.JMenuItem regNyAgentBtn;
-    private javax.swing.JMenuItem sokAlienbtn;
     private javax.swing.JMenuItem taBortAgentBtn;
     private javax.swing.JMenuItem taBortAlienBtn;
     private javax.swing.JMenuItem taBortUtrBtn;

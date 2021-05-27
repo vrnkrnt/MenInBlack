@@ -58,8 +58,7 @@ public class RegUtrustning extends javax.swing.JFrame {
 
         jLabel4.setText("Benämning: ");
 
-        comboUtrustning.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kommunikation", "Teknik", "Vapen" }));
-        comboUtrustning.setSelectedIndex(-1);
+        comboUtrustning.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj utrustning", "Kommunikation", "Teknik", "Vapen" }));
         comboUtrustning.setToolTipText("");
         comboUtrustning.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,7 +146,7 @@ public class RegUtrustning extends javax.swing.JFrame {
             String laggTillUtrustning = "INSERT INTO utrustning (Utrustnings_ID, Benamning) VALUES ("
                     + id + ", " + benamning + ");";
 
-            if (Validering.textFaltHarVarde(inputBenamning) && Validering.isHeltal(inputAntal)) {
+            if (Validering.textFaltHarVarde(inputBenamning) && Validering.textFaltHarVarde(inputAntal)) {
                 if (valdUtrustning.equalsIgnoreCase("Kommunikation")) {
                     String overforingsTeknik = inputAntal.getText();
                     String laggTillKommunikation = "INSERT INTO kommunikation (Utrustnings_ID, Overforingsteknik) VALUES ("
