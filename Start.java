@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -27,7 +28,7 @@ public class Start {
         try 
         {
             idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-            new LogInWin(idb).setVisible(true);    
+            new LogIn(idb).setVisible(true);    
         }
         
         catch (InfException ex)
@@ -37,3 +38,4 @@ public class Start {
     
     } 
 }
+

@@ -147,48 +147,45 @@ public class AndraAlien extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(bAndra, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(bTillbaka, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9))
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboValdAgent, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(comboValdAlien, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(inputName, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(inputRegDat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-                            .addComponent(inputLosenord, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(inputTelNR, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(comboValdPlats, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(comboValdRas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(bVisaInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(25, 25, 25))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(97, 97, 97)
-                                .addComponent(bTillbaka, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(tillhorRas, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(bAndra, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9))
+                                .addGap(15, 15, 15)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(comboValdAgent, javax.swing.GroupLayout.Alignment.TRAILING, 0, 98, Short.MAX_VALUE)
+                                    .addComponent(comboValdAlien, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(inputName, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(inputRegDat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                                    .addComponent(inputLosenord, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(inputTelNR, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(comboValdPlats, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(comboValdRas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bVisaInformation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tillhorRas, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(inputAntal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(inputAntal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,43 +284,68 @@ public class AndraAlien extends javax.swing.JFrame {
             String alienID = idb.fetchSingle("SELECT Alien_ID FROM alien WHERE Namn = '" + alienNamn + "'");
             String nyttNamn = inputName.getText();
             String nyttDatum = inputRegDat.getText();
-            String nyttPass = inputLosenord.getText();
+            String nyttLosen = inputLosenord.getText();
             String nyttTele = inputTelNR.getText();
-            String nyPlats = comboValdPlats.getSelectedItem().toString();
-            String nyAnsvarigAgent = comboValdAgent.getSelectedItem().toString();
-            String nyRas = comboValdRas.getSelectedItem().toString();
-            String platsID = idb.fetchSingle("SELECT Plats_ID FROM plats WHERE Benamning = '" + nyPlats + "'");
-            String agentID = idb.fetchSingle("SELECT Agent_ID FROM agent WHERE Namn = '" + nyAnsvarigAgent + "'");
-            String fraga = "UPDATE alien SET Alien_ID = " + alienID + ", Registreringsdatum = '" + nyttDatum + "', "
-                    + "losenord = '" + nyttPass + "', Namn = '" + nyttNamn + "', Telefon = '" + nyttTele + "', Plats = " + platsID + ", "
-                    + "Ansvarig_Agent = " + agentID + " WHERE Alien_ID = " + alienID;
-            idb.update(fraga);
-            
-            String raderaGammalRas = "DELETE FROM boglodite WHERE Alien_ID = " + alienID;
-            String raderaGammal = "DELETE FROM worm WHERE Alien_ID = " + alienID;
-            String radera = "DELETE FROM squid WHERE Alien_ID = " + alienID;
-            idb.delete(raderaGammalRas);
-            idb.delete(raderaGammal);
-            idb.delete(radera);
-            
-            if (nyRas.equalsIgnoreCase("Boglodite")) {
-                String antalBoogies = inputAntal.getText();
-                String uppdateraRas = "INSERT INTO boglodite VALUES(" + alienID + ", " + antalBoogies + ")";
-                idb.insert(uppdateraRas);
-            }
-            if (nyRas.equalsIgnoreCase("Squid")) {
-                String antalArmar = inputAntal.getText();
-                String uppdateraRas = "INSERT INTO squid VALUES(" + alienID + ", " + antalArmar + ")";
-                idb.insert(uppdateraRas);
-            }
-            if (nyRas.equalsIgnoreCase("Worm")) {
-                String uppdateraRas = "INSERT INTO worm VALUES(" + alienID + ")";
-                idb.insert(uppdateraRas);
-            }
-            
-            JOptionPane.showMessageDialog(null, "En alien har uppdaterats!");
-            this.setVisible(false);            
+//            if(Validering.textFaltHarVarde(inputName) && Validering.textFaltHarVarde(inputRegDat)
+//                    && Validering.textFaltHarVarde(inputLosenord) && Validering.textFaltHarVarde(inputTelNR) 
+//                     
+//                    )
+//                      {
 
+            if (nyttNamn != null && !nyttNamn.isEmpty()) {
+                String updateraNamn = "UPDATE alien SET Namn = '" + nyttNamn + "' WHERE Alien_ID = " + alienID;
+                idb.update(updateraNamn);
+            }
+            if (nyttDatum != null && !nyttDatum.isEmpty()) {
+                String updateraDatum = "UPDATE alien SET Registreringsdatum = '" + nyttDatum + "' WHERE Alien_ID = " + alienID;
+                idb.update(updateraDatum);
+            }
+            if (nyttLosen != null && !nyttLosen.isEmpty()) {
+                String updateraLosen = "UPDATE alien SET Losenord = '" + nyttLosen + "' WHERE Alien_ID = " + alienID;
+                idb.update(updateraLosen);
+            }
+            if (nyttTele != null && !nyttTele.isEmpty()) {
+                String updateraTele = "UPDATE alien SET Telefon = '" + nyttTele + "' WHERE Alien_ID = " + alienID;
+                idb.update(updateraTele);
+            }
+            if (comboValdPlats.getSelectedIndex() > 0) {
+                String nyPlats = comboValdPlats.getSelectedItem().toString();
+                String platsID = idb.fetchSingle("SELECT Plats_ID FROM plats WHERE Benamning = '" + nyPlats + "'");
+                String updateraPlats = "UPDATE alien SET Plats = " + platsID + " WHERE Alien_ID = " + alienID;
+                idb.update(updateraPlats);
+            }
+            if (comboValdAgent.getSelectedIndex() > 0) {
+                String nyAnsvarigAgent = comboValdAgent.getSelectedItem().toString();
+                String agentID = idb.fetchSingle("SELECT Agent_ID FROM agent WHERE Namn = '" + nyAnsvarigAgent + "'");
+                String updateraAnsvarigAgent = "UPDATE alien SET Ansvarig_Agent = " + agentID + " WHERE Alien_ID = " + alienID;
+                idb.update(updateraAnsvarigAgent);
+            }
+            if (comboValdRas.getSelectedIndex() > 0) {
+                String nyRas = comboValdRas.getSelectedItem().toString();
+                String raderaGammalRas = "DELETE FROM boglodite WHERE Alien_ID = " + alienID;
+                String raderaGammal = "DELETE FROM worm WHERE Alien_ID = " + alienID;
+                String radera = "DELETE FROM squid WHERE Alien_ID = " + alienID;
+                idb.delete(raderaGammalRas);
+                idb.delete(raderaGammal);
+                idb.delete(radera);
+
+                if (nyRas.equalsIgnoreCase("Boglodite")) {
+                    String antalBoogies = inputAntal.getText();
+                    String uppdateraRas = "INSERT INTO boglodite VALUES(" + alienID + ", " + antalBoogies + ")";
+                    idb.insert(uppdateraRas);
+                }
+                if (nyRas.equalsIgnoreCase("Squid")) {
+                    String antalArmar = inputAntal.getText();
+                    String uppdateraRas = "INSERT INTO squid VALUES(" + alienID + ", " + antalArmar + ")";
+                    idb.insert(uppdateraRas);
+                }
+                if (nyRas.equalsIgnoreCase("Worm")) {
+                    String uppdateraRas = "INSERT INTO worm VALUES(" + alienID + ")";
+                    idb.insert(uppdateraRas);
+                }
+
+            }
+            alienUppdaterad();
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Kunde inte lägga till alien :( " + ex.getMessage());
         }
@@ -362,9 +384,8 @@ public class AndraAlien extends javax.swing.JFrame {
             System.out.println("Internt felmeddelande" + e.getMessage());
         }
     }
-    
-    private void ransaFalt()
-    {
+
+    private void ransaFalt() {
         inputName.setText("");
         inputRegDat.setText("");
         inputName.setText("");
@@ -405,6 +426,11 @@ public class AndraAlien extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Databasfel!");
             System.out.println("Internt felmeddelande" + e.getMessage());
         }
+    }
+
+    public void alienUppdaterad() {
+        JOptionPane.showMessageDialog(null, "En alien har uppdaterats!");
+        this.setVisible(false);
     }
 
     /**
