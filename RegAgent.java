@@ -183,12 +183,9 @@ public class RegAgent extends javax.swing.JFrame {
                 String omradesID = idb.fetchSingle("SELECT Omrades_ID FROM omrade WHERE benamning = '" + omrade + "'");
                 String fraga = "INSERT INTO Agent VALUE(" + id + ", '" + namn + "', '" + telefon + "', "
                         + "'" + anstallningsDatum + "', '" + admin + "', '" + losenord + "', " + omradesID + ");";
-                if(Validering.originalPass(losenord, "Agent", idb))
-                {
                     idb.insert(fraga);
                     JOptionPane.showMessageDialog(null, "En agent har lagts till!");
                     this.setVisible(false);
-                }
             }
             catch (InfException ex)
             {
