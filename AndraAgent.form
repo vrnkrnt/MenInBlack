@@ -124,7 +124,7 @@
                   <Component id="bAndra" min="-2" max="-2" attributes="0"/>
                   <Component id="bTillbaka" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="37" max="32767" attributes="0"/>
+              <EmptySpace pref="43" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -155,23 +155,25 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Administrat&#xf6;r:"/>
+        <Property name="text" type="java.lang.String" value="Administrat&#xf6;r J/N:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
-        <Property name="text" type="java.lang.String" value="L&#xf6;senord:"/>
+        <Property name="text" type="java.lang.String" value="Nytt l&#xf6;senord:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Omr&#xe5;de: "/>
+        <Property name="text" type="java.lang.String" value="Nytt omr&#xe5;de: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="comboValjAgent">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="1">
+            <StringItem index="0" value="V&#xe4;lj agent"/>
+          </StringArray>
         </Property>
       </Properties>
       <AuxValues>
@@ -187,7 +189,9 @@
     <Component class="javax.swing.JComboBox" name="comboOmrade">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="1">
+            <StringItem index="0" value="V&#xe4;lj omr&#xe5;de"/>
+          </StringArray>
         </Property>
       </Properties>
       <AuxValues>
@@ -197,7 +201,11 @@
     <Component class="javax.swing.JComboBox" name="comboAdmin">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="3">
+            <StringItem index="0" value="J/N"/>
+            <StringItem index="1" value="J"/>
+            <StringItem index="2" value="N"/>
+          </StringArray>
         </Property>
       </Properties>
       <AuxValues>

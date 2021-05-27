@@ -213,53 +213,42 @@ public class AgentStart extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void omradeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_omradeBtnActionPerformed
-
         new ListaAliensEfterPlats(idb).setVisible(true);
     }//GEN-LAST:event_omradeBtnActionPerformed
 
     private void alienBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alienBtnActionPerformed
-        // TODO add your handling code here:
         new RegAlien(idb).setVisible(true);
     }//GEN-LAST:event_alienBtnActionPerformed
 
     private void utrustningBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_utrustningBtnActionPerformed
-        // TODO add your handling code here:
         new RegUtrustning(idb).setVisible(true);
     }//GEN-LAST:event_utrustningBtnActionPerformed
 
     private void rasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rasBtnActionPerformed
-        // TODO add your handling code here:
         new ListaAliensEfterRas(idb).setVisible(true);
     }//GEN-LAST:event_rasBtnActionPerformed
 
     private void periodBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodBtnActionPerformed
-        // TODO add your handling code here:
         new ListaAliensEfterDatum(idb).setVisible(true);
-
     }//GEN-LAST:event_periodBtnActionPerformed
 
     private void omradesChefBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_omradesChefBtnActionPerformed
-        // TODO add your handling code here:
         new SokOmradesChef(idb).setVisible(true);
     }//GEN-LAST:event_omradesChefBtnActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
         new SokAlien(idb).setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void changePassBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePassBtnActionPerformed
-        // TODO add your handling code here:
         new AndraLosenAgent(idb, id).setVisible(true);
     }//GEN-LAST:event_changePassBtnActionPerformed
 
     private void minUtrustningBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minUtrustningBtnActionPerformed
-        // TODO add your handling code here:
         new ListaEnAgentsUtrustning(idb, id).setVisible(true);
     }//GEN-LAST:event_minUtrustningBtnActionPerformed
 
     private void visaTopp3AgenterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visaTopp3AgenterBtnActionPerformed
-        // TODO add your handling code here:
         new SeTopplistaAgenter(idb).setVisible(true);
     }//GEN-LAST:event_visaTopp3AgenterBtnActionPerformed
 
@@ -287,7 +276,7 @@ public class AgentStart extends javax.swing.JFrame {
                 jTextArea1.append("Område:\t" + omradeNamn);
             }
         } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Kunde inte visa information. \n "
+            JOptionPane.showMessageDialog(null, "Kunde inte visa agentens information.\n "
                     + e.getMessage());
         }
         

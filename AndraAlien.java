@@ -87,6 +87,7 @@ public class AndraAlien extends javax.swing.JFrame {
 
         jLabel8.setText("Ny ansvarig agent:");
 
+        comboValdAlien.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj alien" }));
         comboValdAlien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboValdAlienActionPerformed(evt);
@@ -273,7 +274,7 @@ public class AndraAlien extends javax.swing.JFrame {
                 jTextArea1.append("Ansvarig agent:\t" + alien.get("Ansvarig_Agent") + "\n");
             }
         } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Något gick fel. "
+            JOptionPane.showMessageDialog(null, "Kunde inte hämta information om alien.\n"
                     + e.getMessage());
         }
     }//GEN-LAST:event_bVisaInformationActionPerformed

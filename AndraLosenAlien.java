@@ -42,7 +42,8 @@ public class AndraLosenAlien extends javax.swing.JFrame {
         TextUpprepa = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        buttonAndra = new javax.swing.JButton();
+        buttonTillbaka = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,10 +60,17 @@ public class AndraLosenAlien extends javax.swing.JFrame {
 
         jLabel3.setText("Upprepa nytt lösenord:");
 
-        jButton1.setText("Ändra lösenord");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonAndra.setText("Ändra lösenord");
+        buttonAndra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonAndraActionPerformed(evt);
+            }
+        });
+
+        buttonTillbaka.setText("Tillbaka");
+        buttonTillbaka.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonTillbakaActionPerformed(evt);
             }
         });
 
@@ -71,21 +79,21 @@ public class AndraLosenAlien extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(54, 54, 54)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(TextNewPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TextUpprepa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 117, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
-                .addContainerGap())
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(54, 54, 54)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(TextNewPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextUpprepa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(123, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonAndra)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttonTillbaka)
+                .addGap(27, 27, 27))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,7 +107,9 @@ public class AndraLosenAlien extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(TextUpprepa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonAndra)
+                    .addComponent(buttonTillbaka))
                 .addContainerGap())
         );
 
@@ -110,24 +120,33 @@ public class AndraLosenAlien extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TextNewPassActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        String newpass = "'" + TextNewPass.getText() + "'";
+    private void buttonAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAndraActionPerformed
 
-        if (Validering.maxSexPass(TextNewPass)  
-                && Validering.isSammaLosen(TextNewPass, TextUpprepa)
+        String newPass = TextNewPass.getText();
+        String kontrollPass = TextUpprepa.getText();
+
+        if (Validering.maxSexPass(TextNewPass)
                 && Validering.textFaltHarVarde(TextNewPass)) {
             try {
+                if (newPass.equals(kontrollPass)) {
 
-                idb.update("update Alien set Losenord = " + newpass + " where Alien_ID = " + id);
-                JOptionPane.showMessageDialog(null, "lösenord ändrat");
-                this.setVisible(false);
+                    idb.update("update Alien set Losenord = '" + newPass + "' where Alien_ID = " + id);
+                    JOptionPane.showMessageDialog(null, "lösenord ändrat");
+                    this.setVisible(false);
+                }
+                else{
+                throw new Exception();
+                }
 
-            } catch (InfException ex) {
-                Logger.getLogger(AndraLosenAgent.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Lösenorden matchar inte");
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buttonAndraActionPerformed
+
+    private void buttonTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTillbakaActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_buttonTillbakaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,15 +178,16 @@ public class AndraLosenAlien extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AndraLosenAlien(idb,id).setVisible(true);
-            } 
+                new AndraLosenAlien(idb, id).setVisible(true);
+            }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField TextNewPass;
     private javax.swing.JTextField TextUpprepa;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton buttonAndra;
+    private javax.swing.JButton buttonTillbaka;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables

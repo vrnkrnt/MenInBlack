@@ -23,12 +23,11 @@ public class AndraLosenAgent extends javax.swing.JFrame {
     /**
      * Creates new form ändralösenagentform
      */
-
-    public AndraLosenAgent(InfDB idb, String id ) {
+    public AndraLosenAgent(InfDB idb, String id) {
         initComponents();
         this.idb = idb;
         this.id = id;
-           }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,23 +43,37 @@ public class AndraLosenAgent extends javax.swing.JFrame {
         jColorChooser3 = new javax.swing.JColorChooser();
         jColorChooser4 = new javax.swing.JColorChooser();
         jPanel1 = new javax.swing.JPanel();
+        buttonAndra = new javax.swing.JButton();
         nyttLosen = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jTextCnf = new javax.swing.JTextField();
         jTextNew = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        buttonTillbaka = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        buttonAndra.setText("Ändra Lösenord");
+        buttonAndra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAndraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 135, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(buttonAndra, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 58, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(buttonAndra)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         nyttLosen.setText("Nytt Lösenord:");
@@ -89,10 +102,10 @@ public class AndraLosenAgent extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Ändra Lösenord");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonTillbaka.setText("Tillbaka");
+        buttonTillbaka.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonTillbakaActionPerformed(evt);
             }
         });
 
@@ -112,13 +125,13 @@ public class AndraLosenAgent extends javax.swing.JFrame {
                                     .addComponent(jTextNew))
                                 .addGap(8, 8, 8)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(buttonTillbaka))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(nyttLosen)
                             .addComponent(jLabel1))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,36 +151,42 @@ public class AndraLosenAgent extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
-                        .addGap(23, 23, 23))))
+                        .addComponent(buttonTillbaka)
+                        .addGap(18, 18, 18))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAndraActionPerformed
         // Denna metod är till för att man ska kunna ändra lösenord
 
-        String newpass = "'" + jTextNew.getText() + "'";
-
+        String newPass = jTextNew.getText();
+        String kontrollPass = jTextCnf.getText();
 
         if (Validering.maxSexPass(jTextNew)
-                && Validering.textFaltHarVarde(jTextNew)
-                && Validering.isSammaLosen(jTextNew, jTextCnf)) {
+                && Validering.textFaltHarVarde(jTextNew)) {
+
             try {
+                if (newPass.equals(kontrollPass)) {
 
-                idb.update("update Agent set Losenord = " + newpass + " where Agent_ID = " + id);
-                JOptionPane.showMessageDialog(null, "lösenord ändrat");
-                this.setVisible(false);
+                    idb.update("update Agent set Losenord = '" + newPass + "' where Agent_ID = " + id);
+                    JOptionPane.showMessageDialog(null, "lösenord ändrat");
+                    this.setVisible(false);
+                }
 
-            } catch (InfException ex) {
-                Logger.getLogger(AndraLosenAgent.class.getName()).log(Level.SEVERE, null, ex);
+                else{
+                throw new Exception();
+                }
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Lösenorden matchar inte");
 
             }
         }
 
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buttonAndraActionPerformed
 
     private void jTextCnfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCnfActionPerformed
         // TODO add your handling code here:
@@ -186,6 +205,10 @@ public class AndraLosenAgent extends javax.swing.JFrame {
         // TODO add your handling code here:
         jTextCnf.setText("");
     }//GEN-LAST:event_jTextCnfMousePressed
+
+    private void buttonTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTillbakaActionPerformed
+       this.setVisible(false);
+    }//GEN-LAST:event_buttonTillbakaActionPerformed
     public static void main(String args[]) {
 
         // HÄR BORDE VI HA SÅ MAN KOMMER TILLBAKA TILL START
@@ -222,7 +245,8 @@ public class AndraLosenAgent extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton buttonAndra;
+    private javax.swing.JButton buttonTillbaka;
     private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JColorChooser jColorChooser2;
     private javax.swing.JColorChooser jColorChooser3;
