@@ -252,7 +252,7 @@ public class RegAlien extends javax.swing.JFrame {
                 //String id = inputID.getText();
                 //int intID = Integer.parseInt(id);
                 String namn = "'" + inputName.getText() + "'";
-                String pass = "'" + inputPass.getText() + "'";
+                String pass = inputPass.getText();
                 String date = "'" + inputDat.getText() + "'";
                 String tele = "'" + inputTele.getText() + "'";
                 String plats = jComboPlats.getSelectedItem().toString();
@@ -261,35 +261,35 @@ public class RegAlien extends javax.swing.JFrame {
                 String agentID = idb.fetchSingle("select agent_id from agent where namn = '" + agentNamn + "'");
                 String platsID = idb.fetchSingle("select plats_id from plats where benamning = '" + plats + "'");
                 String q = "INSERT INTO ALIEN (ALIEN_ID, REGISTRERINGSDATUM, LOSENORD, NAMN, TELEFON, PLATS, ANSVARIG_AGENT)"
-                            + " VALUES (" + id + "," + date + "," + pass + "," + namn + "," + tele + "," + platsID
+                            + " VALUES (" + id + "," + date + "," + "'" + pass + "'" + "," + namn + "," + tele + "," + platsID
                             + "," + agentID + ")";
                 idb.insert(q);
-
+                    
                 switch(ras)
-                {
-                    case "Boglodite":
-                    new Boglodite(idb, id).setVisible(true);
-                    dispose();
-                    break;
+                    {
+                        case "Boglodite":
+                        new Boglodite(idb, id).setVisible(true);
+                        dispose();
+                        break;
 
-                    case "Squid":
-                    new Squid(idb, id).setVisible(true);
-                    dispose();
-                    break;
+                        case "Squid":
+                        new Squid(idb, id).setVisible(true);
+                        dispose();
+                        break;
 
-                    case "Worm":
-                    String addWorm = ("INSERT INTO WORM VALUES (" + id + ")");
-                    idb.insert(addWorm);
-                    JOptionPane.showMessageDialog(null, "En worm har registrerats!");
+                        case "Worm":
+                        String addWorm = ("INSERT INTO WORM VALUES (" + id + ")");
+                        idb.insert(addWorm);
+                        JOptionPane.showMessageDialog(null, "En worm har registrerats!");
+                    }
                 }
-
-
-            }
+            
             catch (InfException ex)
             {
                 JOptionPane.showMessageDialog(null, "Kunde inte lägga till alien :( ");
             }
         }
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -322,19 +322,20 @@ public class RegAlien extends javax.swing.JFrame {
 //
 //    }
     
-    private void fyllAgentCombo()
-    {
-        jComboAgent.removeAllItems();
-        ArrayList<String> admins;//skapar en ArrayList för samtliga admins
+    private void fyllAgentCombo() {
+        String fraga = "SELECT Namn FROM agent";
+        ArrayList<String> allaAgenter;
         try {
-           admins = idb.fetchColumn("select namn from agent where administrator = 'J'");
-        for (String enAgent : admins) {
-            jComboAgent.addItem(enAgent); //läger till varje admins namn
-        }
-        } catch (InfException ex) {
-            JOptionPane.showMessageDialog(null, "Kunde inte fylla combobox!");
-        } catch (NullPointerException npe){
-            JOptionPane.showMessageDialog(null, "Finns ingen data att hämta.");
+
+            allaAgenter = idb.fetchColumn(fraga);
+
+            for (String agentNamn : allaAgenter) {
+                jComboAgent.addItem(agentNamn);
+            }
+
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+            System.out.println("Internt felmeddelande" + e.getMessage());
         }
     }
     

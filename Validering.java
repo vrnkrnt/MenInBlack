@@ -23,6 +23,12 @@ import oru.inf.InfException;
 public class Validering {
 
     private static InfDB idb;
+    
+    public Validering(InfDB idb)
+    {
+        this.idb = idb;
+    }
+    
 
     public static boolean textvalue(JTextField checkvalue) {
         boolean resultat = true;
@@ -35,6 +41,7 @@ public class Validering {
 
         return resultat;
     }
+    
 
     //Denna metod är till för att kolla att ett lösenord är mer än 0 bokstäver och färre än 7
     public static boolean maxSexPass(JTextField passwordCheck) {
