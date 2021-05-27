@@ -147,6 +147,7 @@ public class RaderaAgent extends javax.swing.JFrame {
             String fraga = "DELETE FROM agent WHERE Agent_ID = " + agentID + ";";
             idb.delete(fraga);
             JOptionPane.showMessageDialog(null, "Agenten har raderats.");
+            this.setVisible(false);
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick fel. "
                     + e.getMessage());
