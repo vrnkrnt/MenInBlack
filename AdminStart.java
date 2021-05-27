@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package MenInBlack;
- 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
@@ -50,7 +50,6 @@ public class AdminStart extends javax.swing.JFrame {
         alienBtn = new javax.swing.JMenuItem();
         utrustningBtn = new javax.swing.JMenuItem();
         regNyAgentBtn = new javax.swing.JMenuItem();
-        regNyAdminBtn = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         minUtrustningBtn = new javax.swing.JMenuItem();
         visaTopp3AgenterBtn = new javax.swing.JMenuItem();
@@ -114,14 +113,6 @@ public class AdminStart extends javax.swing.JFrame {
             }
         });
         jMenu2.add(regNyAgentBtn);
-
-        regNyAdminBtn.setText("- admin");
-        regNyAdminBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                regNyAdminBtnActionPerformed(evt);
-            }
-        });
-        jMenu2.add(regNyAdminBtn);
 
         jMenuBar1.add(jMenu2);
 
@@ -344,10 +335,6 @@ public class AdminStart extends javax.swing.JFrame {
         new RaderaAgent(idb).setVisible(true);
     }//GEN-LAST:event_taBortAgentBtnActionPerformed
 
-    private void regNyAdminBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regNyAdminBtnActionPerformed
-        new RegAgent(idb).setVisible(true);
-    }//GEN-LAST:event_regNyAdminBtnActionPerformed
-
     private void andraKontorChefBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_andraKontorChefBtnActionPerformed
         new AndraKontorschef(idb).setVisible(true);
     }//GEN-LAST:event_andraKontorChefBtnActionPerformed
@@ -399,7 +386,7 @@ public class AdminStart extends javax.swing.JFrame {
                 jTextArea1.append("Område:\t" + omradeNamn);
             }
         } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Något gick fel. "
+            JOptionPane.showMessageDialog(null, "Kunde inte hämta agentens information. \n"
                     + e.getMessage());
         }
     }
@@ -427,7 +414,6 @@ public class AdminStart extends javax.swing.JFrame {
     private javax.swing.JMenuItem omradeBtn;
     private javax.swing.JMenuItem periodBtn;
     private javax.swing.JMenuItem rasBtn;
-    private javax.swing.JMenuItem regNyAdminBtn;
     private javax.swing.JMenuItem regNyAgentBtn;
     private javax.swing.JMenuItem sokAlienbtn;
     private javax.swing.JMenuItem taBortAgentBtn;
