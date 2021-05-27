@@ -122,9 +122,9 @@ public class AndraOmradeschef extends javax.swing.JFrame {
             String omradesID = idb.fetchSingle("SELECT Omrades_ID FROM Omrade WHERE benamning = '" + valtOmrade + "';");
             String agentID = idb.fetchSingle("SELECT Agent_ID FROM Agent WHERE namn = '" + nyOmradeschef + "';");
             
-            System.out.print(omradesID);
-            System.out.print(agentID);
-            String radera = "DELETE FROM omradeschef WHERE Agent_ID= "+agentID;
+            System.out.println(omradesID);
+            System.out.println(agentID);
+            String radera = "DELETE FROM omradeschef WHERE Agent_ID= " + agentID;
             idb.delete(radera);
 
 
@@ -136,7 +136,7 @@ public class AndraOmradeschef extends javax.swing.JFrame {
 
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick fel. ");
-                    System.out.print(e.getMessage());
+            System.out.print(e.getMessage());
         }
     }//GEN-LAST:event_bBekraftaActionPerformed
 

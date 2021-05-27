@@ -118,7 +118,7 @@ public class SokOmradesChef extends javax.swing.JFrame {
                 jTextArea1.append(" " + agent.get("Telefon") + "\n");
             }
         } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Databasfel!");
+            JOptionPane.showMessageDialog(null, "Den valda agenten är redan områdeschef över ett annat område!");
             System.out.println("Internt felmeddelande" + e.getMessage());
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
