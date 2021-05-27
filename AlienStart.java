@@ -19,14 +19,14 @@ import oru.inf.InfException;
  * @author Veronika Ranta
  */
 
-public class Alien extends javax.swing.JFrame {
+public class AlienStart extends javax.swing.JFrame {
     private InfDB idb;
     private static String id;
 
     /**
      * Creates new form AgentWin
      */
-    public Alien(InfDB idb, String id) {
+    public AlienStart(InfDB idb, String id) {
         initComponents();
         this.idb = idb;
         this.id = id;

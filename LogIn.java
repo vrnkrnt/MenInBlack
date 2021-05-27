@@ -146,7 +146,7 @@ public class LogIn extends javax.swing.JFrame {
                     if(q.equals(pass))
                     {
                         System.out.println("admin");
-                        new Admin(idb, userID).setVisible(true);
+                        new AdminStart(idb, userID).setVisible(true);
                         this.setVisible(false);
                         correctPass = true;
                         break;
@@ -172,7 +172,7 @@ public class LogIn extends javax.swing.JFrame {
                     if(q.equals(pass))
                     {
                         System.out.println("agent");
-                        new Agent(idb, userID).setVisible(true);
+                        new AgentStart(idb, userID).setVisible(true);
                         this.setVisible(false);
                         correctPass = true;
                         break; 
@@ -187,7 +187,7 @@ public class LogIn extends javax.swing.JFrame {
             
                 catch(InfException ex)
                 {
-                    System.out.println("bajs");
+                    System.out.println("");
                 }
                 
             case "Alien":
@@ -197,7 +197,7 @@ public class LogIn extends javax.swing.JFrame {
                     if(q.equals(pass))
                     {
                         System.out.println("alien");
-                        new Alien(idb, userID).setVisible(true);
+                        new AlienStart(idb, userID).setVisible(true);
                         this.setVisible(false);
                         correctPass = true;
                     }
@@ -210,7 +210,7 @@ public class LogIn extends javax.swing.JFrame {
                 }
                 catch(InfException ex)
                 {
-                    System.out.println("bajs");
+                    System.out.println("");
                 }
         }
         }
