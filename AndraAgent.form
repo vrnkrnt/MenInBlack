@@ -46,10 +46,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="bInfo" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="bInfo" min="-2" pref="100" max="-2" attributes="0"/>
                           <Component id="comboAdmin" alignment="0" pref="136" max="32767" attributes="0"/>
                           <Component id="comboValjAgent" alignment="0" max="32767" attributes="0"/>
                           <Component id="inputNamn" alignment="0" max="32767" attributes="0"/>

@@ -263,12 +263,9 @@ public class RegAlien extends javax.swing.JFrame {
                 String q = "INSERT INTO ALIEN (ALIEN_ID, REGISTRERINGSDATUM, LOSENORD, NAMN, TELEFON, PLATS, ANSVARIG_AGENT)"
                             + " VALUES (" + id + "," + date + "," + "'" + pass + "'" + "," + namn + "," + tele + "," + platsID
                             + "," + agentID + ")";
-                
-                if(Validering.originalPass(pass, "Alien", idb))
-                {
-                    idb.insert(q);
-
-                    switch(ras)
+                idb.insert(q);
+                    
+                switch(ras)
                     {
                         case "Boglodite":
                         new Boglodite(idb, id).setVisible(true);
@@ -286,15 +283,13 @@ public class RegAlien extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "En worm har registrerats!");
                     }
                 }
-
-
-
-            }
+            
             catch (InfException ex)
             {
                 JOptionPane.showMessageDialog(null, "Kunde inte lägga till alien :( ");
             }
         }
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
