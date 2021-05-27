@@ -127,7 +127,6 @@ public class LogIn extends javax.swing.JFrame {
                     passQ = ("SELECT LOSENORD FROM AGENT WHERE ADMINISTRATOR = 'J' AND AGENT_ID = '" + userID + "'");
                     String q = idb.fetchSingle(passQ);
                     if (q.equals(pass)) {
-                        System.out.println("admin");
                         new AdminStart(idb, userID).setVisible(true);
                         this.setVisible(false);
                         correctPass = true;
@@ -147,7 +146,6 @@ public class LogIn extends javax.swing.JFrame {
                     passQ = ("SELECT LOSENORD FROM AGENT WHERE AGENT_ID = '" + userID + "'");
                     String q = idb.fetchSingle(passQ);
                     if (q.equals(pass)) {
-                        System.out.println("agent");
                         new AgentStart(idb, userID).setVisible(true);
                         this.setVisible(false);
                         correctPass = true;
@@ -167,7 +165,6 @@ public class LogIn extends javax.swing.JFrame {
                     passQ = ("SELECT LOSENORD FROM ALIEN WHERE ALIEN_ID = '" + userID + "'");
                     String q = idb.fetchSingle(passQ);
                     if (q.equals(pass)) {
-                        System.out.println("alien");
                         new AlienStart(idb, userID).setVisible(true);
                         this.setVisible(false);
                         correctPass = true;
