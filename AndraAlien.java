@@ -154,9 +154,6 @@ public class AndraAlien extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(bAndra, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4)
@@ -176,7 +173,10 @@ public class AndraAlien extends javax.swing.JFrame {
                                     .addComponent(inputLosenord, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(inputTelNR, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(comboValdPlats, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(comboValdRas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(comboValdRas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(bAndra, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(bVisaInformation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -286,69 +286,66 @@ public class AndraAlien extends javax.swing.JFrame {
             String nyttDatum = inputRegDat.getText();
             String nyttLosen = inputLosenord.getText();
             String nyttTele = inputTelNR.getText();
-//            if(Validering.textFaltHarVarde(inputName) && Validering.textFaltHarVarde(inputRegDat)
-//                    && Validering.textFaltHarVarde(inputLosenord) && Validering.textFaltHarVarde(inputTelNR) 
-//                     
-//                    )
-//                      {
 
-            if (nyttNamn != null && !nyttNamn.isEmpty()) {
-                String updateraNamn = "UPDATE alien SET Namn = '" + nyttNamn + "' WHERE Alien_ID = " + alienID;
-                idb.update(updateraNamn);
-            }
-            if (nyttDatum != null && !nyttDatum.isEmpty()) {
-                String updateraDatum = "UPDATE alien SET Registreringsdatum = '" + nyttDatum + "' WHERE Alien_ID = " + alienID;
-                idb.update(updateraDatum);
-            }
-            if (nyttLosen != null && !nyttLosen.isEmpty()) {
-                String updateraLosen = "UPDATE alien SET Losenord = '" + nyttLosen + "' WHERE Alien_ID = " + alienID;
-                idb.update(updateraLosen);
-            }
-            if (nyttTele != null && !nyttTele.isEmpty()) {
-                String updateraTele = "UPDATE alien SET Telefon = '" + nyttTele + "' WHERE Alien_ID = " + alienID;
-                idb.update(updateraTele);
-            }
-            if (comboValdPlats.getSelectedIndex() > 0) {
-                String nyPlats = comboValdPlats.getSelectedItem().toString();
-                String platsID = idb.fetchSingle("SELECT Plats_ID FROM plats WHERE Benamning = '" + nyPlats + "'");
-                String updateraPlats = "UPDATE alien SET Plats = " + platsID + " WHERE Alien_ID = " + alienID;
-                idb.update(updateraPlats);
-            }
-            if (comboValdAgent.getSelectedIndex() > 0) {
-                String nyAnsvarigAgent = comboValdAgent.getSelectedItem().toString();
-                String agentID = idb.fetchSingle("SELECT Agent_ID FROM agent WHERE Namn = '" + nyAnsvarigAgent + "'");
-                String updateraAnsvarigAgent = "UPDATE alien SET Ansvarig_Agent = " + agentID + " WHERE Alien_ID = " + alienID;
-                idb.update(updateraAnsvarigAgent);
-            }
-            if (comboValdRas.getSelectedIndex() > 0) {
-                String nyRas = comboValdRas.getSelectedItem().toString();
-                String raderaGammalRas = "DELETE FROM boglodite WHERE Alien_ID = " + alienID;
-                String raderaGammal = "DELETE FROM worm WHERE Alien_ID = " + alienID;
-                String radera = "DELETE FROM squid WHERE Alien_ID = " + alienID;
-                idb.delete(raderaGammalRas);
-                idb.delete(raderaGammal);
-                idb.delete(radera);
+                if (nyttNamn != null && !nyttNamn.isEmpty()) {
+                    String updateraNamn = "UPDATE alien SET Namn = '" + nyttNamn + "' WHERE Alien_ID = " + alienID;
+                    idb.update(updateraNamn);
+                }
+                if (nyttDatum != null && !nyttDatum.isEmpty()) {
+                    String updateraDatum = "UPDATE alien SET Registreringsdatum = '" + nyttDatum + "' WHERE Alien_ID = " + alienID;
+                    idb.update(updateraDatum);
+                }
+                if (nyttLosen != null && !nyttLosen.isEmpty()) {
+                    String updateraLosen = "UPDATE alien SET Losenord = '" + nyttLosen + "' WHERE Alien_ID = " + alienID;
+                    idb.update(updateraLosen);
+                }
+                if (nyttTele != null && !nyttTele.isEmpty()) {
+                    String updateraTele = "UPDATE alien SET Telefon = '" + nyttTele + "' WHERE Alien_ID = " + alienID;
+                    idb.update(updateraTele);
+                }
+                if (comboValdPlats.getSelectedIndex() > 0) {
+                    String nyPlats = comboValdPlats.getSelectedItem().toString();
+                    String platsID = idb.fetchSingle("SELECT Plats_ID FROM plats WHERE Benamning = '" + nyPlats + "'");
+                    String updateraPlats = "UPDATE alien SET Plats = " + platsID + " WHERE Alien_ID = " + alienID;
+                    idb.update(updateraPlats);
+                }
+                if (comboValdAgent.getSelectedIndex() > 0) {
+                    String nyAnsvarigAgent = comboValdAgent.getSelectedItem().toString();
+                    String agentID = idb.fetchSingle("SELECT Agent_ID FROM agent WHERE Namn = '" + nyAnsvarigAgent + "'");
+                    String updateraAnsvarigAgent = "UPDATE alien SET Ansvarig_Agent = " + agentID + " WHERE Alien_ID = " + alienID;
+                    idb.update(updateraAnsvarigAgent);
+                }
+                if (comboValdRas.getSelectedIndex() > 0) {
+                    String nyRas = comboValdRas.getSelectedItem().toString();
+                    String raderaGammalRas = "DELETE FROM boglodite WHERE Alien_ID = " + alienID;
+                    String raderaGammal = "DELETE FROM worm WHERE Alien_ID = " + alienID;
+                    String radera = "DELETE FROM squid WHERE Alien_ID = " + alienID;
+                    idb.delete(raderaGammalRas);
+                    idb.delete(raderaGammal);
+                    idb.delete(radera);
 
-                if (nyRas.equalsIgnoreCase("Boglodite")) {
-                    String antalBoogies = inputAntal.getText();
-                    String uppdateraRas = "INSERT INTO boglodite VALUES(" + alienID + ", " + antalBoogies + ")";
-                    idb.insert(uppdateraRas);
-                }
-                if (nyRas.equalsIgnoreCase("Squid")) {
-                    String antalArmar = inputAntal.getText();
-                    String uppdateraRas = "INSERT INTO squid VALUES(" + alienID + ", " + antalArmar + ")";
-                    idb.insert(uppdateraRas);
-                }
-                if (nyRas.equalsIgnoreCase("Worm")) {
-                    String uppdateraRas = "INSERT INTO worm VALUES(" + alienID + ")";
-                    idb.insert(uppdateraRas);
-                }
+                    if (nyRas.equalsIgnoreCase("Boglodite")) {
+                        String antalBoogies = inputAntal.getText();
+                        String uppdateraRas = "INSERT INTO boglodite VALUES(" + alienID + ", " + antalBoogies + ")";
+                        idb.insert(uppdateraRas);
+                    }
+                    if (nyRas.equalsIgnoreCase("Squid")) {
+                        String antalArmar = inputAntal.getText();
+                        String uppdateraRas = "INSERT INTO squid VALUES(" + alienID + ", " + antalArmar + ")";
+                        idb.insert(uppdateraRas);
+                    }
+                    if (nyRas.equalsIgnoreCase("Worm")) {
+                        String uppdateraRas = "INSERT INTO worm VALUES(" + alienID + ")";
+                        idb.insert(uppdateraRas);
+                    }
 
-            }
-            alienUppdaterad();
+                }
+                alienUppdaterad();
+                
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Kunde inte lägga till alien :( " + ex.getMessage());
         }
+
     }//GEN-LAST:event_bAndraActionPerformed
 
     private void comboValdRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboValdRasActionPerformed
@@ -385,15 +382,6 @@ public class AndraAlien extends javax.swing.JFrame {
         }
     }
 
-    private void ransaFalt() {
-        inputName.setText("");
-        inputRegDat.setText("");
-        inputName.setText("");
-        inputTelNR.setText("");
-        inputLosenord.setText("");
-        inputAntal.setText("");
-    }
-
     private void valjPlats() {
         String fraga = "SELECT Benamning FROM plats";
         ArrayList<String> allaPlatser;
@@ -415,7 +403,7 @@ public class AndraAlien extends javax.swing.JFrame {
         String fraga = "SELECT Namn FROM agent";
         ArrayList<String> allaAgenter;
         try {
-
+ 
             allaAgenter = idb.fetchColumn(fraga);
 
             for (String agentNamn : allaAgenter) {
