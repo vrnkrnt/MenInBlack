@@ -72,11 +72,17 @@ public class AndraAgent extends javax.swing.JFrame {
 
         jLabel4.setText("Nytt telefonnummer:");
 
-        jLabel5.setText("Administratör:");
+        jLabel5.setText("Administratör J/N:");
 
-        jLabel6.setText("Lösenord:");
+        jLabel6.setText("Nytt lösenord:");
 
-        jLabel7.setText("Område: ");
+        jLabel7.setText("Nytt område: ");
+
+        comboValjAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj agent" }));
+
+        comboOmrade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj område" }));
+
+        comboAdmin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj agent" }));
 
         bInfo.setText("Visa info ▷");
         bInfo.addActionListener(new java.awt.event.ActionListener() {
@@ -129,9 +135,7 @@ public class AndraAgent extends javax.swing.JFrame {
                                 .addComponent(jLabel1)))
                         .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(bInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(bInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(comboAdmin, 0, 136, Short.MAX_VALUE)
                             .addComponent(comboValjAgent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(inputNamn)
@@ -190,7 +194,7 @@ public class AndraAgent extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bAndra)
                     .addComponent(bTillbaka))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
@@ -268,7 +272,7 @@ public class AndraAgent extends javax.swing.JFrame {
                 jTextArea1.append("Område:\t" + omradeNamn);
             }
         } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Något gick fel. "
+            JOptionPane.showMessageDialog(null, "Kunde inte hämta information om alien.\n"
                     + e.getMessage());
         }
     }//GEN-LAST:event_bInfoActionPerformed
