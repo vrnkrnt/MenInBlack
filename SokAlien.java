@@ -122,12 +122,12 @@ public class SokAlien extends javax.swing.JFrame {
             valdAlien = idb.fetchRows(fraga);
 
             for (HashMap<String, String> alien : valdAlien) {
-                jTextArea1.append("ID:\t" + alien.get("Alien_ID") + "\n");
-                jTextArea1.append("Namn:\t" + alien.get("Namn") + "\n");
-                jTextArea1.append("Tel.nr.:\t" + alien.get("Telefon") + "\n");
-                jTextArea1.append("Reg.dat.:\t" + alien.get("Registreringsdatum") + "\n");
-                jTextArea1.append("Område:\t" + omradeNamn + "\n");
-                jTextArea1.append("Ansvarig agent:\t" + ansvarigAgent + "\n");
+                jTextArea1.append("ID:\t\t" + alien.get("Alien_ID") + "\n");
+                jTextArea1.append("Namn:\t\t" + alien.get("Namn") + "\n");
+                jTextArea1.append("Telefonnummer:\t" + alien.get("Telefon") + "\n");
+                jTextArea1.append("Registreringsdatum:\t" + alien.get("Registreringsdatum") + "\n");
+                jTextArea1.append("Område:\t\t" + omradeNamn + "\n");
+                jTextArea1.append("Ansvarig agent:\t\t" + ansvarigAgent + "\n");
                 jTextArea1.append("");
             }
         } catch (InfException e) {
