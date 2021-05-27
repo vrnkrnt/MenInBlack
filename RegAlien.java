@@ -322,19 +322,20 @@ public class RegAlien extends javax.swing.JFrame {
 //
 //    }
     
-    private void fyllAgentCombo()
-    {
-        jComboAgent.removeAllItems();
-        ArrayList<String> admins;//skapar en ArrayList för samtliga admins
+    private void fyllAgentCombo() {
+        String fraga = "SELECT Namn FROM agent";
+        ArrayList<String> allaAgenter;
         try {
-           admins = idb.fetchColumn("select namn from agent where administrator = 'J'");
-        for (String enAgent : admins) {
-            jComboAgent.addItem(enAgent); //läger till varje admins namn
-        }
-        } catch (InfException ex) {
-            JOptionPane.showMessageDialog(null, "Kunde inte fylla combobox!");
-        } catch (NullPointerException npe){
-            JOptionPane.showMessageDialog(null, "Finns ingen data att hämta.");
+
+            allaAgenter = idb.fetchColumn(fraga);
+
+            for (String agentNamn : allaAgenter) {
+                jComboAgent.addItem(agentNamn);
+            }
+
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(null, "Databasfel!");
+            System.out.println("Internt felmeddelande" + e.getMessage());
         }
     }
     
