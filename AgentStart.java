@@ -58,7 +58,7 @@ public class AgentStart extends javax.swing.JFrame {
         periodBtn = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         omradesChefBtn = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         changePassBtn = new javax.swing.JMenuItem();
 
@@ -156,13 +156,13 @@ public class AgentStart extends javax.swing.JFrame {
         });
         jMenu4.add(omradesChefBtn);
 
-        jMenuItem1.setText("- alien");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem2.setText("- alien info");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem1);
+        jMenu4.add(jMenuItem2);
 
         jMenuBar1.add(jMenu4);
 
@@ -236,10 +236,6 @@ public class AgentStart extends javax.swing.JFrame {
         new SokOmradesChef(idb).setVisible(true);
     }//GEN-LAST:event_omradesChefBtnActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        new SokAlien(idb).setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
     private void changePassBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePassBtnActionPerformed
         new AndraLosenAgent(idb, id).setVisible(true);
     }//GEN-LAST:event_changePassBtnActionPerformed
@@ -256,6 +252,10 @@ public class AgentStart extends javax.swing.JFrame {
         new LogIn(idb).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        new VisaAlienInfo(idb).setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void visaMinInformation() {
 
@@ -293,7 +293,7 @@ public class AgentStart extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JMenuItem minUtrustningBtn;

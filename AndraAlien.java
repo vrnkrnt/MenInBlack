@@ -278,6 +278,7 @@ public class AndraAlien extends javax.swing.JFrame {
             String nyttLosen = inputLosenord.getText();
             String nyttTele = inputTelNR.getText();
 
+            if (comboValdAlien.getSelectedIndex() > 0) {
                 if (nyttNamn != null && !nyttNamn.isEmpty()) {
                     String updateraNamn = "UPDATE alien SET Namn = '" + nyttNamn + "' WHERE Alien_ID = " + alienID;
                     idb.update(updateraNamn);
@@ -329,10 +330,14 @@ public class AndraAlien extends javax.swing.JFrame {
                         String uppdateraRas = "INSERT INTO worm VALUES(" + alienID + ")";
                         idb.insert(uppdateraRas);
                     }
-
                 }
+
                 alienUppdaterad();
+                this.setVisible(false);
                 
+            } else {
+                JOptionPane.showMessageDialog(null, "Välj alien.");
+            }
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Kunde inte lägga till alien :( " + ex.getMessage());
         }
@@ -394,7 +399,7 @@ public class AndraAlien extends javax.swing.JFrame {
         String fraga = "SELECT Namn FROM agent";
         ArrayList<String> allaAgenter;
         try {
- 
+
             allaAgenter = idb.fetchColumn(fraga);
 
             for (String agentNamn : allaAgenter) {

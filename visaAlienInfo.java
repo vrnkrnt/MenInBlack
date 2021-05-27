@@ -17,11 +17,11 @@ import oru.inf.InfException;
  * @author Karin Mäki-Kala
  * @author Veronika Ranta
  */
-public class SokAlien extends javax.swing.JFrame {
+public class VisaAlienInfo extends javax.swing.JFrame {
 
     private InfDB idb;
 
-    public SokAlien(InfDB idb) {
+    public VisaAlienInfo(InfDB idb) {
         initComponents();
         this.idb = idb;
         valjAlien();
@@ -64,6 +64,8 @@ public class SokAlien extends javax.swing.JFrame {
                 bTillbakaActionPerformed(evt);
             }
         });
+
+        comboValdAlien.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj alien" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

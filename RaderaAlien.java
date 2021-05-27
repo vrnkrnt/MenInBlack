@@ -133,8 +133,6 @@ public class RaderaAlien extends javax.swing.JFrame {
 
     private void fyllAlienCombo() {
         try {
-            alienCombo.removeAllItems();
-            alienCombo.addItem(" ");
             ArrayList<String> aliens;
             aliens = idb.fetchColumn("SELECT NAMN FROM ALIEN");
             for (String enAlien : aliens) {
