@@ -214,19 +214,19 @@ public class AndraAgent extends javax.swing.JFrame {
             String nyttAnstDat = inputAnstDat.getText();
             String nyttLosen = inputLosen.getText();
             
-            if (nyttNamn != null && !Validering.textFaltHarVarde(inputNamn)) {
+            if (nyttNamn != null && !nyttNamn.isEmpty()) {
                     String updateraNamn = "UPDATE agent SET Namn = '" + nyttNamn + "' WHERE Agent_ID = " + agentID;
                     idb.update(updateraNamn);
                 }
-            if (nyttTel != null && !Validering.textFaltHarVarde(inputTel)) {
+            if (nyttTel != null && !nyttTel.isEmpty()) {
                     String updateraTele = "UPDATE agent SET Telefon = '" + nyttTel + "' WHERE Agent_ID = " + agentID;
                     idb.update(updateraTele);
                 }
-            if (nyttAnstDat != null && !Validering.textFaltHarVarde(inputAnstDat)) {
+            if (nyttAnstDat != null && !nyttAnstDat.isEmpty()) {
                     String updateraDatum = "UPDATE agent SET Anstallningsdatum = '" + nyttAnstDat + "' WHERE Agent_ID = " + agentID;
                     idb.update(updateraDatum);
                 }
-            if (nyttLosen != null && !Validering.textFaltHarVarde(inputLosen)) {
+            if (nyttLosen != null && !nyttLosen.isEmpty()) {
                     String updateraLosen = "UPDATE agent SET Losenord = '" + nyttLosen + "' WHERE Agent_ID = " + agentID;
                     idb.update(updateraLosen);
                 }

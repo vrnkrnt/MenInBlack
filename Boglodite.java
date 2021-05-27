@@ -102,8 +102,9 @@ public class Boglodite extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         try{
-            String boogies = inputBoogies.getText().toString();
+            String boogies = inputBoogies.getText();
             int antalBoogies = Integer.parseInt(boogies);
+            System.out.println(antalBoogies);
             String query = ("INSERT INTO BOGLODITE VALUES (" +  id  + ", " + antalBoogies + ")");
             idb.insert(query);
             setVisible(false);

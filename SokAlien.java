@@ -124,10 +124,10 @@ public class SokAlien extends javax.swing.JFrame {
             for (HashMap<String, String> alien : valdAlien) {
                 jTextArea1.append("ID:\t\t" + alien.get("Alien_ID") + "\n");
                 jTextArea1.append("Namn:\t\t" + alien.get("Namn") + "\n");
-                jTextArea1.append("Telefonnummer:\t" + alien.get("Telefon") + "\n");
+                jTextArea1.append("Telefonnummer:  \t" + alien.get("Telefon") + "\n");
                 jTextArea1.append("Registreringsdatum:\t" + alien.get("Registreringsdatum") + "\n");
                 jTextArea1.append("Område:\t\t" + omradeNamn + "\n");
-                jTextArea1.append("Ansvarig agent:\t\t" + ansvarigAgent + "\n");
+                jTextArea1.append("Ansvarig agent:  \t" + ansvarigAgent + "\n");
                 jTextArea1.append("");
             }
         } catch (InfException e) {

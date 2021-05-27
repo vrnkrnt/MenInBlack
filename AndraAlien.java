@@ -278,19 +278,19 @@ public class AndraAlien extends javax.swing.JFrame {
             String nyttLosen = inputLosenord.getText();
             String nyttTele = inputTelNR.getText();
 
-                if (nyttNamn != null && !Validering.textFaltHarVarde(inputName)) {
+                if (nyttNamn != null && !nyttNamn.isEmpty()) {
                     String updateraNamn = "UPDATE alien SET Namn = '" + nyttNamn + "' WHERE Alien_ID = " + alienID;
                     idb.update(updateraNamn);
                 }
-                if (nyttDatum != null && !Validering.textFaltHarVarde(inputRegDat)) {
+                if (nyttDatum != null && !nyttDatum.isEmpty()) {
                     String updateraDatum = "UPDATE alien SET Registreringsdatum = '" + nyttDatum + "' WHERE Alien_ID = " + alienID;
                     idb.update(updateraDatum);
                 }
-                if (nyttLosen != null && !Validering.textFaltHarVarde(inputLosenord)) {
+                if (nyttLosen != null && !nyttLosen.isEmpty()) {
                     String updateraLosen = "UPDATE alien SET Losenord = '" + nyttLosen + "' WHERE Alien_ID = " + alienID;
                     idb.update(updateraLosen);
                 }
-                if (nyttTele != null && !Validering.textFaltHarVarde(inputTelNR)) {
+                if (nyttTele != null && !nyttTele.isEmpty()) {
                     String updateraTele = "UPDATE alien SET Telefon = '" + nyttTele + "' WHERE Alien_ID = " + alienID;
                     idb.update(updateraTele);
                 }
