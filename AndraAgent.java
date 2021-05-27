@@ -204,22 +204,41 @@ public class AndraAgent extends javax.swing.JFrame {
         try {
             String agentNamn = comboValjAgent.getSelectedItem().toString();
             String agentID = idb.fetchSingle("SELECT Agent_ID FROM agent WHERE Namn = '" + agentNamn + "'");
-            System.out.println(agentID);
 
             String nyttNamn = inputNamn.getText();
             String nyttTel = inputTel.getText();
             String nyttAnstDat = inputAnstDat.getText();
-            String arAdmin = comboAdmin.getSelectedItem().toString();
             String nyttLosen = inputLosen.getText();
-            String nyttOmrade = comboOmrade.getSelectedItem().toString();
-            String omradesID = idb.fetchSingle("SELECT Omrades_ID FROM omrade WHERE Benamning = '" + nyttOmrade + "'");
-            String fraga = "UPDATE agent SET Agent_ID = " + agentID + ", Namn = '" + nyttNamn
-                    + "', Telefon = '" + nyttTel + "', Anstallningsdatum = '" + nyttAnstDat
-                    + "', Administrator = '" + arAdmin + "', Losenord = '" + nyttLosen + "', Omrade = " + omradesID
-                    + " WHERE Agent_ID = " + agentID;
-            idb.update(fraga);
-
-            JOptionPane.showMessageDialog(null, "En agent har uppdaterats!");
+            
+            if (nyttNamn != null && !nyttNamn.isEmpty()) {
+                    String updateraNamn = "UPDATE agent SET Namn = '" + nyttNamn + "' WHERE Agent_ID = " + agentID;
+                    idb.update(updateraNamn);
+                }
+            if (nyttTel != null && !nyttTel.isEmpty()) {
+                    String updateraTele = "UPDATE agent SET Telefon = '" + nyttTel + "' WHERE Agent_ID = " + agentID;
+                    idb.update(updateraTele);
+                }
+            if (nyttAnstDat != null && !nyttAnstDat.isEmpty()) {
+                    String updateraDatum = "UPDATE agent SET Anstallningsdatum = '" + nyttAnstDat + "' WHERE Agent_ID = " + agentID;
+                    idb.update(updateraDatum);
+                }
+            if (nyttLosen != null && !nyttLosen.isEmpty()) {
+                    String updateraLosen = "UPDATE agent SET Losenord = '" + nyttLosen + "' WHERE Agent_ID = " + agentID;
+                    idb.update(updateraLosen);
+                }
+            if (comboAdmin.getSelectedIndex() > 0) {
+                    String arAdmin = comboAdmin.getSelectedItem().toString();;
+                    String updateraAdmin = "UPDATE agent SET Administrator = '" + arAdmin + "' WHERE Agent_ID = " + agentID;
+                    idb.update(updateraAdmin);
+                }
+            if (comboOmrade.getSelectedIndex() > 0) {
+                    String nyttOmrade = comboOmrade.getSelectedItem().toString();
+                    String omradesID = idb.fetchSingle("SELECT Omrades_ID FROM omrade WHERE Benamning = '" + nyttOmrade + "'");
+                    String updateraOmrade = "UPDATE agent SET Omrade = " + omradesID + " WHERE Agent_ID = " + agentID;
+                    idb.update(updateraOmrade);
+                }
+            
+            agentUppdaterad();
             this.setVisible(false);
 
         } catch (InfException ex) {
@@ -286,6 +305,11 @@ public class AndraAgent extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Databasfel!");
             System.out.println("Internt felmeddelande" + e.getMessage());
         }
+    }
+    
+    public void agentUppdaterad() {
+        JOptionPane.showMessageDialog(null, "En agent har uppdaterats!");
+        this.setVisible(false);
     }
 
     /**
