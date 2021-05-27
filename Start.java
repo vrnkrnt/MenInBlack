@@ -36,11 +36,4 @@ public class Start {
         }
     
     } 
-<<<<<<< HEAD
 }
-    
-=======
-    
-
-}
->>>>>>> 38d7258d4a0c43a0b1a56067d1ea9d8c2026ed04

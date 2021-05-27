@@ -23,6 +23,12 @@ import oru.inf.InfException;
 public class Validering {
 
     private static InfDB idb;
+    
+    public Validering(InfDB idb)
+    {
+        this.idb = idb;
+    }
+    
 
     public static boolean textvalue(JTextField checkvalue) {
         boolean resultat = true;
@@ -34,6 +40,36 @@ public class Validering {
         }
 
         return resultat;
+    }
+    
+    public static boolean originalPass(String losen, String origin, InfDB idb)
+    {
+        boolean isOriginal = true;
+        ArrayList<String> allaLosenord = new ArrayList<>();
+        try
+        {
+            allaLosenord = idb.fetchColumn("SELECT LOSENORD FROM " + origin);
+            for(String ettLosen : allaLosenord)
+            {
+                if(ettLosen.equals(losen))
+                {
+                    isOriginal = false;
+                }
+            }
+            
+            if(isOriginal == false)
+            {
+                JOptionPane.showMessageDialog(null, "Lösenordet är redan upptaget. Ange ett nytt");
+            }
+        }
+        
+        catch(InfException infex)
+        {
+            
+        }
+        
+        
+        return isOriginal;
     }
 
     //Denna metod är till för att kolla att ett lösenord är mer än 0 bokstäver och färre än 7

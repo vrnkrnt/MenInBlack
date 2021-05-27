@@ -255,7 +255,7 @@ public class RegAlien extends javax.swing.JFrame {
                 //String id = inputID.getText();
                 //int intID = Integer.parseInt(id);
                 String namn = "'" + inputName.getText() + "'";
-                String pass = "'" + inputPass.getText() + "'";
+                String pass = inputPass.getText();
                 String date = "'" + inputDat.getText() + "'";
                 String tele = "'" + inputTele.getText() + "'";
                 String plats = jComboPlats.getSelectedItem().toString();
@@ -264,27 +264,31 @@ public class RegAlien extends javax.swing.JFrame {
                 String agentID = idb.fetchSingle("select agent_id from agent where namn = '" + agentNamn + "'");
                 String platsID = idb.fetchSingle("select plats_id from plats where benamning = '" + plats + "'");
                 String q = "INSERT INTO ALIEN (ALIEN_ID, REGISTRERINGSDATUM, LOSENORD, NAMN, TELEFON, PLATS, ANSVARIG_AGENT)"
-                            + " VALUES (" + id + "," + date + "," + pass + "," + namn + "," + tele + "," + platsID
+                            + " VALUES (" + id + "," + date + "," + "'" + pass + "'" + "," + namn + "," + tele + "," + platsID
                             + "," + agentID + ")";
-                idb.insert(q);
-
-                switch(ras)
+                
+                if(Validering.originalPass(pass, "Alien", idb) == true)
                 {
-                    case "Boglodite":
-                    new Boglodite(idb, id).setVisible(true);
-                    dispose();
-                    break;
+                    idb.insert(q);
+                    switch(ras)
+                    {
+                        case "Boglodite":
+                            new Boglodite(idb, id).setVisible(true);
+                            dispose();
+                            break;
 
-                    case "Squid":
-                    new Squid(idb, id).setVisible(true);
-                    dispose();
-                    break;
+                        case "Squid":
+                            new Squid(idb, id).setVisible(true);
+                            dispose();
+                            break;
 
-                    case "Worm":
-                    String addWorm = ("INSERT INTO WORM VALUES (" + id + ")");
-                    idb.insert(addWorm);
-                    JOptionPane.showMessageDialog(null, "En worm har registrerats!");
+                        case "Worm":
+                            String addWorm = ("INSERT INTO WORM VALUES (" + id + ")");
+                            idb.insert(addWorm);
+                            JOptionPane.showMessageDialog(null, "En worm har registrerats!");
+                    }
                 }
+                
 
 
             }
