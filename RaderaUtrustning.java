@@ -10,13 +10,15 @@ import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
-/**
- *
- * @author Emillager
+/*
+ * @author Emil Lager
+ * @author Josefin Olsson
+ * @author Karin Mäki-Kala
+ * @author Veronika Ranta
  */
 public class RaderaUtrustning extends javax.swing.JFrame {
+
     private static InfDB idb;
-    
 
     /**
      * Creates new form RaderaUtrustning
@@ -27,21 +29,16 @@ public class RaderaUtrustning extends javax.swing.JFrame {
         fyllCombo();
     }
 
-    private void fyllCombo()
-    {
+    private void fyllCombo() {
         utrCombo.removeAllItems();
         ArrayList<String> utrList;
-        try
-        {
+        try {
             utrList = idb.fetchColumn("SELECT BENAMNING FROM UTRUSTNING");
-            for(String enUtr : utrList)
-            {
+            for (String enUtr : utrList) {
                 utrCombo.addItem(enUtr);
             }
-        }
-        catch(InfException ex)
-        {
-            
+        } catch (InfException ex) {
+
         }
     }
 
@@ -114,7 +111,7 @@ public class RaderaUtrustning extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void raderaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_raderaBtnActionPerformed
-        // TODO add your handling code here:
+
         try {
             if (utrCombo.getSelectedItem().toString() != null) {
                 String valdUtrustning = utrCombo.getSelectedItem().toString();
@@ -132,7 +129,6 @@ public class RaderaUtrustning extends javax.swing.JFrame {
     }//GEN-LAST:event_raderaBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_backBtnActionPerformed
 
@@ -170,7 +166,7 @@ public class RaderaUtrustning extends javax.swing.JFrame {
             }
         });
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
     private javax.swing.JLabel jLabel1;

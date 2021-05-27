@@ -17,7 +17,6 @@ import oru.inf.InfException;
  * @author Karin Mäki-Kala
  * @author Veronika Ranta
  */
-
 public class ListaAliensEfterDatum extends javax.swing.JFrame {
 
     private static InfDB idb;
@@ -49,8 +48,8 @@ public class ListaAliensEfterDatum extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         datum2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        bSok = new javax.swing.JButton();
+        bTillbaka = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,17 +71,17 @@ public class ListaAliensEfterDatum extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         jLabel4.setText("Format: 2002-02-02");
 
-        jButton1.setText("Sök");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bSok.setText("Sök");
+        bSok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bSokActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Tillbaka");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bTillbaka.setText("Tillbaka");
+        bTillbaka.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bTillbakaActionPerformed(evt);
             }
         });
 
@@ -93,7 +92,7 @@ public class ListaAliensEfterDatum extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bSok, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -114,7 +113,7 @@ public class ListaAliensEfterDatum extends javax.swing.JFrame {
                                 .addGap(61, 61, 61))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(bTillbaka)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -132,18 +131,18 @@ public class ListaAliensEfterDatum extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(datum2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(bSok)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
-                .addComponent(jButton2)
+                .addComponent(bTillbaka)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bSokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSokActionPerformed
         jTextArea1.setText("");
 
         ArrayList<HashMap<String, String>> soktaDatum;
@@ -152,11 +151,10 @@ public class ListaAliensEfterDatum extends javax.swing.JFrame {
                 String forstaSokDatum = datum1.getText();
                 String andraSokDatum = datum2.getText();
 
-                String fraga = "SELECT * FROM alien WHERE Registreringsdatum BETWEEN '" + forstaSokDatum 
+                String fraga = "SELECT * FROM alien WHERE Registreringsdatum BETWEEN '" + forstaSokDatum
                         + "' AND '" + andraSokDatum + "'";
                 soktaDatum = idb.fetchRows(fraga);
 
-                
                 jTextArea1.append("ID \t");
                 jTextArea1.append("Namn \t");
                 jTextArea1.append("Registreringsdatum \n");
@@ -172,13 +170,13 @@ public class ListaAliensEfterDatum extends javax.swing.JFrame {
                         + e.getMessage());
             }
         }
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+    }//GEN-LAST:event_bSokActionPerformed
+
+    private void bTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTillbakaActionPerformed
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_bTillbakaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -217,10 +215,10 @@ public class ListaAliensEfterDatum extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bSok;
+    private javax.swing.JButton bTillbaka;
     private javax.swing.JTextField datum1;
     private javax.swing.JTextField datum2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

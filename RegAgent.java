@@ -16,11 +16,10 @@ import oru.inf.InfException;
  * @author Karin Mäki-Kala
  * @author Veronika Ranta
  */
-
 public class RegAgent extends javax.swing.JFrame {
 
     private static InfDB idb;
-    
+
     /**
      * Creates new form RegAgent
      */
@@ -31,7 +30,6 @@ public class RegAgent extends javax.swing.JFrame {
         valjAdmin();
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -168,13 +166,12 @@ public class RegAgent extends javax.swing.JFrame {
     }//GEN-LAST:event_bTillbakaActionPerformed
 
     private void bRegistreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegistreraActionPerformed
-        if(Validering.textFaltHarVarde(inputNamn) && Validering.textFaltHarVarde(inputLosenord)
-                && Validering.textFaltHarVarde(inputAnstDat) && Validering.textFaltHarVarde(inputTelefon))
-        {
+        if (Validering.textFaltHarVarde(inputNamn) && Validering.textFaltHarVarde(inputLosenord)
+                && Validering.textFaltHarVarde(inputAnstDat) && Validering.textFaltHarVarde(inputTelefon)) {
             try {
-                String id = idb.getAutoIncrement("agent", "Agent_ID"); 
+                String id = idb.getAutoIncrement("agent", "Agent_ID");
                 String namn = inputNamn.getText();
-                String telefon = inputTelefon.getText();                
+                String telefon = inputTelefon.getText();
                 String anstallningsDatum = inputAnstDat.getText();
                 String admin = comboValjAdmin.getSelectedItem().toString();
                 String losenord = inputLosenord.getText();
@@ -183,12 +180,10 @@ public class RegAgent extends javax.swing.JFrame {
                 String omradesID = idb.fetchSingle("SELECT Omrades_ID FROM omrade WHERE benamning = '" + omrade + "'");
                 String fraga = "INSERT INTO Agent VALUE(" + id + ", '" + namn + "', '" + telefon + "', "
                         + "'" + anstallningsDatum + "', '" + admin + "', '" + losenord + "', " + omradesID + ");";
-                    idb.insert(fraga);
-                    JOptionPane.showMessageDialog(null, "En agent har lagts till!");
-                    this.setVisible(false);
-            }
-            catch (InfException ex)
-            {
+                idb.insert(fraga);
+                JOptionPane.showMessageDialog(null, "En agent har lagts till!");
+                this.setVisible(false);
+            } catch (InfException ex) {
                 JOptionPane.showMessageDialog(null, "Kunde inte lägga till agent :( ");
             }
         }
@@ -210,13 +205,12 @@ public class RegAgent extends javax.swing.JFrame {
             System.out.println("Internt felmeddelande" + e.getMessage());
         }
     }
-    
+
     private void valjAdmin() {
         comboValjAdmin.addItem("J");
         comboValjAdmin.addItem("N");
     }
 
-                
     /**
      * @param args the command line arguments
      */

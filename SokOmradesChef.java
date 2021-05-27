@@ -1,6 +1,5 @@
 package MenInBlack;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
@@ -12,9 +11,11 @@ import oru.inf.InfException;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/**
- *
- * @author josefinolsson
+ /*
+ * @author Emil Lager
+ * @author Josefin Olsson
+ * @author Karin Mäki-Kala
+ * @author Veronika Ranta
  */
 public class SokOmradesChef extends javax.swing.JFrame {
 
@@ -36,19 +37,19 @@ public class SokOmradesChef extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboSokChef = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        bTillbaka = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Sök områdeschef");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        comboSokChef.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
+        comboSokChef.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                comboSokChefActionPerformed(evt);
             }
         });
 
@@ -56,10 +57,10 @@ public class SokOmradesChef extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jButton1.setText("Tillbaka");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bTillbaka.setText("Tillbaka");
+        bTillbaka.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bTillbakaActionPerformed(evt);
             }
         });
 
@@ -70,13 +71,13 @@ public class SokOmradesChef extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bTillbaka, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(comboSokChef, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -85,30 +86,30 @@ public class SokOmradesChef extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboSokChef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(bTillbaka)
                 .addGap(31, 31, 31))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void comboSokChefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSokChefActionPerformed
         jTextArea1.setText("");
 
         ArrayList<HashMap<String, String>> soktaOmradesChefer;
 
         try {
-            String valtOmrade = jComboBox1.getSelectedItem().toString();
+            String valtOmrade = comboSokChef.getSelectedItem().toString();
             String fraga = "SELECT * FROM agent WHERE Agent_ID IN "
-                    +"(SELECT Agent_ID FROM omradeschef WHERE Omrade= "
-                    +"(SELECT Omrades_ID  FROM omrade WHERE Benamning = '"+ valtOmrade +"'))ORDER BY Agent_ID";
+                    + "(SELECT Agent_ID FROM omradeschef WHERE Omrade= "
+                    + "(SELECT Omrades_ID  FROM omrade WHERE Benamning = '" + valtOmrade + "'))ORDER BY Agent_ID";
             soktaOmradesChefer = idb.fetchRows(fraga);
 
-            jTextArea1. append("ID \t");
+            jTextArea1.append("ID \t");
             jTextArea1.append("Namn \t");
             jTextArea1.append("Telefon \n");
 
@@ -121,12 +122,11 @@ public class SokOmradesChef extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Den valda agenten är redan områdeschef över ett annat område!");
             System.out.println("Internt felmeddelande" + e.getMessage());
         }
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_comboSokChefActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    private void bTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTillbakaActionPerformed
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_bTillbakaActionPerformed
 
     private void valjOmradeNamn() {
         String fraga = "SELECT Benamning from omrade";
@@ -138,7 +138,7 @@ public class SokOmradesChef extends javax.swing.JFrame {
             allaOmraden = idb.fetchColumn(fraga);
 
             for (String Benamning : allaOmraden) {
-                jComboBox1.addItem(Benamning);
+                comboSokChef.addItem(Benamning);
             }
 
         } catch (InfException e) {
@@ -149,8 +149,8 @@ public class SokOmradesChef extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton bTillbaka;
+    private javax.swing.JComboBox<String> comboSokChef;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;

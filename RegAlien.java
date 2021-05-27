@@ -13,15 +13,16 @@ import oru.inf.InfException;
  * and open the template in the editor.
  */
 
-/*
+ /*
  * @author Emil Lager
  * @author Josefin Olsson
  * @author Karin Mäki-Kala
  * @author Veronika Ranta
  */
-
 public class RegAlien extends javax.swing.JFrame {
+
     private InfDB idb;
+
     /**
      * Creates new form RegAlienWin
      */
@@ -54,12 +55,12 @@ public class RegAlien extends javax.swing.JFrame {
         inputPass = new javax.swing.JTextField();
         inputDat = new javax.swing.JTextField();
         inputTele = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        bRegistrera = new javax.swing.JButton();
         jComboPlats = new javax.swing.JComboBox<>();
         jComboAgent = new javax.swing.JComboBox<>();
         jComboRas = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        backBtn = new javax.swing.JButton();
+        bTillbaka = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,46 +79,18 @@ public class RegAlien extends javax.swing.JFrame {
 
         jLabel8.setText("Ansvarig agent");
 
-        inputName.addActionListener(new java.awt.event.ActionListener() {
+        bRegistrera.setText("Registrera");
+        bRegistrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputNameActionPerformed(evt);
-            }
-        });
-
-        inputDat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputDatActionPerformed(evt);
-            }
-        });
-
-        inputTele.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputTeleActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Registrera");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bRegistreraActionPerformed(evt);
             }
         });
 
         jComboPlats.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj plats" }));
-        jComboPlats.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboPlatsActionPerformed(evt);
-            }
-        });
 
         jComboAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj agent" }));
 
         jComboRas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj ras" }));
-        jComboRas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboRasActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("Ras");
 
@@ -161,7 +134,7 @@ public class RegAlien extends javax.swing.JFrame {
                                 .addGap(62, 62, 62))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bRegistrera, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -196,13 +169,13 @@ public class RegAlien extends javax.swing.JFrame {
                     .addComponent(jComboAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboRas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
-                .addComponent(jButton1))
+                .addComponent(bRegistrera))
         );
 
-        backBtn.setText("Tillbaka");
-        backBtn.addActionListener(new java.awt.event.ActionListener() {
+        bTillbaka.setText("Tillbaka");
+        bTillbaka.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBtnActionPerformed(evt);
+                bTillbakaActionPerformed(evt);
             }
         });
 
@@ -214,7 +187,7 @@ public class RegAlien extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bTillbaka, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -222,7 +195,7 @@ public class RegAlien extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(backBtn)
+                    .addComponent(bTillbaka)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -230,27 +203,12 @@ public class RegAlien extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void inputTeleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTeleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputTeleActionPerformed
+    private void bRegistreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegistreraActionPerformed
 
-    private void inputNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputNameActionPerformed
-
-    private void inputDatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputDatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputDatActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        if(Validering.textFaltHarVarde(inputName) && Validering.textFaltHarVarde(inputPass)
-                && Validering.textFaltHarVarde(inputDat) && Validering.textFaltHarVarde(inputTele))
-        {
+        if (Validering.textFaltHarVarde(inputName) && Validering.textFaltHarVarde(inputPass)
+                && Validering.textFaltHarVarde(inputDat) && Validering.textFaltHarVarde(inputTele)) {
             try {
-                String id = idb.getAutoIncrement("ALIEN", "ALIEN_ID"); 
-                //String id = inputID.getText();
-                //int intID = Integer.parseInt(id);
+                String id = idb.getAutoIncrement("ALIEN", "ALIEN_ID");
                 String namn = "'" + inputName.getText() + "'";
                 String pass = inputPass.getText();
                 String date = "'" + inputDat.getText() + "'";
@@ -261,67 +219,39 @@ public class RegAlien extends javax.swing.JFrame {
                 String agentID = idb.fetchSingle("select agent_id from agent where namn = '" + agentNamn + "'");
                 String platsID = idb.fetchSingle("select plats_id from plats where benamning = '" + plats + "'");
                 String q = "INSERT INTO ALIEN (ALIEN_ID, REGISTRERINGSDATUM, LOSENORD, NAMN, TELEFON, PLATS, ANSVARIG_AGENT)"
-                            + " VALUES (" + id + "," + date + "," + "'" + pass + "'" + "," + namn + "," + tele + "," + platsID
-                            + "," + agentID + ")";
+                        + " VALUES (" + id + "," + date + "," + "'" + pass + "'" + "," + namn + "," + tele + "," + platsID
+                        + "," + agentID + ")";
                 idb.insert(q);
-                    
-                switch(ras)
-                    {
-                        case "Boglodite":
+
+                switch (ras) {
+                    case "Boglodite":
                         new Boglodite(idb, id).setVisible(true);
                         dispose();
                         break;
 
-                        case "Squid":
+                    case "Squid":
                         new Squid(idb, id).setVisible(true);
                         dispose();
                         break;
 
-                        case "Worm":
+                    case "Worm":
                         String addWorm = ("INSERT INTO WORM VALUES (" + id + ")");
                         idb.insert(addWorm);
                         JOptionPane.showMessageDialog(null, "En worm har registrerats!");
-                    }
                 }
-            
-            catch (InfException ex)
-            {
+            } catch (InfException ex) {
                 JOptionPane.showMessageDialog(null, "Kunde inte lägga till alien :( ");
             }
         }
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jComboPlatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboPlatsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboPlatsActionPerformed
 
-    private void jComboRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboRasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboRasActionPerformed
+    }//GEN-LAST:event_bRegistreraActionPerformed
 
-    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        // TODO add your handling code here:
+    private void bTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTillbakaActionPerformed
+
         this.setVisible(false);
-    }//GEN-LAST:event_backBtnActionPerformed
+    }//GEN-LAST:event_bTillbakaActionPerformed
 
-//    private void fyllAgentCombo(){
-//        comboAgent.removeAllItems();
-//        ArrayList<String> agenter;
-//        try {
-//            agenter = idb.fetchColumn("select namn from agent where administrator = 'J'");
-//            for (String enAgent : agenter) {
-//                comboAgent.addItem(enAgent);
-//            }
-//        } catch (InfException ex) {
-//            JOptionPane.showMessageDialog(null, "Kunde inte fylla combobox!");
-//        } catch (NullPointerException npe){
-//            JOptionPane.showMessageDialog(null, "Finns ingen data att hämta.");
-//        }
-//
-//    }
-    
     private void fyllAgentCombo() {
         String fraga = "SELECT Namn FROM agent";
         ArrayList<String> allaAgenter;
@@ -338,47 +268,43 @@ public class RegAlien extends javax.swing.JFrame {
             System.out.println("Internt felmeddelande" + e.getMessage());
         }
     }
-    
-    private void fyllPlatsCombo()
-    {
+
+    private void fyllPlatsCombo() {
         jComboPlats.removeAllItems();
-        ArrayList<String> platser;//skapar en ArrayList för samtliga platser
+        ArrayList<String> platser;
         try {
-           platser = idb.fetchColumn("select benamning from plats");
-        for (String enPlats : platser) {
-            jComboPlats.addItem(enPlats); //läger till varje admins namn
-        }
+            platser = idb.fetchColumn("select benamning from plats");
+            for (String enPlats : platser) {
+                jComboPlats.addItem(enPlats);
+            }
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Kunde inte fylla combobox!");
-        } catch (NullPointerException npe){
+        } catch (NullPointerException npe) {
             JOptionPane.showMessageDialog(null, "Finns ingen data att hämta.");
         }
-    
+
     }
- 
-    private void fyllRasCombo()
-    {
+
+    private void fyllRasCombo() {
         jComboRas.removeAllItems();
         String bog = "Boglodite";
         String squid = "Squid";
         String worm = "Worm";
-        
+
         jComboRas.addItem(bog);
         jComboRas.addItem(squid);
         jComboRas.addItem(worm);
-        
-        
-    
+
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backBtn;
+    private javax.swing.JButton bRegistrera;
+    private javax.swing.JButton bTillbaka;
     private javax.swing.JTextField inputDat;
     private javax.swing.JTextField inputName;
     private javax.swing.JTextField inputPass;
     private javax.swing.JTextField inputTele;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboAgent;
     private javax.swing.JComboBox<String> jComboPlats;
     private javax.swing.JComboBox<String> jComboRas;

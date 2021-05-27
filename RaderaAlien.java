@@ -80,7 +80,7 @@ public class RaderaAlien extends javax.swing.JFrame {
             }
         });
 
-        alienCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        alienCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,30 +131,26 @@ public class RaderaAlien extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fyllAlienCombo()
-    {
-        try{
+    private void fyllAlienCombo() {
+        try {
             alienCombo.removeAllItems();
             alienCombo.addItem(" ");
             ArrayList<String> aliens;
             aliens = idb.fetchColumn("SELECT NAMN FROM ALIEN");
-            for(String enAlien : aliens)
-            {
+            for (String enAlien : aliens) {
                 alienCombo.addItem(enAlien);
             }
-        }
-        catch(InfException ex)
-        {
-            
+        } catch (InfException ex) {
+
         }
     }
     private void bRaderaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRaderaActionPerformed
         try {
             String valdAlien = alienCombo.getSelectedItem().toString();
             if (valdAlien != null) {
-               String alienID = idb.fetchSingle("SELECT ALIEN_ID FROM ALIEN WHERE NAMN = '" + valdAlien + "'");
+                String alienID = idb.fetchSingle("SELECT ALIEN_ID FROM ALIEN WHERE NAMN = '" + valdAlien + "'");
                 String raderaBog = "DELETE FROM BOGLODITE WHERE ALIEN_ID =" + alienID;
-                String raderaSquid = "DELETE FROM SQUID WHERE ALIEN_ID =" +alienID;
+                String raderaSquid = "DELETE FROM SQUID WHERE ALIEN_ID =" + alienID;
                 String raderaWorm = "DELETE FROM WORM WHERE ALIEN_ID = " + alienID;
                 idb.delete(raderaBog);
                 idb.delete(raderaSquid);
@@ -187,7 +183,7 @@ public class RaderaAlien extends javax.swing.JFrame {
                 String omradeNamn = idb.fetchSingle("SELECT Benamning FROM plats WHERE Plats_ID IN "
                         + "(SELECT plats FROM alien WHERE namn = '" + namn + "')");
                 String ansvarigAgent = idb.fetchSingle("SELECT Namn FROM agent WHERE Agent_ID IN "
-                    + "(SELECT Ansvarig_Agent FROM alien WHERE namn = '" + namn + "');");
+                        + "(SELECT Ansvarig_Agent FROM alien WHERE namn = '" + namn + "');");
 
                 for (HashMap<String, String> alien : soktAlien) {
                     visaAlienInfo.append("ID: " + alien.get("Alien_ID") + "\n");

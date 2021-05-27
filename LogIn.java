@@ -16,8 +16,8 @@ import javax.swing.JOptionPane;
  * @author Karin Mäki-Kala
  * @author Veronika Ranta
  */
-
 public class LogIn extends javax.swing.JFrame {
+
     private static InfDB idb;
 
     /**
@@ -26,10 +26,10 @@ public class LogIn extends javax.swing.JFrame {
     public LogIn(InfDB idb) {
         initComponents();
         this.idb = idb;
-        jComboBox1.removeAllItems();
-        jComboBox1.addItem("Admin");
-        jComboBox1.addItem("Agent");
-        jComboBox1.addItem("Alien");
+        comboLogIn.removeAllItems();
+        comboLogIn.addItem("Admin");
+        comboLogIn.addItem("Agent");
+        comboLogIn.addItem("Alien");
     }
 
     /**
@@ -41,7 +41,7 @@ public class LogIn extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboLogIn = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         inputID = new javax.swing.JTextField();
@@ -51,24 +51,13 @@ public class LogIn extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
+        comboLogIn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj" }));
 
         jLabel1.setText("Logga in som:");
 
         jLabel2.setText("ID:");
 
         jLabel3.setText("Lösenord:");
-
-        inputPass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputPassActionPerformed(evt);
-            }
-        });
 
         logInBtn.setText("Logga in");
         logInBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +79,7 @@ public class LogIn extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(inputID, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(inputPass, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(186, Short.MAX_VALUE))
@@ -105,7 +94,7 @@ public class LogIn extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -116,109 +105,84 @@ public class LogIn extends javax.swing.JFrame {
                     .addComponent(inputPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(logInBtn)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void inputPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputPassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputPassActionPerformed
-
     private void logInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logInBtnActionPerformed
-        // TODO add your handling code here:
-        
+
         String userID = inputID.getText();
         String pass = inputPass.getText();
-        String choice = jComboBox1.getSelectedItem().toString();
+        String choice = comboLogIn.getSelectedItem().toString();
         String passQ = "";
-        boolean correctPass = false; 
-        
-        if(Validering.textFaltHarVarde(inputID) && Validering.textFaltHarVarde(inputPass))
-        {
-        
-        switch(choice){
-            case "Admin":
-                try{
+        boolean correctPass = false;
+
+        if (Validering.textFaltHarVarde(inputID) && Validering.textFaltHarVarde(inputPass)) {
+
+            switch (choice) {
+                case "Admin":
+                try {
                     passQ = ("SELECT LOSENORD FROM AGENT WHERE ADMINISTRATOR = 'J' AND AGENT_ID = '" + userID + "'");
                     String q = idb.fetchSingle(passQ);
-                    if(q.equals(pass))
-                    {
+                    if (q.equals(pass)) {
                         System.out.println("admin");
                         new AdminStart(idb, userID).setVisible(true);
                         this.setVisible(false);
                         correctPass = true;
                         break;
                     }
-                    
-                    if(!correctPass)
-                    {
+
+                    if (!correctPass) {
                         JOptionPane.showMessageDialog(null, "Fel! Kontrollera användar-ID och lösenord.");
                         break;
-                    }    
-            }
-                
-                catch(InfException ex)
-                {
-                    
+                    }
+                } catch (InfException ex) {
+
                 }
-                
-                
-            case "Agent":
-                try{
+
+                case "Agent":
+                try {
                     passQ = ("SELECT LOSENORD FROM AGENT WHERE AGENT_ID = '" + userID + "'");
                     String q = idb.fetchSingle(passQ);
-                    if(q.equals(pass))
-                    {
+                    if (q.equals(pass)) {
                         System.out.println("agent");
                         new AgentStart(idb, userID).setVisible(true);
                         this.setVisible(false);
                         correctPass = true;
-                        break; 
+                        break;
                     }
-  
-                    if(!correctPass)
-                    {
+
+                    if (!correctPass) {
                         JOptionPane.showMessageDialog(null, "Fel! Kontrollera användar-ID och lösenord.");
                         break;
                     }
-                }
-            
-                catch(InfException ex)
-                {
+                } catch (InfException ex) {
                     System.out.println("");
                 }
-                
-            case "Alien":
-                try{
+
+                case "Alien":
+                try {
                     passQ = ("SELECT LOSENORD FROM ALIEN WHERE ALIEN_ID = '" + userID + "'");
                     String q = idb.fetchSingle(passQ);
-                    if(q.equals(pass))
-                    {
+                    if (q.equals(pass)) {
                         System.out.println("alien");
                         new AlienStart(idb, userID).setVisible(true);
                         this.setVisible(false);
                         correctPass = true;
                     }
-                    
-                    if(!correctPass)
-                    {
+
+                    if (!correctPass) {
                         JOptionPane.showMessageDialog(null, "Fel! Kontrollera användar-ID och lösenord.");
                         break;
                     }
-                }
-                catch(InfException ex)
-                {
+                } catch (InfException ex) {
                     System.out.println("");
                 }
-        }
+            }
         }
     }//GEN-LAST:event_logInBtnActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,9 +220,9 @@ public class LogIn extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboLogIn;
     private javax.swing.JTextField inputID;
     private javax.swing.JTextField inputPass;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -23,25 +23,10 @@ import oru.inf.InfException;
 public class Validering {
 
     private static InfDB idb;
-    
-    public Validering(InfDB idb)
-    {
+
+    public Validering(InfDB idb) {
         this.idb = idb;
     }
-    
-
-    public static boolean textvalue(JTextField checkvalue) {
-        boolean resultat = true;
-
-        if (checkvalue.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Rutan är tom!");
-            resultat = false;
-            checkvalue.requestFocus();
-        }
-
-        return resultat;
-    }
-    
 
     //Denna metod är till för att kolla att ett lösenord är mer än 0 bokstäver och färre än 7
     public static boolean maxSexPass(JTextField passwordCheck) {
@@ -83,27 +68,4 @@ public class Validering {
 
         return resultat;
     }
-
-    /*public static boolean finnsAgentID(JTextField rutaAttKolla) {
-        boolean idFinns = false;
-
-        try {
-            String inStrang = rutaAttKolla.getText();
-            Integer.parseInt(inStrang);
-            String fraga = "SELECT LENGTH(Agent_ID) AS Antal_Agenter FROM agent where Agent_ID = " + inStrang;
-            if (fraga.length() > 0) { //Kolla hur man fixar detta! Går igenom även fast listan är tom
-                idFinns = true;
-                System.out.println("rätt");
-            }
-            
-            else{
-                rutaAttKolla.requestFocus();
-                throw new Exception();
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ID:t finns inte i databasen");
-        }
-
-        return idFinns;
-    }*/
 }

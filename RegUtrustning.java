@@ -20,7 +20,7 @@ import oru.inf.InfException;
  */
 public class RegUtrustning extends javax.swing.JFrame {
 
-    private InfDB idb;
+    private static InfDB idb;
 
     /**
      * Creates new form RegUtrustningWin
@@ -42,12 +42,12 @@ public class RegUtrustning extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboUtrustning = new javax.swing.JComboBox<>();
         inputBenamning = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        bRegistrera = new javax.swing.JButton();
+        inputAntal = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        bTillbaka = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,30 +58,30 @@ public class RegUtrustning extends javax.swing.JFrame {
 
         jLabel4.setText("Benämning: ");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kommunikation", "Teknik", "Vapen" }));
-        jComboBox1.setSelectedIndex(-1);
-        jComboBox1.setToolTipText("");
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        comboUtrustning.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kommunikation", "Teknik", "Vapen" }));
+        comboUtrustning.setSelectedIndex(-1);
+        comboUtrustning.setToolTipText("");
+        comboUtrustning.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                comboUtrustningActionPerformed(evt);
             }
         });
 
         inputBenamning.setColumns(8);
 
-        jButton1.setText("Registrera");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bRegistrera.setText("Registrera");
+        bRegistrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bRegistreraActionPerformed(evt);
             }
         });
 
-        jTextField1.setColumns(8);
+        inputAntal.setColumns(8);
 
-        jButton2.setText("Tillbaka");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bTillbaka.setText("Tillbaka");
+        bTillbaka.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bTillbakaActionPerformed(evt);
             }
         });
 
@@ -100,15 +100,15 @@ public class RegUtrustning extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(129, 129, 129)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
+                            .addComponent(bRegistrera)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField1)
+                                .addComponent(inputAntal)
                                 .addComponent(inputBenamning)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(comboUtrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(159, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(bTillbaka, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,68 +118,69 @@ public class RegUtrustning extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboUtrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(inputBenamning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputAntal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
-                .addComponent(jButton1)
+                .addComponent(bRegistrera)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(bTillbaka)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //inputBenamning.setText("");
-        //jTextField1.setText("");
-        
+    private void bRegistreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegistreraActionPerformed
+
         try {
             String id = idb.getAutoIncrement("utrustning", "Utrustnings_ID");
             String benamning = "'" + inputBenamning.getText() + "'";
 
-            String valdUtrustning = jComboBox1.getSelectedItem().toString();
+            String valdUtrustning = comboUtrustning.getSelectedItem().toString();
             String laggTillUtrustning = "INSERT INTO utrustning (Utrustnings_ID, Benamning) VALUES ("
-                    + id + ", " + benamning + ");";           
-            
-            if (valdUtrustning.equalsIgnoreCase("Kommunikation")) {
-                String overforingsTeknik = jTextField1.getText();
-                String laggTillKommunikation = "INSERT INTO kommunikation (Utrustnings_ID, Overforingsteknik) VALUES (" +
-                        id + ", '" + overforingsTeknik + "');";
-                idb.insert(laggTillKommunikation);
-                JOptionPane.showMessageDialog(null, "Kommunikationsutrustningen har registrerats");
+                    + id + ", " + benamning + ");";
+
+            if (Validering.textFaltHarVarde(inputBenamning) && Validering.isHeltal(inputAntal)) {
+                if (valdUtrustning.equalsIgnoreCase("Kommunikation")) {
+                    String overforingsTeknik = inputAntal.getText();
+                    String laggTillKommunikation = "INSERT INTO kommunikation (Utrustnings_ID, Overforingsteknik) VALUES ("
+                            + id + ", '" + overforingsTeknik + "');";
+                    idb.insert(laggTillKommunikation);
+                    JOptionPane.showMessageDialog(null, "Kommunikationsutrustningen har registrerats");
+                }
             }
             if (valdUtrustning.equalsIgnoreCase("Teknik")) {
-                String kraftkalla = jTextField1.getText();
-                String laggTillTeknik = "INSERT INTO teknik (Utrustnings_ID, Kraftkalla) VALUES (" +
-                        id + ", '" + kraftkalla + "');";
+                String kraftkalla = inputAntal.getText();
+                String laggTillTeknik = "INSERT INTO teknik (Utrustnings_ID, Kraftkalla) VALUES ("
+                        + id + ", '" + kraftkalla + "');";
                 idb.insert(laggTillTeknik);
                 JOptionPane.showMessageDialog(null, "Teknikutrustningen har registrerats");
             }
             if (valdUtrustning.equalsIgnoreCase("Vapen")) {
-                String kaliber = jTextField1.getText();
-                String laggTillVapen = "INSERT INTO vapen (Utrustnings_ID, Kaliber) VALUES (" +
-                        id + ", '" + kaliber + "');";
+                String kaliber = inputAntal.getText();
+                String laggTillVapen = "INSERT INTO vapen (Utrustnings_ID, Kaliber) VALUES ("
+                        + id + ", '" + kaliber + "');";
                 idb.insert(laggTillVapen);
                 JOptionPane.showMessageDialog(null, "Vapnet har registrerats");
             }
             idb.insert(laggTillUtrustning);
+            this.setVisible(false);
 
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick fel. ");
             System.out.println("Internt felmeddelande" + e.getMessage());
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_bRegistreraActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        String valdUtrustning = jComboBox1.getSelectedItem().toString();
+    private void comboUtrustningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboUtrustningActionPerformed
+        String valdUtrustning = comboUtrustning.getSelectedItem().toString();
 
         if (valdUtrustning.equals("Vapen")) {
             jLabel3.setText("Kaliber: ");
@@ -190,13 +191,12 @@ public class RegUtrustning extends javax.swing.JFrame {
         if (valdUtrustning.equals("Kommunikation")) {
             jLabel3.setText("Överföringsteknik: ");
         }
-        
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+    }//GEN-LAST:event_comboUtrustningActionPerformed
+
+    private void bTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTillbakaActionPerformed
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_bTillbakaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -228,20 +228,20 @@ public class RegUtrustning extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new RegUtrustning().setVisible(true);
+                new RegUtrustning(idb).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bRegistrera;
+    private javax.swing.JButton bTillbaka;
+    private javax.swing.JComboBox<String> comboUtrustning;
+    private javax.swing.JTextField inputAntal;
     private javax.swing.JTextField inputBenamning;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

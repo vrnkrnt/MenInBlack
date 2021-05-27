@@ -9,18 +9,21 @@ import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
-/**
- *
- * @author Emillager
+/*
+ * @author Emil Lager
+ * @author Josefin Olsson
+ * @author Karin Mäki-Kala
+ * @author Veronika Ranta
  */
 public class Squid extends javax.swing.JFrame {
+
     private static InfDB idb;
     private static String id;
 
     /**
      * Creates new form Squid
      */
-    public Squid(InfDB idb,String id) {
+    public Squid(InfDB idb, String id) {
         initComponents();
         this.idb = idb;
         this.id = id;
@@ -37,22 +40,16 @@ public class Squid extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         inputArmar = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        bRegistrera = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Antal armar");
+        jLabel1.setText("Antal armar:");
 
-        inputArmar.addActionListener(new java.awt.event.ActionListener() {
+        bRegistrera.setText("Registrera");
+        bRegistrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputArmarActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Registrera");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bRegistreraActionPerformed(evt);
             }
         });
 
@@ -61,16 +58,13 @@ public class Squid extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(inputArmar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(jButton1)))
-                .addContainerGap(244, Short.MAX_VALUE))
+                    .addComponent(bRegistrera)
+                    .addComponent(inputArmar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,36 +73,28 @@ public class Squid extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(inputArmar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap(189, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(bRegistrera)
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void inputArmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputArmarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputArmarActionPerformed
+    private void bRegistreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegistreraActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
-        try{
+        try {
             String armar = inputArmar.getText().toString();
             int antalArmar = Integer.parseInt(armar);
-            String query = ("INSERT INTO SQUID VALUES (" +  id  + ", " + antalArmar + ")");
+            String query = ("INSERT INTO SQUID VALUES (" + id + ", " + antalArmar + ")");
             idb.insert(query);
             setVisible(false);
             JOptionPane.showMessageDialog(null, "En squid har registrerats!");
-            
+
+        } catch (InfException ex) {
+
         }
-        
-        catch(InfException ex)
-        {
-            
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_bRegistreraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,8 +132,8 @@ public class Squid extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bRegistrera;
     private javax.swing.JTextField inputArmar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
