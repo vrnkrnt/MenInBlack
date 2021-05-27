@@ -54,8 +54,6 @@ public class Admin extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         minUtrustningBtn = new javax.swing.JMenuItem();
         visaTopp3AgenterBtn = new javax.swing.JMenuItem();
-        samStatBtn = new javax.swing.JMenuItem();
-        printRapportBtn = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         visaOmradesChefBtn = new javax.swing.JMenuItem();
         sokAlienbtn = new javax.swing.JMenuItem();
@@ -144,12 +142,6 @@ public class Admin extends javax.swing.JFrame {
             }
         });
         jMenu1.add(visaTopp3AgenterBtn);
-
-        samStatBtn.setText("- sammanfattande statistik");
-        jMenu1.add(samStatBtn);
-
-        printRapportBtn.setText("- skriv ut statistikrapport");
-        jMenu1.add(printRapportBtn);
 
         jMenuBar1.add(jMenu1);
 
@@ -434,11 +426,9 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JMenuItem minUtrustningBtn;
     private javax.swing.JMenuItem omradeBtn;
     private javax.swing.JMenuItem periodBtn;
-    private javax.swing.JMenuItem printRapportBtn;
     private javax.swing.JMenuItem rasBtn;
     private javax.swing.JMenuItem regNyAdminBtn;
     private javax.swing.JMenuItem regNyAgentBtn;
-    private javax.swing.JMenuItem samStatBtn;
     private javax.swing.JMenuItem sokAlienbtn;
     private javax.swing.JMenuItem taBortAgentBtn;
     private javax.swing.JMenuItem taBortAlienBtn;
