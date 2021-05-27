@@ -53,6 +53,7 @@ public class ListaAliensEfterPlats extends javax.swing.JFrame {
 
         jLabel2.setText("Välj plats:");
 
+        comboPlats.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj plats" }));
         comboPlats.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboPlatsActionPerformed(evt);
@@ -103,7 +104,7 @@ public class ListaAliensEfterPlats extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(comboPlats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(bTillbaka)
                 .addContainerGap())
@@ -145,7 +146,6 @@ public class ListaAliensEfterPlats extends javax.swing.JFrame {
 
     private void valjPlatsNamn() {
         String fraga = "SELECT Benamning from plats";
-        comboPlats.addItem(" ");
         ArrayList<String> allaPlatser;
 
         try {

@@ -26,9 +26,6 @@ public class ListaAliensEfterRas extends javax.swing.JFrame {
         this.idb = idb;
     }
 
-    ListaAliensEfterRas(InfDB idb, String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,8 +50,7 @@ public class ListaAliensEfterRas extends javax.swing.JFrame {
 
         jLabel2.setText("Välj ras:");
 
-        comboRas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boglodite", "Squid", "Worm" }));
-        comboRas.setSelectedIndex(-1);
+        comboRas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj Ras", "Boglodite", "Squid", "Worm" }));
         comboRas.setToolTipText("");
         comboRas.setName(""); // NOI18N
         comboRas.addActionListener(new java.awt.event.ActionListener() {
