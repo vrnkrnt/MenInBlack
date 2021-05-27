@@ -141,6 +141,7 @@ public class AlienStart extends javax.swing.JFrame {
 
     private void jVisaAliensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVisaAliensActionPerformed
         // TODO add your handling code here:
+        new VisaAliensIAlienomrade(idb, id).setVisible(true);
         
     }//GEN-LAST:event_jVisaAliensActionPerformed
 
