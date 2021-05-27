@@ -17,7 +17,7 @@ import oru.inf.InfException;
  * @author Karin Mäki-Kala
  * @author Veronika Ranta
  */
-public class AgentWin extends javax.swing.JFrame {
+public class AgentStart extends javax.swing.JFrame {
 
     private InfDB idb;
     private static String id;
@@ -25,7 +25,7 @@ public class AgentWin extends javax.swing.JFrame {
     /**
      * Creates new form AgentWin
      */
-    public AgentWin(InfDB idb, String id) {
+    public AgentStart(InfDB idb, String id) {
         initComponents();
         this.idb = idb;
         this.id = id;
@@ -264,7 +264,7 @@ public class AgentWin extends javax.swing.JFrame {
     }//GEN-LAST:event_visaTopp3AgenterBtnActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new LogInWin(idb).setVisible(true);
+        new LogIn(idb).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
