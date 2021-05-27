@@ -80,6 +80,8 @@ public class RaderaAgent extends javax.swing.JFrame {
             }
         });
 
+        comboValjAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj agent" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -120,7 +122,7 @@ public class RaderaAgent extends javax.swing.JFrame {
                 .addComponent(bInfo)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bRadera)
                     .addComponent(bTillbaka))
@@ -186,7 +188,6 @@ public class RaderaAgent extends javax.swing.JFrame {
     }//GEN-LAST:event_bInfoActionPerformed
 
     private void valjAgent() {
-        comboValjAgent.addItem(" ");
         String fraga = "SELECT Namn FROM agent";
         ArrayList<String> allaAgenter;
         try {
