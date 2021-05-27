@@ -5,47 +5,43 @@
  */
 package MenInBlack;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
-/**
- *
- * @author kmaki
+/*
+ * @author Emil Lager
+ * @author Josefin Olsson
+ * @author Karin Mäki-Kala
+ * @author Veronika Ranta
  */
-public class ListaAliensIMittOmrade extends javax.swing.JFrame {
+public class VisaAliensOmradesChef extends javax.swing.JFrame {
+
     private static InfDB idb;
     private static String id;
-            
 
     /**
-     * Creates new form ListaAliensIMittOmrade
+     * Creates new form VisaAliensOmradesChef
      */
-    public ListaAliensIMittOmrade(InfDB idb, String id) {
+    public VisaAliensOmradesChef(InfDB idb, String id) {
         initComponents();
         this.idb = idb;
         this.id = id;
+        visaAgentsInformation();
     }
 
-    private ListaAliensIMittOmrade() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    public void printAliensOmrade(){
-        
-               ArrayList<HashMap<String, String>> mittOmrade;
-        String omradeSql = "SELECT Benamning FROM omrade WHERE Omrades_ID IN (SELECT Finns_I FROM plats WHERE Plats_ID IN";
-  
-        String sql = "(SELECT Plats FROM alien WHERE Alien_ID = 1))SELECT * FROM alien WHERE Plats IN (SELECT Plats_ID FROM plats WHERE Finns_I IN(SELECT Omrades_ID FROM omrade WHERE Benamning = '" + omradeSql + "'))";
+    private void visaAgentsInformation() {
         try {
-            mittOmrade = idb.fetchRows(sql);
+            String agentID = idb.fetchSingle("SELECT Ansvarig_Agent from alien WHERE Alien_ID = " + id);
+            String agentNamn = idb.fetchSingle("SELECT Namn FROM agent WHERE Agent_ID = " + agentID);
+            String agentTelefon = idb.fetchSingle("SELECT Telefon FROM agent WHERE Agent_ID = " + agentID);
+ 
+            textAreaVisaInfo.setText("Namn: " + agentNamn + "\nTelefon: " + agentTelefon);
             
-        } catch (InfException ex) {
-            Logger.getLogger(AlienWin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Kunde inte visa information. \n"
+                    + e.getMessage());
         }
-        
     }
 
     /**
@@ -58,30 +54,37 @@ public class ListaAliensIMittOmrade extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        textAreaVisaInfo = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Aliens i ditt område:");
-        jScrollPane1.setViewportView(jTextArea1);
+        textAreaVisaInfo.setColumns(20);
+        textAreaVisaInfo.setRows(5);
+        jScrollPane1.setViewportView(textAreaVisaInfo);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Min områdeschef");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addContainerGap(184, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(159, Short.MAX_VALUE))
         );
 
         pack();
@@ -104,26 +107,27 @@ public class ListaAliensIMittOmrade extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListaAliensIMittOmrade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisaAliensOmradesChef.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListaAliensIMittOmrade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisaAliensOmradesChef.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListaAliensIMittOmrade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisaAliensOmradesChef.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListaAliensIMittOmrade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisaAliensOmradesChef.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListaAliensIMittOmrade(idb, id).setVisible(true);
+                new VisaAliensOmradesChef(idb, id).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea textAreaVisaInfo;
     // End of variables declaration//GEN-END:variables
 }
