@@ -6,6 +6,7 @@
 package MenInBlack;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -46,7 +47,8 @@ public class VisaAliensIAlienomrade extends javax.swing.JFrame {
         }
         catch(InfException ex)
         {
-        
+            JOptionPane.showMessageDialog(null, "Kunde inte visa information. \n"
+                + ex.getMessage());
         }
     }
     
