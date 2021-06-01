@@ -46,9 +46,9 @@ public class AndraLosenAgent extends javax.swing.JFrame {
         buttonAndra = new javax.swing.JButton();
         nyttLosen = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTextCnf = new javax.swing.JTextField();
-        jTextNew = new javax.swing.JTextField();
         buttonTillbaka = new javax.swing.JButton();
+        jTextNew = new javax.swing.JPasswordField();
+        jTextCnf = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,28 +80,6 @@ public class AndraLosenAgent extends javax.swing.JFrame {
 
         jLabel1.setText("Upprepa nytt lösenord:");
 
-        jTextCnf.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTextCnfMousePressed(evt);
-            }
-        });
-        jTextCnf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextCnfActionPerformed(evt);
-            }
-        });
-
-        jTextNew.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTextNewMousePressed(evt);
-            }
-        });
-        jTextNew.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextNewActionPerformed(evt);
-            }
-        });
-
         buttonTillbaka.setText("Tillbaka");
         buttonTillbaka.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,20 +95,18 @@ public class AndraLosenAgent extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(170, 170, 170)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextCnf, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-                                    .addComponent(jTextNew))
-                                .addGap(8, 8, 8)))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonTillbaka))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(nyttLosen)
-                            .addComponent(jLabel1))))
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextNew, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(jTextCnf))))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -188,24 +164,6 @@ public class AndraLosenAgent extends javax.swing.JFrame {
 
     }//GEN-LAST:event_buttonAndraActionPerformed
 
-    private void jTextCnfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCnfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextCnfActionPerformed
-
-    private void jTextNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNewActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextNewActionPerformed
-
-    private void jTextNewMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextNewMousePressed
-        // TODO add your handling code here:
-        jTextNew.setText("");
-    }//GEN-LAST:event_jTextNewMousePressed
-
-    private void jTextCnfMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextCnfMousePressed
-        // TODO add your handling code here:
-        jTextCnf.setText("");
-    }//GEN-LAST:event_jTextCnfMousePressed
-
     private void buttonTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTillbakaActionPerformed
        this.setVisible(false);
     }//GEN-LAST:event_buttonTillbakaActionPerformed
@@ -253,8 +211,8 @@ public class AndraLosenAgent extends javax.swing.JFrame {
     private javax.swing.JColorChooser jColorChooser4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextCnf;
-    private javax.swing.JTextField jTextNew;
+    private javax.swing.JPasswordField jTextCnf;
+    private javax.swing.JPasswordField jTextNew;
     private javax.swing.JLabel nyttLosen;
     // End of variables declaration//GEN-END:variables
 }

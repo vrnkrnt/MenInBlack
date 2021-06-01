@@ -50,7 +50,6 @@ public class AndraAgent extends javax.swing.JFrame {
         comboValjAgent = new javax.swing.JComboBox<>();
         inputNamn = new javax.swing.JTextField();
         inputTel = new javax.swing.JTextField();
-        inputLosen = new javax.swing.JTextField();
         comboOmrade = new javax.swing.JComboBox<>();
         comboAdmin = new javax.swing.JComboBox<>();
         bInfo = new javax.swing.JButton();
@@ -60,6 +59,7 @@ public class AndraAgent extends javax.swing.JFrame {
         bAndra = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         inputAnstDat = new javax.swing.JTextField();
+        inputLosen = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -135,14 +135,16 @@ public class AndraAgent extends javax.swing.JFrame {
                                 .addComponent(jLabel1)))
                         .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(comboAdmin, 0, 136, Short.MAX_VALUE)
                             .addComponent(comboValjAgent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(inputNamn)
                             .addComponent(inputTel)
                             .addComponent(inputAnstDat)
-                            .addComponent(inputLosen)
-                            .addComponent(comboOmrade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(comboOmrade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(bInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(inputLosen))))
                 .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(bTillbaka, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -364,7 +366,7 @@ public class AndraAgent extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboOmrade;
     private javax.swing.JComboBox<String> comboValjAgent;
     private javax.swing.JTextField inputAnstDat;
-    private javax.swing.JTextField inputLosen;
+    private javax.swing.JPasswordField inputLosen;
     private javax.swing.JTextField inputNamn;
     private javax.swing.JTextField inputTel;
     private javax.swing.JLabel jLabel1;
