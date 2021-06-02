@@ -106,7 +106,7 @@ public class LogIn extends javax.swing.JFrame {
     private void logInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logInBtnActionPerformed
 
         String userID = inputID.getText();
-        String pass = inputPass.getText();
+        String pass = new String(inputPass.getPassword());
         String choice = comboLogIn.getSelectedItem().toString();
         String passQ = "";
         boolean correctPass = false;

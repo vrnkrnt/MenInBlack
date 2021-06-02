@@ -267,7 +267,7 @@ public class AndraAlien extends javax.swing.JFrame {
             String alienID = idb.fetchSingle("SELECT Alien_ID FROM alien WHERE Namn = '" + alienNamn + "'");
             String nyttNamn = inputName.getText();
             String nyttDatum = inputRegDat.getText();
-            var nyttLosen = inputLosenord.getText();
+            String nyttLosen = new String(inputLosenord.getPassword());
             String nyttTele = inputTelNR.getText();
 
             if (comboValdAlien.getSelectedIndex() > 0) {

@@ -41,7 +41,6 @@ public class RegAlien extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         inputName = new javax.swing.JTextField();
-        inputPass = new javax.swing.JTextField();
         inputDat = new javax.swing.JTextField();
         inputTele = new javax.swing.JTextField();
         bRegistrera = new javax.swing.JButton();
@@ -49,6 +48,7 @@ public class RegAlien extends javax.swing.JFrame {
         jComboAgent = new javax.swing.JComboBox<>();
         jComboRas = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
+        inputPass = new javax.swing.JPasswordField();
         bTillbaka = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -94,15 +94,6 @@ public class RegAlien extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addContainerGap(264, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(inputTele, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
-                            .addComponent(inputDat, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(inputPass, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(inputName, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(149, 149, 149))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -120,7 +111,16 @@ public class RegAlien extends javax.swing.JFrame {
                             .addComponent(jComboRas, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(62, 62, 62))))))
+                                .addGap(62, 62, 62))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(inputTele, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
+                            .addComponent(inputDat, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputName, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputPass, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(142, 142, 142))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bRegistrera, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -199,7 +199,7 @@ public class RegAlien extends javax.swing.JFrame {
             try {
                 String id = idb.getAutoIncrement("ALIEN", "ALIEN_ID");
                 String namn = "'" + inputName.getText() + "'";
-                String pass = inputPass.getText();
+                String pass = new String(inputPass.getPassword());
                 String date = "'" + inputDat.getText() + "'";
                 String tele = "'" + inputTele.getText() + "'";
                 String plats = jComboPlats.getSelectedItem().toString();
@@ -290,7 +290,7 @@ public class RegAlien extends javax.swing.JFrame {
     private javax.swing.JButton bTillbaka;
     private javax.swing.JTextField inputDat;
     private javax.swing.JTextField inputName;
-    private javax.swing.JTextField inputPass;
+    private javax.swing.JPasswordField inputPass;
     private javax.swing.JTextField inputTele;
     private javax.swing.JComboBox<String> jComboAgent;
     private javax.swing.JComboBox<String> jComboPlats;

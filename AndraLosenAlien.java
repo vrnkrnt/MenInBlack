@@ -100,8 +100,8 @@ public class AndraLosenAlien extends javax.swing.JFrame {
 
     private void buttonAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAndraActionPerformed
 
-        String newPass = TextNewPass.getText();
-        String kontrollPass = TextUpprepa.getText();
+        String newPass = new String(TextNewPass.getPassword());
+        String kontrollPass = new String(TextUpprepa.getPassword());
 
         if (Validering.maxSexPass(TextNewPass)
                 && Validering.textFaltHarVarde(TextNewPass)) {

@@ -209,7 +209,7 @@ public class AndraAgent extends javax.swing.JFrame {
             String nyttNamn = inputNamn.getText();
             String nyttTel = inputTel.getText();
             String nyttAnstDat = inputAnstDat.getText();
-            String nyttLosen = inputLosen.getText();
+            String nyttLosen = new String(inputLosen.getPassword());
 
             if (comboValjAgent.getSelectedIndex() > 0) {
                 if (nyttNamn != null && !nyttNamn.isEmpty()) {

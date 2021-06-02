@@ -41,11 +41,11 @@ public class RegAgent extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         inputAnstDat = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        inputLosenord = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         comboValjAdmin = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         comboValjOmrade = new javax.swing.JComboBox<>();
+        inputLosenord = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,8 +89,13 @@ public class RegAgent extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel6)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(77, 77, 77)
+                        .addComponent(inputLosenord))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -104,7 +109,6 @@ public class RegAgent extends javax.swing.JFrame {
                             .addComponent(comboValjOmrade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(inputTelefon)
                             .addComponent(inputAnstDat)
-                            .addComponent(inputLosenord)
                             .addComponent(comboValjAdmin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(168, 168, 168))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -166,7 +170,7 @@ public class RegAgent extends javax.swing.JFrame {
                 String telefon = inputTelefon.getText();
                 String anstallningsDatum = inputAnstDat.getText();
                 String admin = comboValjAdmin.getSelectedItem().toString();
-                String losenord = inputLosenord.getText();
+                String losenord = new String(inputLosenord.getPassword());
                 String omrade = comboValjOmrade.getSelectedItem().toString();
 
                 String omradesID = idb.fetchSingle("SELECT Omrades_ID FROM omrade WHERE benamning = '" + omrade + "'");
@@ -209,7 +213,7 @@ public class RegAgent extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboValjAdmin;
     private javax.swing.JComboBox<String> comboValjOmrade;
     private javax.swing.JTextField inputAnstDat;
-    private javax.swing.JTextField inputLosenord;
+    private javax.swing.JPasswordField inputLosenord;
     private javax.swing.JTextField inputNamn;
     private javax.swing.JTextField inputTelefon;
     private javax.swing.JLabel jLabel1;

@@ -109,8 +109,8 @@ public class AndraLosenAgent extends javax.swing.JFrame {
     private void buttonAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAndraActionPerformed
         // Denna metod är till för att man ska kunna ändra lösenord
 
-        String newPass = jTextNew.getText();
-        String kontrollPass = jTextCnf.getText();
+        String newPass = new String(jTextNew.getPassword());
+        String kontrollPass = new String(jTextCnf.getPassword());
 
         if (Validering.maxSexPass(jTextNew)
                 && Validering.textFaltHarVarde(jTextNew)) {
