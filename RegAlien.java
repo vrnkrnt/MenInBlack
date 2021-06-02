@@ -1,19 +1,11 @@
 package MenInBlack;
 
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
- /*
  * @author Emil Lager
  * @author Josefin Olsson
  * @author Karin Mäki-Kala
@@ -23,9 +15,6 @@ public class RegAlien extends javax.swing.JFrame {
 
     private InfDB idb;
 
-    /**
-     * Creates new form RegAlienWin
-     */
     public RegAlien(InfDB idb) {
         initComponents();
         this.idb = idb;
@@ -249,7 +238,6 @@ public class RegAlien extends javax.swing.JFrame {
     }//GEN-LAST:event_bRegistreraActionPerformed
 
     private void bTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTillbakaActionPerformed
-
         this.setVisible(false);
     }//GEN-LAST:event_bTillbakaActionPerformed
 

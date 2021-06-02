@@ -1,28 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MenInBlack;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
-import oru.inf.InfException;
 
-/**
- *
- * @author josefinolsson
+/*
+ * @author Emil Lager
+ * @author Josefin Olsson
+ * @author Karin Mäki-Kala
+ * @author Veronika Ranta
  */
 public class AndraLosenAlien extends javax.swing.JFrame {
 
     private static InfDB idb;
     private static String id;
 
-    /**
-     * Creates new form AndraLosenAlien
-     */
     public AndraLosenAlien(InfDB idb, String id) {
         initComponents();
         this.idb = idb;
@@ -78,13 +69,13 @@ public class AndraLosenAlien extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(TextUpprepa, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
                     .addComponent(TextNewPass))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(157, Short.MAX_VALUE)
-                .addComponent(buttonAndra)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonAndra, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(buttonTillbaka)
-                .addGap(27, 27, 27))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,11 +109,10 @@ public class AndraLosenAlien extends javax.swing.JFrame {
                 if (newPass.equals(kontrollPass)) {
 
                     idb.update("update Alien set Losenord = '" + newPass + "' where Alien_ID = " + id);
-                    JOptionPane.showMessageDialog(null, "lösenord ändrat");
+                    JOptionPane.showMessageDialog(null, "Lösenordet ändrat!");
                     this.setVisible(false);
-                }
-                else{
-                throw new Exception();
+                } else {
+                    throw new Exception();
                 }
 
             } catch (Exception ex) {
@@ -134,41 +124,6 @@ public class AndraLosenAlien extends javax.swing.JFrame {
     private void buttonTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTillbakaActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_buttonTillbakaActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AndraLosenAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AndraLosenAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AndraLosenAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AndraLosenAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AndraLosenAlien(idb, id).setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField TextNewPass;

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MenInBlack;
 
 import java.util.ArrayList;
@@ -21,9 +16,6 @@ public class ListaAliensEfterPlats extends javax.swing.JFrame {
 
     private InfDB idb;
 
-    /**
-     * Creates new form VisaAliensRas
-     */
     public ListaAliensEfterPlats(InfDB idb) {
         initComponents();
         this.idb = idb;
@@ -88,7 +80,7 @@ public class ListaAliensEfterPlats extends javax.swing.JFrame {
                                         .addComponent(comboPlats, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addComponent(jLabel1))
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane1)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bTillbaka, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))

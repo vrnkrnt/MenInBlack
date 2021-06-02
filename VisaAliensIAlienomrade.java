@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MenInBlack;
 
 import java.util.ArrayList;
@@ -10,49 +5,42 @@ import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
-/**
- *
- * @author Emillager
+/*
+ * @author Emil Lager
+ * @author Josefin Olsson
+ * @author Karin Mäki-Kala
+ * @author Veronika Ranta
  */
 public class VisaAliensIAlienomrade extends javax.swing.JFrame {
+
     private static InfDB idb;
     private static String id;
 
-    /**
-     * Creates new form VisaAliensIAlienomrade
-     */
     public VisaAliensIAlienomrade(InfDB idb, String id) {
         initComponents();
         this.idb = idb;
         this.id = id;
         visaAliens();
     }
-    
-    private void visaAliens()
-    {
-        try
-        {
-        String aktuellPlats = idb.fetchSingle("SELECT PLATS FROM ALIEN WHERE ALIEN_ID = " + id );
-        ArrayList<String> allaAliens = new ArrayList<>();
-        allaAliens = idb.fetchColumn("SELECT ALIEN_ID FROM ALIEN WHERE PLATS = " + aktuellPlats);
-        jAliens.append("𝙽̲𝚊̲𝚖̲𝚗̲\t");
-        jAliens.append("𝚃̲𝚎̲𝚕̲𝚎̲𝚏̲𝚘̲𝚗 \n");
-        for(String enAlien : allaAliens)
-        {
-            String alienNamn = idb.fetchSingle("SELECT NAMN FROM ALIEN WHERE ALIEN_ID =" + enAlien);
-            String alienTele = idb.fetchSingle("SELECT TELEFON FROM ALIEN WHERE ALIEN_ID =" + enAlien);
-            jAliens.append(alienNamn + "\t");
-            jAliens.append(alienTele + "\n");
-        }
-        }
-        catch(InfException ex)
-        {
+
+    private void visaAliens() {
+        try {
+            String aktuellPlats = idb.fetchSingle("SELECT PLATS FROM ALIEN WHERE ALIEN_ID = " + id);
+            ArrayList<String> allaAliens = new ArrayList<>();
+            allaAliens = idb.fetchColumn("SELECT ALIEN_ID FROM ALIEN WHERE PLATS = " + aktuellPlats);
+            jAliens.append("Namn: ̲\t");
+            jAliens.append("Telefon: \n");
+            for (String enAlien : allaAliens) {
+                String alienNamn = idb.fetchSingle("SELECT NAMN FROM ALIEN WHERE ALIEN_ID =" + enAlien);
+                String alienTele = idb.fetchSingle("SELECT TELEFON FROM ALIEN WHERE ALIEN_ID =" + enAlien);
+                jAliens.append(alienNamn + "\t");
+                jAliens.append(alienTele + "\n");
+            }
+        } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Kunde inte visa information. \n"
-                + ex.getMessage());
+                    + ex.getMessage());
         }
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -110,41 +98,6 @@ public class VisaAliensIAlienomrade extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VisaAliensIAlienomrade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VisaAliensIAlienomrade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VisaAliensIAlienomrade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VisaAliensIAlienomrade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VisaAliensIAlienomrade(idb, id).setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea jAliens;
