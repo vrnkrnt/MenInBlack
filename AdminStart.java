@@ -17,9 +17,6 @@ public class AdminStart extends javax.swing.JFrame {
     private InfDB idb;
     private static String id;
 
-    /**
-     * Creates new form AgentWin
-     */
     public AdminStart(InfDB idb, String id) {
         initComponents();
         this.idb = idb;
@@ -385,7 +382,7 @@ public class AdminStart extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Kunde inte hämta agentens information. \n"
                     + e.getMessage());
         }
-    }
+    } 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem alienBtn;

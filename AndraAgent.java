@@ -16,9 +16,6 @@ public class AndraAgent extends javax.swing.JFrame {
 
     private static InfDB idb;
 
-    /**
-     * Creates new form AndraAgent
-     */
     public AndraAgent(InfDB idb) {
         initComponents();
         this.idb = idb;

@@ -39,6 +39,7 @@ public class LogIn extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         logInBtn = new javax.swing.JButton();
         inputPass = new javax.swing.JPasswordField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,47 +58,61 @@ public class LogIn extends javax.swing.JFrame {
             }
         });
 
+        inputPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputPassActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel4.setText("MIB databas - Inloggning");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(comboLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(inputPass, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(inputID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)))
-                .addContainerGap(186, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(logInBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comboLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(inputPass, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(inputID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(153, 153, 153)
+                        .addComponent(logInBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(comboLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(inputID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(inputPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(31, 31, 31)
                 .addComponent(logInBtn)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(59, 59, 59))
         );
 
         pack();
@@ -111,7 +126,7 @@ public class LogIn extends javax.swing.JFrame {
         String passQ = "";
         boolean correctPass = false;
 
-        if (Validering.textFaltHarVarde(inputID) && Validering.textFaltHarVarde(inputPass)) {
+        if (Validering.textFaltHarVarde(inputID) && Validering.isHeltal(inputID) && Validering.textFaltHarVarde(inputPass)) {
 
             switch (choice) {
                 case "Admin":
@@ -129,8 +144,9 @@ public class LogIn extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Fel! Kontrollera användar-ID och lösenord.");
                         break;
                     }
-                } catch (InfException ex) {
-                    JOptionPane.showMessageDialog(null, "Något gick fel! ");
+                } catch (InfException | NullPointerException e) {
+                    JOptionPane.showMessageDialog(null, "Något gick fel! Kontrollera användar-ID och uppkoppling till databas.");
+                    break;
                 }
 
                 case "Agent":
@@ -148,8 +164,9 @@ public class LogIn extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Fel! Kontrollera användar-ID och lösenord.");
                         break;
                     }
-                } catch (InfException ex) {
-                    JOptionPane.showMessageDialog(null, "Något gick fel! ");
+                } catch (InfException | NullPointerException e) {
+                    JOptionPane.showMessageDialog(null, "Något gick fel! Kontrollera användar-ID och uppkoppling till databas.");
+                    break;
                 }
 
                 case "Alien":
@@ -166,12 +183,18 @@ public class LogIn extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Fel! Kontrollera användar-ID och lösenord.");
                         break;
                     }
-                } catch (InfException ex) {
-                    JOptionPane.showMessageDialog(null, "Något gick fel! ");
+                } catch (InfException | NullPointerException e) {
+                    JOptionPane.showMessageDialog(null, "Något gick fel! Kontrollera användar-ID och uppkoppling till databas.");
+                    break;
                 }
             }
         }
     }//GEN-LAST:event_logInBtnActionPerformed
+
+    private void inputPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputPassActionPerformed
+        //Metod för att kunna logga in med enter
+        logInBtn.doClick();
+    }//GEN-LAST:event_inputPassActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> comboLogIn;
@@ -180,6 +203,7 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JButton logInBtn;
     // End of variables declaration//GEN-END:variables
 }

@@ -17,9 +17,6 @@ public class AlienStart extends javax.swing.JFrame {
     private InfDB idb;
     private static String id;
 
-    /**
-     * Creates new form AgentWin
-     */
     public AlienStart(InfDB idb, String id) {
         initComponents();
         this.idb = idb;
@@ -141,9 +138,7 @@ public class AlienStart extends javax.swing.JFrame {
     }//GEN-LAST:event_jVisaOchefActionPerformed
 
     private void jVisaAliensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVisaAliensActionPerformed
-        // TODO add your handling code here:
         new VisaAliensIAlienomrade(idb, id).setVisible(true);
-
     }//GEN-LAST:event_jVisaAliensActionPerformed
 
     private void bLoggaUtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoggaUtActionPerformed
