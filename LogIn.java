@@ -57,6 +57,12 @@ public class LogIn extends javax.swing.JFrame {
             }
         });
 
+        inputPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputPassActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -175,6 +181,11 @@ public class LogIn extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_logInBtnActionPerformed
+
+    private void inputPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputPassActionPerformed
+        //Metod för att kunna logga in med enter
+        logInBtn.doClick();
+    }//GEN-LAST:event_inputPassActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> comboLogIn;
