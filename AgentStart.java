@@ -17,9 +17,6 @@ public class AgentStart extends javax.swing.JFrame {
     private InfDB idb;
     private static String id;
 
-    /**
-     * Creates new form AgentWin
-     */
     public AgentStart(InfDB idb, String id) {
         initComponents();
         this.idb = idb;

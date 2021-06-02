@@ -382,7 +382,7 @@ public class AdminStart extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Kunde inte hämta agentens information. \n"
                     + e.getMessage());
         }
-    }
+    } 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem alienBtn;
