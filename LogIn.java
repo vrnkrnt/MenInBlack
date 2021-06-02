@@ -111,7 +111,7 @@ public class LogIn extends javax.swing.JFrame {
         String passQ = "";
         boolean correctPass = false;
 
-        if (Validering.textFaltHarVarde(inputID) && Validering.textFaltHarVarde(inputPass)) {
+        if (Validering.textFaltHarVarde(inputID) && Validering.isHeltal(inputID) && Validering.textFaltHarVarde(inputPass)) {
 
             switch (choice) {
                 case "Admin":
@@ -129,8 +129,9 @@ public class LogIn extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Fel! Kontrollera användar-ID och lösenord.");
                         break;
                     }
-                } catch (InfException ex) {
-                    JOptionPane.showMessageDialog(null, "Något gick fel! ");
+                } catch (InfException | NullPointerException e) {
+                    JOptionPane.showMessageDialog(null, "Något gick fel! Kontrollera användar-ID och uppkoppling till databas.");
+                    break;
                 }
 
                 case "Agent":
@@ -148,8 +149,9 @@ public class LogIn extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Fel! Kontrollera användar-ID och lösenord.");
                         break;
                     }
-                } catch (InfException ex) {
-                    JOptionPane.showMessageDialog(null, "Något gick fel! ");
+                } catch (InfException | NullPointerException e) {
+                    JOptionPane.showMessageDialog(null, "Något gick fel! Kontrollera användar-ID och uppkoppling till databas.");
+                    break;
                 }
 
                 case "Alien":
@@ -166,8 +168,9 @@ public class LogIn extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Fel! Kontrollera användar-ID och lösenord.");
                         break;
                     }
-                } catch (InfException ex) {
-                    JOptionPane.showMessageDialog(null, "Något gick fel! ");
+                } catch (InfException | NullPointerException e) {
+                    JOptionPane.showMessageDialog(null, "Något gick fel! Kontrollera användar-ID och uppkoppling till databas.");
+                    break;
                 }
             }
         }
