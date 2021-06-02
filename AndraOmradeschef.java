@@ -121,9 +121,8 @@ public class AndraOmradeschef extends javax.swing.JFrame {
 
             String omradesID = idb.fetchSingle("SELECT Omrades_ID FROM Omrade WHERE benamning = '" + valtOmrade + "';");
             String agentID = idb.fetchSingle("SELECT Agent_ID FROM Agent WHERE namn = '" + nyOmradeschef + "';");
-
-            String radera = "DELETE FROM omradeschef WHERE Agent_ID= " + agentID;
-            idb.delete(radera);
+            idb.delete("DELETE FROM omradeschef where Agent_ID =" + agentID);
+            idb.delete("DELETE FROM omradeschef where omrade = " + omradesID);
 
             String fraga = "insert into Omradeschef values (" + agentID + ", " + omradesID + ")";
             idb.insert(fraga);
@@ -158,7 +157,7 @@ public class AndraOmradeschef extends javax.swing.JFrame {
     }
 
     private void nyOmradesChef() {
-        String fraga2 = "SELECT namn from Agent";
+        String fraga2 = "SELECT namn from Agent WHERE Administrator = 'J'";
 
         ArrayList<String> allaOmradeschefer;
 

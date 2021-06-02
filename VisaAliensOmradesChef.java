@@ -23,10 +23,11 @@ public class VisaAliensOmradesChef extends javax.swing.JFrame {
 
     private void visaAgentsInformation() {
         try {
-            String agentID = idb.fetchSingle("SELECT Ansvarig_Agent from alien WHERE Alien_ID = " + id);
+            String platsID = idb.fetchSingle("SELECT plats from alien WHERE Alien_ID = " + id);
+            String omrade = idb.fetchSingle("SELECT finns_i from plats where Plats_ID =" + platsID);
+            String agentID = idb.fetchSingle("SELECT Agent_ID from omradeschef where omrade =" + omrade);
             String agentNamn = idb.fetchSingle("SELECT Namn FROM agent WHERE Agent_ID = " + agentID);
             String agentTelefon = idb.fetchSingle("SELECT Telefon FROM agent WHERE Agent_ID = " + agentID);
-
             textAreaVisaInfo.setText("Namn: " + agentNamn + "\nTelefon: " + agentTelefon);
 
         } catch (Exception e) {
