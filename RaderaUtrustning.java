@@ -30,7 +30,7 @@ public class RaderaUtrustning extends javax.swing.JFrame {
                 utrCombo.addItem(enUtr);
             }
         } catch (InfException ex) {
-
+            JOptionPane.showMessageDialog(null, "Något gick fel! ");
         }
     }
 

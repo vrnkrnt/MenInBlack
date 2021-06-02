@@ -84,7 +84,7 @@ public class Squid extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "En squid har registrerats!");
 
         } catch (InfException ex) {
-
+            JOptionPane.showMessageDialog(null, "Något gick fel! ");
         }
     }//GEN-LAST:event_bRegistreraActionPerformed
 

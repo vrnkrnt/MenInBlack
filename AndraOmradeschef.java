@@ -122,8 +122,6 @@ public class AndraOmradeschef extends javax.swing.JFrame {
             String omradesID = idb.fetchSingle("SELECT Omrades_ID FROM Omrade WHERE benamning = '" + valtOmrade + "';");
             String agentID = idb.fetchSingle("SELECT Agent_ID FROM Agent WHERE namn = '" + nyOmradeschef + "';");
 
-            System.out.println(omradesID);
-            System.out.println(agentID);
             String radera = "DELETE FROM omradeschef WHERE Agent_ID= " + agentID;
             idb.delete(radera);
 

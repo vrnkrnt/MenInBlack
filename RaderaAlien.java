@@ -131,7 +131,7 @@ public class RaderaAlien extends javax.swing.JFrame {
                 alienCombo.addItem(enAlien);
             }
         } catch (InfException ex) {
-
+            JOptionPane.showMessageDialog(null, "Något gick fel! ");
         }
     }
     private void bRaderaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRaderaActionPerformed

@@ -130,7 +130,7 @@ public class LogIn extends javax.swing.JFrame {
                         break;
                     }
                 } catch (InfException ex) {
-
+                    JOptionPane.showMessageDialog(null, "Något gick fel! ");
                 }
 
                 case "Agent":
@@ -149,7 +149,7 @@ public class LogIn extends javax.swing.JFrame {
                         break;
                     }
                 } catch (InfException ex) {
-                    System.out.println("");
+                    JOptionPane.showMessageDialog(null, "Något gick fel! ");
                 }
 
                 case "Alien":
@@ -167,7 +167,7 @@ public class LogIn extends javax.swing.JFrame {
                         break;
                     }
                 } catch (InfException ex) {
-                    System.out.println("");
+                    JOptionPane.showMessageDialog(null, "Något gick fel! ");
                 }
             }
         }

@@ -259,7 +259,6 @@ public class AgentStart extends javax.swing.JFrame {
         try {
             String fraga = "SELECT * FROM agent WHERE Agent_ID = " + id;
             valdAgent = idb.fetchRows(fraga);
-            System.out.println(id);
             String omradeNamn = idb.fetchSingle("SELECT Benamning FROM omrade WHERE Omrades_ID IN "
                     + "(SELECT Omrade FROM Agent WHERE Agent_ID = " + id + ");");
             for (HashMap<String, String> agent : valdAgent) {

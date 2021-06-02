@@ -158,7 +158,6 @@ public class AlienStart extends javax.swing.JFrame {
         try {
             String fraga = "SELECT * FROM alien WHERE Alien_ID = " + id;
             valdAlien = idb.fetchRows(fraga);
-            System.out.println(id);
             String omradeNamn = idb.fetchSingle("SELECT Benamning FROM omrade WHERE Omrades_ID IN "
                     + "(SELECT Omrade FROM Agent WHERE Agent_ID = " + id + ");");
             String ansvarigAgent = idb.fetchSingle("SELECT Namn FROM agent WHERE Agent_ID IN "

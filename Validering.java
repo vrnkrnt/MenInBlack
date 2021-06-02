@@ -26,7 +26,6 @@ public class Validering {
             JOptionPane.showMessageDialog(null, "Lösenordet får innehålla max 6 bokstäver");
             result = false;
             passwordCheck.requestFocus();
-            System.out.print("sexpass");
         }
         return result;
     }
@@ -38,7 +37,6 @@ public class Validering {
             JOptionPane.showMessageDialog(null, "Inmatningsrutan är tom.");
             resultat = false;
             rutaAttKolla.requestFocus();
-            System.out.print("textharvarde");
         }
 
         return resultat;
