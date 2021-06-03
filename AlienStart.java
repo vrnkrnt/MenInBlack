@@ -18,8 +18,8 @@ import oru.inf.InfException;
  * @author Karin Mäki-Kala
  * @author Veronika Ranta
  */
-
 public class AlienStart extends javax.swing.JFrame {
+
     private InfDB idb;
     private static String id;
 
@@ -48,6 +48,7 @@ public class AlienStart extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        bLoggaUt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,6 +80,13 @@ public class AlienStart extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
+        bLoggaUt.setText("Logga ut");
+        bLoggaUt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLoggaUtActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,10 +98,12 @@ public class AlienStart extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jAndraLosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jVisaOchef, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jVisaAliens, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bLoggaUt)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jAndraLosen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jVisaOchef, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jVisaAliens, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -112,14 +122,16 @@ public class AlienStart extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jVisaAliens))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(142, 142, 142))
+                .addGap(12, 12, 12)
+                .addComponent(bLoggaUt)
+                .addGap(101, 101, 101))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jAndraLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAndraLosenActionPerformed
-        new AndraLosenAlien(idb,id).setVisible(true);
+        new AndraLosenAlien(idb, id).setVisible(true);
     }//GEN-LAST:event_jAndraLosenActionPerformed
 
     private void jVisaOchefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVisaOchefActionPerformed
@@ -127,10 +139,14 @@ public class AlienStart extends javax.swing.JFrame {
     }//GEN-LAST:event_jVisaOchefActionPerformed
 
     private void jVisaAliensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVisaAliensActionPerformed
-    // TODO add your handling code here:
         new VisaAliensIAlienomrade(idb, id).setVisible(true);
-        
+
     }//GEN-LAST:event_jVisaAliensActionPerformed
+
+    private void bLoggaUtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoggaUtActionPerformed
+        new LogIn(idb).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bLoggaUtActionPerformed
 
     private void visaMinInformation() {
 
@@ -144,12 +160,12 @@ public class AlienStart extends javax.swing.JFrame {
                     + "(SELECT Omrade FROM Agent WHERE Agent_ID = " + id + ");");
             String ansvarigAgent = idb.fetchSingle("SELECT Namn FROM agent WHERE Agent_ID IN "
                     + "(SELECT Ansvarig_Agent FROM alien WHERE Alien_ID = " + id + ");");
-            
+
             for (HashMap<String, String> alien : valdAlien) {
                 jTextArea1.append("ID:\t" + alien.get("Alien_ID") + "\n");
                 jTextArea1.append("Namn:\t" + alien.get("Namn") + "\n");
                 jTextArea1.append("Tel.nr.:\t" + alien.get("Telefon") + "\n");
-                jTextArea1.append("Reg.dat.:\t" + alien.get("Registreringsdatum")+ "\n");
+                jTextArea1.append("Reg.dat.:\t" + alien.get("Registreringsdatum") + "\n");
                 jTextArea1.append("Område:\t" + omradeNamn + "\n");
                 jTextArea1.append("Ansvarig agent:\t" + ansvarigAgent + "\n");
                 jTextArea1.append("");
@@ -162,6 +178,7 @@ public class AlienStart extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bLoggaUt;
     private javax.swing.JButton jAndraLosen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

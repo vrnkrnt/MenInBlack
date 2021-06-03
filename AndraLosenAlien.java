@@ -125,17 +125,15 @@ public class AndraLosenAlien extends javax.swing.JFrame {
         String newPass = TextNewPass.getText();
         String kontrollPass = TextUpprepa.getText();
 
-        if (Validering.maxSexPass(TextNewPass)
-                && Validering.textFaltHarVarde(TextNewPass)) {
+        if (Validering.textFaltHarVarde(TextNewPass) && Validering.maxSexPass(TextNewPass)) {
             try {
                 if (newPass.equals(kontrollPass)) {
 
                     idb.update("update Alien set Losenord = '" + newPass + "' where Alien_ID = " + id);
                     JOptionPane.showMessageDialog(null, "lösenord ändrat");
                     this.setVisible(false);
-                }
-                else{
-                throw new Exception();
+                } else {
+                    throw new Exception();
                 }
 
             } catch (Exception ex) {
