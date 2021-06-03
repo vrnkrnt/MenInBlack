@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MenInBlack;
 
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
-import oru.inf.InfException;
 
 /*
  * @author Emil Lager
@@ -20,9 +14,6 @@ public class VisaAliensOmradesChef extends javax.swing.JFrame {
     private static InfDB idb;
     private static String id;
 
-    /**
-     * Creates new form VisaAliensOmradesChef
-     */
     public VisaAliensOmradesChef(InfDB idb, String id) {
         initComponents();
         this.idb = idb;
@@ -32,12 +23,13 @@ public class VisaAliensOmradesChef extends javax.swing.JFrame {
 
     private void visaAgentsInformation() {
         try {
-            String agentID = idb.fetchSingle("SELECT Ansvarig_Agent from alien WHERE Alien_ID = " + id);
+            String platsID = idb.fetchSingle("SELECT plats from alien WHERE Alien_ID = " + id);
+            String omrade = idb.fetchSingle("SELECT finns_i from plats where Plats_ID =" + platsID);
+            String agentID = idb.fetchSingle("SELECT Agent_ID from omradeschef where omrade =" + omrade);
             String agentNamn = idb.fetchSingle("SELECT Namn FROM agent WHERE Agent_ID = " + agentID);
             String agentTelefon = idb.fetchSingle("SELECT Telefon FROM agent WHERE Agent_ID = " + agentID);
- 
             textAreaVisaInfo.setText("Namn: " + agentNamn + "\nTelefon: " + agentTelefon);
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Kunde inte visa information. \n"
                     + e.getMessage());
@@ -81,9 +73,9 @@ public class VisaAliensOmradesChef extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(184, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(88, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bTillbaka, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -95,8 +87,8 @@ public class VisaAliensOmradesChef extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addComponent(bTillbaka)
                 .addContainerGap())
         );
@@ -108,40 +100,6 @@ public class VisaAliensOmradesChef extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_bTillbakaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VisaAliensOmradesChef.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VisaAliensOmradesChef.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VisaAliensOmradesChef.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VisaAliensOmradesChef.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VisaAliensOmradesChef(idb, id).setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bTillbaka;

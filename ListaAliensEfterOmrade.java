@@ -12,14 +12,14 @@ import oru.inf.InfException;
  * @author Karin Mäki-Kala
  * @author Veronika Ranta
  */
-public class ListaAliensEfterPlats extends javax.swing.JFrame {
+public class ListaAliensEfterOmrade extends javax.swing.JFrame {
 
     private InfDB idb;
 
-    public ListaAliensEfterPlats(InfDB idb) {
+    public ListaAliensEfterOmrade(InfDB idb) {
         initComponents();
         this.idb = idb;
-        valjPlatsNamn();
+        valjOmradeNamn();
     }
 
     /**
@@ -33,22 +33,22 @@ public class ListaAliensEfterPlats extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        comboPlats = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        bTillbaka = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Lista aliens efter plats");
+        jLabel1.setText("Lista aliens efter område");
 
-        jLabel2.setText("Välj plats:");
+        jLabel2.setText("Välj område:");
 
-        comboPlats.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj plats" }));
-        comboPlats.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboPlatsActionPerformed(evt);
+                jComboBox1ActionPerformed(evt);
             }
         });
 
@@ -56,10 +56,10 @@ public class ListaAliensEfterPlats extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        bTillbaka.setText("Tillbaka");
-        bTillbaka.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Tillbaka");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bTillbakaActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -69,21 +69,21 @@ public class ListaAliensEfterPlats extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel2)
                                         .addGap(18, 18, 18)
-                                        .addComponent(comboPlats, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addComponent(jLabel1))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bTillbaka, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 100, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -94,34 +94,34 @@ public class ListaAliensEfterPlats extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(comboPlats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(bTillbaka)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jButton1)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void comboPlatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPlatsActionPerformed
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
 
         jTextArea1.setText("");
 
-        ArrayList<HashMap<String, String>> soktaPlatser;
+        ArrayList<HashMap<String, String>> soktaOmraden;
 
         try {
-            String valdPlats = comboPlats.getSelectedItem().toString();
-            String fraga = "SELECT * FROM alien WHERE Plats IN (SELECT Plats_ID FROM plats WHERE Benamning = '"
-                    + valdPlats + "') ORDER BY Alien_ID;";
-            soktaPlatser = idb.fetchRows(fraga);
+            String valtOmrade = jComboBox1.getSelectedItem().toString();
+            String fraga = "SELECT * FROM alien WHERE Plats IN (SELECT Omrades_ID FROM omrade WHERE Benamning = '"
+                    + valtOmrade + "') ORDER BY Alien_ID;";
+            soktaOmraden = idb.fetchRows(fraga);
 
             jTextArea1.append("ID \t");
             jTextArea1.append("Namn \t");
             jTextArea1.append("Telefon \n");
 
-            for (HashMap<String, String> alien : soktaPlatser) {
+            for (HashMap<String, String> alien : soktaOmraden) {
                 jTextArea1.append(alien.get("Alien_ID") + "\t");
                 jTextArea1.append(" " + alien.get("Namn") + "\t");
                 jTextArea1.append(" " + alien.get("Telefon") + "\n");
@@ -130,22 +130,23 @@ public class ListaAliensEfterPlats extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Databasfel!");
             System.out.println("Internt felmeddelande" + e.getMessage());
         }
-    }//GEN-LAST:event_comboPlatsActionPerformed
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void bTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTillbakaActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
-    }//GEN-LAST:event_bTillbakaActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void valjPlatsNamn() {
-        String fraga = "SELECT Benamning from plats";
-        ArrayList<String> allaPlatser;
+    private void valjOmradeNamn() {
+        String fraga = "SELECT Benamning from omrade";
+
+        ArrayList<String> allaOmraden;
 
         try {
 
-            allaPlatser = idb.fetchColumn(fraga);
+            allaOmraden = idb.fetchColumn(fraga);
 
-            for (String Benamning : allaPlatser) {
-                comboPlats.addItem(Benamning);
+            for (String Benamning : allaOmraden) {
+                jComboBox1.addItem(Benamning);
             }
 
         } catch (InfException e) {
@@ -156,8 +157,8 @@ public class ListaAliensEfterPlats extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bTillbaka;
-    private javax.swing.JComboBox<String> comboPlats;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

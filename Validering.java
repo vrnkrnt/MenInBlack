@@ -1,18 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MenInBlack;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import oru.inf.InfDB;
-import oru.inf.InfException;
-
 
 /*
  * @author Emil Lager
@@ -36,7 +26,6 @@ public class Validering {
             JOptionPane.showMessageDialog(null, "Lösenordet får innehålla max 6 bokstäver");
             result = false;
             passwordCheck.requestFocus();
-            System.out.print("sexpass");
         }
         return result;
     }
@@ -48,7 +37,6 @@ public class Validering {
             JOptionPane.showMessageDialog(null, "Inmatningsrutan är tom.");
             resultat = false;
             rutaAttKolla.requestFocus();
-            System.out.print("textharvarde");
         }
 
         return resultat;

@@ -1,28 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MenInBlack;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
-import oru.inf.InfException;
 
-/**
- *
- * @author kmaki
+/*
+ * @author Emil Lager
+ * @author Josefin Olsson
+ * @author Karin Mäki-Kala
+ * @author Veronika Ranta
  */
 public class AndraLosenAgent extends javax.swing.JFrame {
 
     private static InfDB idb;
     private static String id;
 
-    /**
-     * Creates new form ändralösenagentform
-     */
     public AndraLosenAgent(InfDB idb, String id) {
         initComponents();
         this.idb = idb;
@@ -38,19 +29,17 @@ public class AndraLosenAgent extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jColorChooser1 = new javax.swing.JColorChooser();
-        jColorChooser2 = new javax.swing.JColorChooser();
-        jColorChooser3 = new javax.swing.JColorChooser();
-        jColorChooser4 = new javax.swing.JColorChooser();
-        jPanel1 = new javax.swing.JPanel();
-        buttonAndra = new javax.swing.JButton();
         nyttLosen = new javax.swing.JLabel();
+        buttonAndra = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextCnf = new javax.swing.JTextField();
-        jTextNew = new javax.swing.JTextField();
         buttonTillbaka = new javax.swing.JButton();
+        jTextNew = new javax.swing.JPasswordField();
+        jTextCnf = new javax.swing.JPasswordField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        nyttLosen.setText("Nytt Lösenord:");
 
         buttonAndra.setText("Ändra Lösenord");
         buttonAndra.addActionListener(new java.awt.event.ActionListener() {
@@ -59,48 +48,7 @@ public class AndraLosenAgent extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(buttonAndra, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(buttonAndra)
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
-
-        nyttLosen.setText("Nytt Lösenord:");
-
         jLabel1.setText("Upprepa nytt lösenord:");
-
-        jTextCnf.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTextCnfMousePressed(evt);
-            }
-        });
-        jTextCnf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextCnfActionPerformed(evt);
-            }
-        });
-
-        jTextNew.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTextNewMousePressed(evt);
-            }
-        });
-        jTextNew.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextNewActionPerformed(evt);
-            }
-        });
 
         buttonTillbaka.setText("Tillbaka");
         buttonTillbaka.addActionListener(new java.awt.event.ActionListener() {
@@ -109,152 +57,95 @@ public class AndraLosenAgent extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("Ändra lösenord");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(nyttLosen))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(buttonAndra, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(buttonTillbaka, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextCnf, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-                                    .addComponent(jTextNew))
-                                .addGap(8, 8, 8)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonTillbaka))
+                                    .addComponent(jTextNew, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                    .addComponent(jTextCnf))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(nyttLosen)
-                            .addComponent(jLabel1))))
-                .addContainerGap(35, Short.MAX_VALUE))
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nyttLosen, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextNew, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(jLabel2)
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextNew, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nyttLosen))
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextCnf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonTillbaka)
-                        .addGap(18, 18, 18))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonTillbaka)
+                    .addComponent(buttonAndra))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void buttonTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTillbakaActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_buttonTillbakaActionPerformed
+
     private void buttonAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAndraActionPerformed
         // Denna metod är till för att man ska kunna ändra lösenord
 
-        String newPass = jTextNew.getText();
-        String kontrollPass = jTextCnf.getText();
+        String newPass = new String(jTextNew.getPassword());
+        String kontrollPass = new String(jTextCnf.getPassword());
 
-        if (Validering.maxSexPass(jTextNew)
-                && Validering.textFaltHarVarde(jTextNew)) {
+        if (Validering.textFaltHarVarde(jTextNew) && Validering.maxSexPass(jTextNew)) {
 
             try {
                 if (newPass.equals(kontrollPass)) {
 
                     idb.update("update Agent set Losenord = '" + newPass + "' where Agent_ID = " + id);
-                    JOptionPane.showMessageDialog(null, "lösenord ändrat");
+                    JOptionPane.showMessageDialog(null, "Lösenordet ändrat!");
                     this.setVisible(false);
-                }
-
-                else{
-                throw new Exception();
+                } else {
+                    throw new Exception();
                 }
 
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Lösenorden matchar inte");
-
             }
         }
-
-
     }//GEN-LAST:event_buttonAndraActionPerformed
-
-    private void jTextCnfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCnfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextCnfActionPerformed
-
-    private void jTextNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNewActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextNewActionPerformed
-
-    private void jTextNewMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextNewMousePressed
-        // TODO add your handling code here:
-        jTextNew.setText("");
-    }//GEN-LAST:event_jTextNewMousePressed
-
-    private void jTextCnfMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextCnfMousePressed
-        // TODO add your handling code here:
-        jTextCnf.setText("");
-    }//GEN-LAST:event_jTextCnfMousePressed
-
-    private void buttonTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTillbakaActionPerformed
-       this.setVisible(false);
-    }//GEN-LAST:event_buttonTillbakaActionPerformed
-    public static void main(String args[]) {
-
-        // HÄR BORDE VI HA SÅ MAN KOMMER TILLBAKA TILL START
-        /* Set the Nimbus look and feel /
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        / If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         /
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgentWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgentWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgentWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgentWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        / Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AndraLosenAgent(idb, id).setVisible(true);
-
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAndra;
     private javax.swing.JButton buttonTillbaka;
-    private javax.swing.JColorChooser jColorChooser1;
-    private javax.swing.JColorChooser jColorChooser2;
-    private javax.swing.JColorChooser jColorChooser3;
-    private javax.swing.JColorChooser jColorChooser4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextCnf;
-    private javax.swing.JTextField jTextNew;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPasswordField jTextCnf;
+    private javax.swing.JPasswordField jTextNew;
     private javax.swing.JLabel nyttLosen;
     // End of variables declaration//GEN-END:variables
 }

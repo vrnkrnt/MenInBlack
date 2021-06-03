@@ -69,7 +69,7 @@
               <Component id="bInfo" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="120" max="-2" attributes="0"/>
-              <EmptySpace pref="14" max="32767" attributes="0"/>
+              <EmptySpace pref="16" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="bRadera" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bTillbaka" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -135,7 +135,9 @@
     <Component class="javax.swing.JComboBox" name="comboValjAgent">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="1">
+            <StringItem index="0" value="V&#xe4;lj agent"/>
+          </StringArray>
         </Property>
       </Properties>
       <AuxValues>

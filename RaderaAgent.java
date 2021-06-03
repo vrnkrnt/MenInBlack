@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MenInBlack;
 
 import java.util.ArrayList;
@@ -21,9 +16,6 @@ public class RaderaAgent extends javax.swing.JFrame {
 
     private static InfDB idb;
 
-    /**
-     * Creates new form RaderaAgent
-     */
     public RaderaAgent(InfDB idb) {
         initComponents();
         this.idb = idb;
@@ -80,6 +72,8 @@ public class RaderaAgent extends javax.swing.JFrame {
             }
         });
 
+        comboValjAgent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj agent" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -120,7 +114,7 @@ public class RaderaAgent extends javax.swing.JFrame {
                 .addComponent(bInfo)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bRadera)
                     .addComponent(bTillbaka))
@@ -134,19 +128,22 @@ public class RaderaAgent extends javax.swing.JFrame {
         try {
             String agentNamn = comboValjAgent.getSelectedItem().toString();
             String agentID = idb.fetchSingle("SELECT Agent_ID FROM agent WHERE Namn = '" + agentNamn + "'");
+            String raderaAlienAgent = "DELETE FROM ALIEN WHERE ANSVARIG_AGENT = " + agentID;
             String raderaFaltAgent = "DELETE FROM FALTAGENT WHERE AGENT_ID = " + agentID;
             String raderaFordon = "DELETE FROM INNEHAR_FORDON WHERE AGENT_ID = " + agentID;
-            String raderaUtr = "DELETE FROM INNEHAR_FORDON WHERE AGENT_ID = " + agentID;
+            String raderaUtr = "DELETE FROM INNEHAR_UTRUSTNING WHERE AGENT_ID = " + agentID;
             String raderaKontor = "DELETE FROM KONTORSCHEF WHERE AGENT_ID = " + agentID;
             String raderaOmradeschef = "DELETE FROM OMRADESCHEF WHERE AGENT_ID = " + agentID;
+            String fraga = "DELETE FROM agent WHERE Agent_ID = " + agentID + ";";
+            idb.delete(raderaAlienAgent);
             idb.delete(raderaFaltAgent);
             idb.delete(raderaFordon);
             idb.delete(raderaUtr);
             idb.delete(raderaKontor);
             idb.delete(raderaOmradeschef);
-            String fraga = "DELETE FROM agent WHERE Agent_ID = " + agentID + ";";
             idb.delete(fraga);
             JOptionPane.showMessageDialog(null, "Agenten har raderats.");
+            this.setVisible(false);
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick fel. "
                     + e.getMessage());
@@ -186,7 +183,6 @@ public class RaderaAgent extends javax.swing.JFrame {
     }//GEN-LAST:event_bInfoActionPerformed
 
     private void valjAgent() {
-        comboValjAgent.addItem(" ");
         String fraga = "SELECT Namn FROM agent";
         ArrayList<String> allaAgenter;
         try {
@@ -201,41 +197,6 @@ public class RaderaAgent extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Databasfel!");
             System.out.println("Internt felmeddelande" + e.getMessage());
         }
-    }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RaderaAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RaderaAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RaderaAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RaderaAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RaderaAgent(idb).setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

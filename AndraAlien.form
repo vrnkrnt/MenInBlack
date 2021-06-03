@@ -26,13 +26,24 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="bTillbaka" min="-2" pref="90" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="bAndra" min="-2" pref="84" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="bVisaInformation" max="32767" attributes="0"/>
+                                  <Component id="tillhorRas" pref="96" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -46,34 +57,25 @@
                               </Group>
                               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="comboValdAgent" alignment="1" pref="98" max="32767" attributes="0"/>
-                                  <Component id="comboValdAlien" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="inputName" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="inputRegDat" alignment="1" pref="98" max="32767" attributes="0"/>
-                                  <Component id="inputLosenord" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="inputTelNR" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="comboValdPlats" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="inputTelNR" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="comboValdPlats" alignment="0" max="32767" attributes="0"/>
                                   <Component id="comboValdRas" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="comboValdAgent" alignment="1" pref="98" max="32767" attributes="0"/>
+                                  <Component id="inputName" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="inputLosenord" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="inputRegDat" alignment="1" pref="98" max="32767" attributes="0"/>
+                                  <Component id="comboValdAlien" alignment="1" max="32767" attributes="0"/>
                               </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="bAndra" min="-2" pref="84" max="-2" attributes="0"/>
+                              <EmptySpace min="120" pref="120" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="bVisaInformation" max="32767" attributes="0"/>
-                          <Component id="tillhorRas" pref="96" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="inputAntal" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="212" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="22" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -82,7 +84,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" pref="21" max="32767" attributes="0"/>
+              <EmptySpace type="separate" pref="22" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
@@ -143,7 +145,7 @@
                           <Component id="tillhorRas" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="inputAntal" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="46" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="45" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -213,11 +215,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="inputRegDat">
-      <Properties>
-        <Property name="columns" type="int" value="8"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="inputLosenord">
       <Properties>
         <Property name="columns" type="int" value="8"/>
       </Properties>
@@ -319,6 +316,8 @@
       <Properties>
         <Property name="columns" type="int" value="8"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="inputLosenord">
     </Component>
   </SubComponents>
 </Form>

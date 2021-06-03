@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MenInBlack;
 
 import java.util.ArrayList;
@@ -21,9 +16,6 @@ public class AndraAgent extends javax.swing.JFrame {
 
     private static InfDB idb;
 
-    /**
-     * Creates new form AndraAgent
-     */
     public AndraAgent(InfDB idb) {
         initComponents();
         this.idb = idb;
@@ -50,7 +42,6 @@ public class AndraAgent extends javax.swing.JFrame {
         comboValjAgent = new javax.swing.JComboBox<>();
         inputNamn = new javax.swing.JTextField();
         inputTel = new javax.swing.JTextField();
-        inputLosen = new javax.swing.JTextField();
         comboOmrade = new javax.swing.JComboBox<>();
         comboAdmin = new javax.swing.JComboBox<>();
         bInfo = new javax.swing.JButton();
@@ -60,6 +51,7 @@ public class AndraAgent extends javax.swing.JFrame {
         bAndra = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         inputAnstDat = new javax.swing.JTextField();
+        inputLosen = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,7 +74,7 @@ public class AndraAgent extends javax.swing.JFrame {
 
         comboOmrade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj område" }));
 
-        comboAdmin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "J/N", "J", "N" }));
+        comboAdmin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj", "J", "N" }));
 
         bInfo.setText("Visa info ▷");
         bInfo.addActionListener(new java.awt.event.ActionListener() {
@@ -135,14 +127,16 @@ public class AndraAgent extends javax.swing.JFrame {
                                 .addComponent(jLabel1)))
                         .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(comboAdmin, 0, 136, Short.MAX_VALUE)
                             .addComponent(comboValjAgent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(inputNamn)
                             .addComponent(inputTel)
                             .addComponent(inputAnstDat)
-                            .addComponent(inputLosen)
-                            .addComponent(comboOmrade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(comboOmrade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(bInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(inputLosen))))
                 .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(bTillbaka, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -212,38 +206,43 @@ public class AndraAgent extends javax.swing.JFrame {
             String nyttNamn = inputNamn.getText();
             String nyttTel = inputTel.getText();
             String nyttAnstDat = inputAnstDat.getText();
-            String nyttLosen = inputLosen.getText();
-            
-            if (nyttNamn != null && !Validering.textFaltHarVarde(inputNamn)) {
+            String nyttLosen = new String(inputLosen.getPassword());
+
+            if (comboValjAgent.getSelectedIndex() > 0) {
+                if (nyttNamn != null && !nyttNamn.isEmpty()) {
                     String updateraNamn = "UPDATE agent SET Namn = '" + nyttNamn + "' WHERE Agent_ID = " + agentID;
                     idb.update(updateraNamn);
                 }
-            if (nyttTel != null && !Validering.textFaltHarVarde(inputTel)) {
+                if (nyttTel != null && !nyttTel.isEmpty()) {
                     String updateraTele = "UPDATE agent SET Telefon = '" + nyttTel + "' WHERE Agent_ID = " + agentID;
                     idb.update(updateraTele);
                 }
-            if (nyttAnstDat != null && !Validering.textFaltHarVarde(inputAnstDat)) {
+                if (nyttAnstDat != null && !nyttAnstDat.isEmpty()) {
                     String updateraDatum = "UPDATE agent SET Anstallningsdatum = '" + nyttAnstDat + "' WHERE Agent_ID = " + agentID;
                     idb.update(updateraDatum);
                 }
-            if (nyttLosen != null && !Validering.textFaltHarVarde(inputLosen)) {
+                if (nyttLosen != null && !nyttLosen.isEmpty()) {
                     String updateraLosen = "UPDATE agent SET Losenord = '" + nyttLosen + "' WHERE Agent_ID = " + agentID;
                     idb.update(updateraLosen);
                 }
-            if (comboAdmin.getSelectedIndex() > 0) {
+                if (comboAdmin.getSelectedIndex() > 0) {
                     String arAdmin = comboAdmin.getSelectedItem().toString();;
                     String updateraAdmin = "UPDATE agent SET Administrator = '" + arAdmin + "' WHERE Agent_ID = " + agentID;
                     idb.update(updateraAdmin);
                 }
-            if (comboOmrade.getSelectedIndex() > 0) {
+                if (comboOmrade.getSelectedIndex() > 0) {
                     String nyttOmrade = comboOmrade.getSelectedItem().toString();
                     String omradesID = idb.fetchSingle("SELECT Omrades_ID FROM omrade WHERE Benamning = '" + nyttOmrade + "'");
                     String updateraOmrade = "UPDATE agent SET Omrade = " + omradesID + " WHERE Agent_ID = " + agentID;
                     idb.update(updateraOmrade);
                 }
-            
-            agentUppdaterad();
-            this.setVisible(false);
+
+                agentUppdaterad();
+                this.setVisible(false);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Välj agent.");
+            }
 
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Kunde inte lägga till agent :(");
@@ -310,46 +309,12 @@ public class AndraAgent extends javax.swing.JFrame {
             System.out.println("Internt felmeddelande" + e.getMessage());
         }
     }
-    
+
     public void agentUppdaterad() {
         JOptionPane.showMessageDialog(null, "En agent har uppdaterats!");
         this.setVisible(false);
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AndraAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AndraAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AndraAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AndraAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AndraAgent(idb).setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAndra;
@@ -359,7 +324,7 @@ public class AndraAgent extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboOmrade;
     private javax.swing.JComboBox<String> comboValjAgent;
     private javax.swing.JTextField inputAnstDat;
-    private javax.swing.JTextField inputLosen;
+    private javax.swing.JPasswordField inputLosen;
     private javax.swing.JTextField inputNamn;
     private javax.swing.JTextField inputTel;
     private javax.swing.JLabel jLabel1;

@@ -71,12 +71,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="visaOmradesChefBtnActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="sokAlienbtn">
+            <MenuItem class="javax.swing.JMenuItem" name="minUtrustningBtn1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="- alien"/>
+                <Property name="text" type="java.lang.String" value="- alien info"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sokAlienbtnActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="minUtrustningBtn1ActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

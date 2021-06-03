@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MenInBlack;
 
 import java.util.ArrayList;
@@ -17,11 +12,11 @@ import oru.inf.InfException;
  * @author Karin Mäki-Kala
  * @author Veronika Ranta
  */
-public class SokAlien extends javax.swing.JFrame {
+public class VisaAlienInfo extends javax.swing.JFrame {
 
     private InfDB idb;
 
-    public SokAlien(InfDB idb) {
+    public VisaAlienInfo(InfDB idb) {
         initComponents();
         this.idb = idb;
         valjAlien();
@@ -42,6 +37,7 @@ public class SokAlien extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         bTillbaka = new javax.swing.JButton();
         comboValdAlien = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,6 +61,11 @@ public class SokAlien extends javax.swing.JFrame {
             }
         });
 
+        comboValdAlien.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj alien" }));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("Visa aliens information");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -79,25 +80,30 @@ public class SokAlien extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(comboValdAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 32, 32)
-                                .addComponent(bVisa)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(comboValdAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(32, 32, 32)
+                                        .addComponent(bVisa)))
                                 .addGap(0, 135, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(23, 23, 23)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(bVisa)
                     .addComponent(comboValdAlien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(bTillbaka)
                 .addContainerGap())
         );
@@ -115,8 +121,8 @@ public class SokAlien extends javax.swing.JFrame {
             String alienNamn = comboValdAlien.getSelectedItem().toString();
             String alienID = idb.fetchSingle("SELECT Alien_ID FROM alien WHERE Namn = '" + alienNamn + "'");
             String fraga = "SELECT* FROM ALIEN WHERE Alien_ID = " + alienID;
-            String omradeNamn = idb.fetchSingle("SELECT Benamning FROM omrade WHERE Omrades_ID IN "
-                    + "(SELECT Omrade FROM Agent WHERE Agent_ID = " + alienID + ");");
+            String platsNamn = idb.fetchSingle("SELECT Benamning FROM plats WHERE Plats_ID IN "
+                    + "(SELECT Plats FROM alien WHERE Alien_ID = " + alienID + ");");
             String ansvarigAgent = idb.fetchSingle("SELECT Namn FROM agent WHERE Agent_ID IN "
                     + "(SELECT Ansvarig_Agent FROM alien WHERE Alien_ID = " + alienID + ");");
             valdAlien = idb.fetchRows(fraga);
@@ -124,10 +130,10 @@ public class SokAlien extends javax.swing.JFrame {
             for (HashMap<String, String> alien : valdAlien) {
                 jTextArea1.append("ID:\t\t" + alien.get("Alien_ID") + "\n");
                 jTextArea1.append("Namn:\t\t" + alien.get("Namn") + "\n");
-                jTextArea1.append("Telefonnummer:\t" + alien.get("Telefon") + "\n");
+                jTextArea1.append("Telefonnummer:  \t" + alien.get("Telefon") + "\n");
                 jTextArea1.append("Registreringsdatum:\t" + alien.get("Registreringsdatum") + "\n");
-                jTextArea1.append("Område:\t\t" + omradeNamn + "\n");
-                jTextArea1.append("Ansvarig agent:\t\t" + ansvarigAgent + "\n");
+                jTextArea1.append("Plats:\t\t" + platsNamn + "\n");
+                jTextArea1.append("Ansvarig agent:  \t" + ansvarigAgent + "\n");
                 jTextArea1.append("");
             }
         } catch (InfException e) {
@@ -162,6 +168,7 @@ public class SokAlien extends javax.swing.JFrame {
     private javax.swing.JButton bVisa;
     private javax.swing.JComboBox<String> comboValdAlien;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables

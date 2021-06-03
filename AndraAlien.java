@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MenInBlack;
 
 import java.util.ArrayList;
@@ -21,9 +16,6 @@ public class AndraAlien extends javax.swing.JFrame {
 
     private static InfDB idb;
 
-    /**
-     * Creates new form AndraAlien
-     */
     public AndraAlien(InfDB idb) {
         initComponents();
         this.idb = idb;
@@ -53,7 +45,6 @@ public class AndraAlien extends javax.swing.JFrame {
         comboValdAlien = new javax.swing.JComboBox<>();
         inputName = new javax.swing.JTextField();
         inputRegDat = new javax.swing.JTextField();
-        inputLosenord = new javax.swing.JTextField();
         inputTelNR = new javax.swing.JTextField();
         comboValdPlats = new javax.swing.JComboBox<>();
         comboValdAgent = new javax.swing.JComboBox<>();
@@ -66,6 +57,7 @@ public class AndraAlien extends javax.swing.JFrame {
         comboValdRas = new javax.swing.JComboBox<>();
         tillhorRas = new javax.swing.JLabel();
         inputAntal = new javax.swing.JTextField();
+        inputLosenord = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,8 +83,6 @@ public class AndraAlien extends javax.swing.JFrame {
         inputName.setColumns(8);
 
         inputRegDat.setColumns(8);
-
-        inputLosenord.setColumns(8);
 
         inputTelNR.setColumns(8);
 
@@ -145,9 +135,18 @@ public class AndraAlien extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(bTillbaka, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(bTillbaka, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(bAndra, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(bVisaInformation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tillhorRas, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
@@ -161,33 +160,26 @@ public class AndraAlien extends javax.swing.JFrame {
                                     .addComponent(jLabel9))
                                 .addGap(15, 15, 15)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(inputTelNR)
+                                    .addComponent(comboValdPlats, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(comboValdRas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(comboValdAgent, javax.swing.GroupLayout.Alignment.TRAILING, 0, 98, Short.MAX_VALUE)
-                                    .addComponent(comboValdAlien, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(inputName, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(inputName)
+                                    .addComponent(inputLosenord)
                                     .addComponent(inputRegDat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
-                                    .addComponent(inputLosenord, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(inputTelNR, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(comboValdPlats, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(comboValdRas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(bAndra, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(bVisaInformation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tillhorRas, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(comboValdAlien, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(120, 120, 120)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(inputAntal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(22, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 21, Short.MAX_VALUE)
+                .addGap(18, 22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -234,7 +226,7 @@ public class AndraAlien extends javax.swing.JFrame {
                             .addComponent(comboValdRas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tillhorRas)
                             .addComponent(inputAntal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 46, Short.MAX_VALUE)))
+                        .addGap(0, 45, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -275,22 +267,23 @@ public class AndraAlien extends javax.swing.JFrame {
             String alienID = idb.fetchSingle("SELECT Alien_ID FROM alien WHERE Namn = '" + alienNamn + "'");
             String nyttNamn = inputName.getText();
             String nyttDatum = inputRegDat.getText();
-            String nyttLosen = inputLosenord.getText();
+            String nyttLosen = new String(inputLosenord.getPassword());
             String nyttTele = inputTelNR.getText();
 
-                if (nyttNamn != null && !Validering.textFaltHarVarde(inputName)) {
+            if (comboValdAlien.getSelectedIndex() > 0) {
+                if (nyttNamn != null && !nyttNamn.isEmpty()) {
                     String updateraNamn = "UPDATE alien SET Namn = '" + nyttNamn + "' WHERE Alien_ID = " + alienID;
                     idb.update(updateraNamn);
                 }
-                if (nyttDatum != null && !Validering.textFaltHarVarde(inputRegDat)) {
+                if (nyttDatum != null && !nyttDatum.isEmpty()) {
                     String updateraDatum = "UPDATE alien SET Registreringsdatum = '" + nyttDatum + "' WHERE Alien_ID = " + alienID;
                     idb.update(updateraDatum);
                 }
-                if (nyttLosen != null && !Validering.textFaltHarVarde(inputLosenord)) {
+                if (nyttLosen != null && !nyttLosen.isEmpty()) {
                     String updateraLosen = "UPDATE alien SET Losenord = '" + nyttLosen + "' WHERE Alien_ID = " + alienID;
                     idb.update(updateraLosen);
                 }
-                if (nyttTele != null && !Validering.textFaltHarVarde(inputTelNR)) {
+                if (nyttTele != null && !nyttTele.isEmpty()) {
                     String updateraTele = "UPDATE alien SET Telefon = '" + nyttTele + "' WHERE Alien_ID = " + alienID;
                     idb.update(updateraTele);
                 }
@@ -329,10 +322,14 @@ public class AndraAlien extends javax.swing.JFrame {
                         String uppdateraRas = "INSERT INTO worm VALUES(" + alienID + ")";
                         idb.insert(uppdateraRas);
                     }
-
                 }
+
                 alienUppdaterad();
-                
+                this.setVisible(false);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Välj alien.");
+            }
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Kunde inte lägga till alien :( " + ex.getMessage());
         }
@@ -394,7 +391,7 @@ public class AndraAlien extends javax.swing.JFrame {
         String fraga = "SELECT Namn FROM agent";
         ArrayList<String> allaAgenter;
         try {
- 
+
             allaAgenter = idb.fetchColumn(fraga);
 
             for (String agentNamn : allaAgenter) {
@@ -456,7 +453,7 @@ public class AndraAlien extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboValdPlats;
     private javax.swing.JComboBox<String> comboValdRas;
     private javax.swing.JTextField inputAntal;
-    private javax.swing.JTextField inputLosenord;
+    private javax.swing.JPasswordField inputLosenord;
     private javax.swing.JTextField inputName;
     private javax.swing.JTextField inputRegDat;
     private javax.swing.JTextField inputTelNR;

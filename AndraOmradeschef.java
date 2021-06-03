@@ -1,19 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MenInBlack;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
-/**
- *
- * @author josefinolsson
+/*
+ * @author Emil Lager
+ * @author Josefin Olsson
+ * @author Karin Mäki-Kala
+ * @author Veronika Ranta
  */
 public class AndraOmradeschef extends javax.swing.JFrame {
 
@@ -25,7 +21,6 @@ public class AndraOmradeschef extends javax.swing.JFrame {
         valjOmradeNamn();
         nyOmradesChef();
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,6 +37,7 @@ public class AndraOmradeschef extends javax.swing.JFrame {
         bBekrafta = new javax.swing.JButton();
         bTillbaka = new javax.swing.JButton();
         comboBoxNyChef = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,48 +62,52 @@ public class AndraOmradeschef extends javax.swing.JFrame {
         });
 
         comboBoxNyChef.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agenter" }));
-        comboBoxNyChef.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxNyChefActionPerformed(evt);
-            }
-        });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setText("Ändra områdeschef");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(46, 46, 46)
-                        .addComponent(comboValjOmrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(comboBoxNyChef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bTillbaka)
-                            .addComponent(bBekrafta))))
-                .addContainerGap(33, Short.MAX_VALUE))
+                        .addGap(15, 15, 15)
+                        .addComponent(comboBoxNyChef, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(37, 37, 37)
+                        .addComponent(comboValjOmrade, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(bBekrafta, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                    .addComponent(bTillbaka, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(comboValjOmrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(comboBoxNyChef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bBekrafta))
-                .addGap(57, 57, 57)
+                    .addComponent(bBekrafta)
+                    .addComponent(comboBoxNyChef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(bTillbaka)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -121,18 +121,12 @@ public class AndraOmradeschef extends javax.swing.JFrame {
 
             String omradesID = idb.fetchSingle("SELECT Omrades_ID FROM Omrade WHERE benamning = '" + valtOmrade + "';");
             String agentID = idb.fetchSingle("SELECT Agent_ID FROM Agent WHERE namn = '" + nyOmradeschef + "';");
-            
-            System.out.println(omradesID);
-            System.out.println(agentID);
-            String radera = "DELETE FROM omradeschef WHERE Agent_ID= " + agentID;
-            idb.delete(radera);
+            idb.delete("DELETE FROM omradeschef where Agent_ID =" + agentID);
+            idb.delete("DELETE FROM omradeschef where omrade = " + omradesID);
 
-
-            String fraga = "insert into Omradeschef values (" + agentID + ", " + omradesID +")";
+            String fraga = "insert into Omradeschef values (" + agentID + ", " + omradesID + ")";
             idb.insert(fraga);
             JOptionPane.showMessageDialog(null, "Områdeschefen är ändrad");
-            
- 
 
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick fel. ");
@@ -144,17 +138,12 @@ public class AndraOmradeschef extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_bTillbakaActionPerformed
 
-    private void comboBoxNyChefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxNyChefActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboBoxNyChefActionPerformed
-
     private void valjOmradeNamn() {
         String fraga = "SELECT Benamning from omrade";
 
         ArrayList<String> allaOmraden;
 
         try {
-
             allaOmraden = idb.fetchColumn(fraga);
 
             for (String Benamning : allaOmraden) {
@@ -168,7 +157,7 @@ public class AndraOmradeschef extends javax.swing.JFrame {
     }
 
     private void nyOmradesChef() {
-        String fraga2 = "SELECT namn from Agent";
+        String fraga2 = "SELECT namn from Agent WHERE Administrator = 'J'";
 
         ArrayList<String> allaOmradeschefer;
 
@@ -182,41 +171,6 @@ public class AndraOmradeschef extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Databasfel!");
             System.out.println("Internt felmeddelande" + e.getMessage());
         }
-    /**
-         * @param args the command line arguments
-         */
-        //public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AndraOmradeschef.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AndraOmradeschef.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AndraOmradeschef.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AndraOmradeschef.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-           public void run() {
-               // new AndraOmradeschef().setVisible(true);
-            }
-        }
-        );
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -226,5 +180,6 @@ public class AndraOmradeschef extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboValjOmrade;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
