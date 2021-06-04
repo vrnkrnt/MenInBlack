@@ -153,8 +153,8 @@ public class AlienStart extends javax.swing.JFrame {
         try {
             String fraga = "SELECT * FROM alien WHERE Alien_ID = " + id;
             valdAlien = idb.fetchRows(fraga);
-            String omradeNamn = idb.fetchSingle("SELECT Benamning FROM omrade WHERE Omrades_ID IN "
-                    + "(SELECT Omrade FROM Agent WHERE Agent_ID = " + id + ");");
+            String platsNamn = idb.fetchSingle("SELECT Benamning FROM plats WHERE Plats_ID IN "
+                    + "(SELECT Plats FROM alien WHERE Alien_ID = " + id + ");");
             String ansvarigAgent = idb.fetchSingle("SELECT Namn FROM agent WHERE Agent_ID IN "
                     + "(SELECT Ansvarig_Agent FROM alien WHERE Alien_ID = " + id + ");");
 
@@ -163,7 +163,7 @@ public class AlienStart extends javax.swing.JFrame {
                 jTextArea1.append("Namn:\t" + alien.get("Namn") + "\n");
                 jTextArea1.append("Tel.nr.:\t" + alien.get("Telefon") + "\n");
                 jTextArea1.append("Reg.dat.:\t" + alien.get("Registreringsdatum") + "\n");
-                jTextArea1.append("Område:\t" + omradeNamn + "\n");
+                jTextArea1.append("Område:\t" + platsNamn + "\n");
                 jTextArea1.append("Ansvarig agent:\t" + ansvarigAgent + "\n");
                 jTextArea1.append("");
             }

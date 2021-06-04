@@ -244,16 +244,22 @@ public class AndraAlien extends javax.swing.JFrame {
 
         try {
             String namn = comboValdAlien.getSelectedItem().toString();
-            String fraga = "SELECT * FROM alien WHERE NAMN = '" + namn + "'";
+            String alienID = idb.fetchSingle("SELECT Alien_ID FROM alien WHERE Namn = '" + namn + "'");
+            String fraga = "SELECT * FROM alien WHERE Alien_ID = " + alienID;
             valdAlien = idb.fetchRows(fraga);
+            String platsNamn = idb.fetchSingle("SELECT Benamning FROM plats WHERE Plats_ID IN "
+                    + "(SELECT Plats FROM alien WHERE Alien_ID = " + alienID + ")");
+            String ansvarigAgent = idb.fetchSingle("SELECT Namn FROM agent WHERE Agent_ID IN "
+                    + "(SELECT Ansvarig_Agent FROM alien WHERE Alien_ID = " + alienID + ");");
 
             for (HashMap<String, String> alien : valdAlien) {
                 jTextArea1.append("ID:\t" + alien.get("Alien_ID") + "\n");
                 jTextArea1.append("Namn:\t" + alien.get("Namn") + "\n");
-                jTextArea1.append("Tel. nr.:\t" + alien.get("Telefon") + "\n");
-                jTextArea1.append("Reg. dat.:\t" + alien.get("Registreringsdatum") + "\n");
-                jTextArea1.append("Område:\t" + alien.get("Plats") + "\n");
-                jTextArea1.append("Ansvarig agent:\t" + alien.get("Ansvarig_Agent") + "\n");
+                jTextArea1.append("Tel.nr.:\t" + alien.get("Telefon") + "\n");
+                jTextArea1.append("Reg.dat.:\t" + alien.get("Registreringsdatum") + "\n");
+                jTextArea1.append("Område:\t" + platsNamn + "\n");
+                jTextArea1.append("Ansvarig agent:\t" + ansvarigAgent + "\n");
+                jTextArea1.append("");
             }
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Kunde inte hämta information om alien.\n"
