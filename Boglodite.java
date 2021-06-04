@@ -94,15 +94,18 @@ public class Boglodite extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        try {
-            String boogies = inputBoogies.getText();
-            int antalBoogies = Integer.parseInt(boogies);
-            String query = ("INSERT INTO BOGLODITE VALUES (" + id + ", " + antalBoogies + ")");
-            idb.insert(query);
-            setVisible(false);
-            JOptionPane.showMessageDialog(null, "En boglodite har registrerats!");
-        } catch (InfException ex) {
+        if (Validering.textFaltHarVarde(inputBoogies) && Validering.isHeltal(inputBoogies)) {
 
+            try {
+                String boogies = inputBoogies.getText();
+                int antalBoogies = Integer.parseInt(boogies);
+                String query = ("INSERT INTO BOGLODITE VALUES (" + id + ", " + antalBoogies + ")");
+                idb.insert(query);
+                setVisible(false);
+                JOptionPane.showMessageDialog(null, "En boglodite har registrerats!");
+            } catch (InfException ex) {
+
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

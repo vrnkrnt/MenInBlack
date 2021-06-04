@@ -74,17 +74,18 @@ public class Squid extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bRegistreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegistreraActionPerformed
+        if (Validering.textFaltHarVarde(inputArmar) && Validering.isHeltal(inputArmar)) {
+            try {
+                String armar = inputArmar.getText().toString();
+                int antalArmar = Integer.parseInt(armar);
+                String query = ("INSERT INTO SQUID VALUES (" + id + ", " + antalArmar + ")");
+                idb.insert(query);
+                setVisible(false);
+                JOptionPane.showMessageDialog(null, "En squid har registrerats!");
 
-        try {
-            String armar = inputArmar.getText().toString();
-            int antalArmar = Integer.parseInt(armar);
-            String query = ("INSERT INTO SQUID VALUES (" + id + ", " + antalArmar + ")");
-            idb.insert(query);
-            setVisible(false);
-            JOptionPane.showMessageDialog(null, "En squid har registrerats!");
-
-        } catch (InfException ex) {
-            JOptionPane.showMessageDialog(null, "Något gick fel! ");
+            } catch (InfException ex) {
+                JOptionPane.showMessageDialog(null, "Något gick fel! ");
+            }
         }
     }//GEN-LAST:event_bRegistreraActionPerformed
 

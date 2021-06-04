@@ -295,7 +295,7 @@ public class AndraAlien extends javax.swing.JFrame {
                 }
                 if (comboValdPlats.getSelectedIndex() > 0) {
                     String nyPlats = comboValdPlats.getSelectedItem().toString();
-                    String platsID = idb.fetchSingle("SELECT Plats_ID FROM plats WHERE Benamning = '" + nyPlats + "'");
+                    String platsID = idb.fetchSingle("SELE  CT Plats_ID FROM plats WHERE Benamning = '" + nyPlats + "'");
                     String updateraPlats = "UPDATE alien SET Plats = " + platsID + " WHERE Alien_ID = " + alienID;
                     idb.update(updateraPlats);
                 }
